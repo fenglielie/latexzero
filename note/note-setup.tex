@@ -1,0 +1,164 @@
+% note-setup.tex
+% 2024-09-21
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{appendix}
+\usepackage{indentfirst}
+\usepackage{silence}
+\usepackage{anyfontsize}
+\usepackage{xpatch}
+\usepackage{extarrows}
+\usepackage{booktabs,multirow,multicol}
+\usepackage{calligra}
+\usepackage{framed}
+\usepackage{subcaption}
+
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[a4paper, margin=1in]{geometry}
+
+\usepackage{graphicx}
+\graphicspath{
+    {./figure/}{./figures/}{./image/}{./images/}{./graphic/}{./graphics/}{./picture/}{./pictures/}
+}
+
+\usepackage[shortlabels,inline]{enumitem}
+\setlist{nolistsep}
+
+\usepackage[ruled,linesnumbered,noline]{algorithm2e}
+
+\usepackage{listings}
+\lstdefinestyle{mystyle}{
+    basicstyle=\small\ttfamily,
+    commentstyle=\color[RGB]{34,139,34},
+    keywordstyle=\color[RGB]{0,0,255},
+    numberstyle=\tiny\color{gray},
+    stringstyle=\color[RGB]{128,0,128},
+    identifierstyle=\color{black},
+    showstringspaces=false,
+    tabsize=4,
+    breaklines=true,
+    numbers=left,
+    frame=single,
+    rulecolor=\color{black},
+    captionpos=b,
+    xleftmargin=\parindent,
+    aboveskip=\baselineskip,
+    belowskip=\baselineskip,
+    escapeinside={\%*}{*)},
+}
+\lstset{style=mystyle}
+
+\usepackage[colorlinks=true,linkcolor=cyan,urlcolor=magenta,citecolor=violet]{hyperref}
+
+\renewcommand*{\proofname}{\normalfont\bfseries Proof}
+
+
+\usepackage{thmtools}
+
+\usepackage[framemethod=TikZ]{mdframed}
+
+\mdfsetup{skipabove=1em,skipbelow=0em}
+
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{NavyBlue!70!black}, bodyfont=\normalfont,
+    mdframed={
+            linewidth=2pt,
+            rightline=false, topline=false, bottomline=false,
+            linecolor=NavyBlue, backgroundcolor=NavyBlue!5,
+            nobreak=false
+        }
+]{thmbluebox}
+
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{ForestGreen!70!black}, bodyfont=\normalfont,
+    mdframed={
+            linewidth=2pt,
+            rightline=false, topline=false, bottomline=false,
+            linecolor=ForestGreen, backgroundcolor=ForestGreen!5,
+            nobreak=false
+        }
+]{thmgreenbox}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{RawSienna!70!black}, bodyfont=\normalfont,
+    mdframed={
+            linewidth=2pt,
+            rightline=false, topline=false, bottomline=false,
+            linecolor=RawSienna, backgroundcolor=RawSienna!5,
+            nobreak=false
+        }
+]{thmredbox}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{WildStrawberry!70!black}, bodyfont=\normalfont,
+    mdframed={
+            linewidth=2pt,
+            rightline=false, topline=false, bottomline=false,
+            linecolor=WildStrawberry, backgroundcolor=WildStrawberry!5,
+            nobreak=false
+        }
+]{thmpinkbox}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{ForestGreen}, bodyfont=\normalfont,
+    mdframed={
+            linewidth=2pt,
+            rightline=false, topline=false, bottomline=false,
+            linecolor=ForestGreen,
+            nobreak=false
+        }
+]{thmgreenline}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{TealBlue!70!black}, bodyfont=\normalfont,
+    mdframed={
+            linewidth=2pt,
+            rightline=false, topline=false, bottomline=false,
+            linecolor=TealBlue,
+            nobreak=false
+        }
+]{thmblueline}
+
+% usage:
+% \newcommand{\noteusemdframed}{true}
+% \newcommand{\noteusemdframed}{false}
+
+\ifx\noteusemdframed\undefined
+    \newcommand{\noteusemdframed}{false}
+\fi
+
+\ifthenelse{\equal{\noteusemdframed}{true}}{
+    \declaretheorem[style=thmbluebox, numbered=yes, name=Theorem, numberwithin=section]{theorem}
+    \declaretheorem[style=thmbluebox, name=Corollary, sibling=theorem]{corollary}
+    \declaretheorem[style=thmbluebox, name=Lemma, sibling=theorem]{lemma}
+    \declaretheorem[style=thmbluebox, name=Proposition, sibling=theorem]{proposition}
+
+    \declaretheorem[style=thmgreenbox, numbered=yes, name=Definition, numberwithin=section]{definition}
+    \declaretheorem[style=thmredbox, name=Example, numberwithin=section]{example}
+    \declaretheorem[style=thmpinkbox, name=Problem, numberwithin=section]{problem}
+
+    \declaretheorem[style=thmblueline, numbered=yes, name=Remark, numberwithin=section]{remark}
+    \declaretheorem[style=thmblueline, name=Remark, numbered=no]{remark*}
+    \declaretheorem[style=thmgreenline, name=Note, numberwithin=section]{note}
+    \declaretheorem[style=thmgreenline, name=Note, numbered=no]{note*}
+}{
+    \declaretheorem[style=plain, numbered=yes, name=Theorem, numberwithin=section]{theorem}
+    \declaretheorem[style=plain, name=Corollary, sibling=theorem]{corollary}
+    \declaretheorem[style=plain, name=Lemma, sibling=theorem]{lemma}
+    \declaretheorem[style=plain, name=Proposition, sibling=theorem]{proposition}
+
+    \declaretheorem[style=definition, numbered=yes, name=Definition, numberwithin=section]{definition}
+    \declaretheorem[style=definition, name=Example, numberwithin=section]{example}
+    \declaretheorem[style=definition, name=Problem, numberwithin=section]{problem}
+
+    \declaretheorem[style=remark, numbered=yes, name=Remark, numberwithin=section]{remark}
+    \declaretheorem[style=remark, name=Remark, numbered=no]{remark*}
+    \declaretheorem[style=remark, name=Note, numberwithin=section]{note}
+    \declaretheorem[style=remark, name=Note, numbered=no]{note*}
+}

@@ -1,0 +1,279 @@
+\documentclass{article}
+
+\newcommand{\noteusemdframed}{true}
+\input{../note-setup}
+
+\title{Note on Polynomial Approximation}
+\author{Author}
+\date{\today}
+
+% \usepackage[style=numeric]{biblatex}
+% \addbibresource{reference.bib} % reference.bib
+
+\begin{document}
+
+\maketitle
+
+\section{Averaged Taylor Polynomial}
+
+\begin{definition}
+    The Taylor polynomial of order $m$ evaulated at $y$ is given by
+    \begin{equation}\label{eq:taylor}
+        T_y^mu(x) = \sum_{|\alpha| < m} \frac{1}{\alpha !} D^\alpha u(y) (x-y)^\alpha
+    \end{equation}
+    where $\alpha = (\alpha_1,\dots,\alpha_n)$ is an n-tuple of non-negative integers, $x \in \mathbb{R}^n$ and
+    \[
+        x^{\alpha} = \prod_{i=1}^n x_i^{\alpha_i},\,
+        \alpha ! = \prod_{i=1}^n \alpha_i!,\,
+        \vert \alpha \vert = \sum_{i=1}^n \alpha_i
+    \]
+\end{definition}
+
+Howerer, if $u$ is in a Sobolev space, $D^\alpha u$ may not exist in the usual pointwise sense.
+We accomplish this by taking an ``average'' over $y$ on a ball.
+
+
+\begin{definition}
+    Suppose $u$ has weak derivatives of order strictly less than $m$ in a region $\Omega$ such than $B \subset\subset \Omega$.
+    The corresponding Taylor polynomial of order $m$ of $u$ averaged over $B$ is defined as
+    \begin{equation}\label{eq:avg_taylor}
+        Q^m u(x) = \int_B T_y^m u(x) \phi(y)\,dy
+    \end{equation}
+    where $T_y^m u(x)$ is defined as \eqref{eq:taylor}, $B$ is a ball centerred at $x_0$ with radius $\rho$ and $\phi$ is the cut-off function supported in $\overline{B}$.
+\end{definition}
+
+\begin{remark}
+    Such a polynomial is not unique, due to the choice od cut-off function $\phi$.
+\end{remark}
+
+\begin{proposition}
+    $Q^m u$ is a polynomial of degree less than $m$ in $x$.
+\end{proposition}
+\begin{proof}
+    The definition of $Q^m u$ does make sence because $u \in W_p^{m-1}(\Omega)$.
+    If we write
+    \[
+        (x-y)^\alpha = \prod_{i=1}^n (x_i-y_i)^{\alpha_i} = \sum_{\gamma+\beta = \alpha} a_{[\gamma,\beta]} x^{\gamma} y^{\beta}
+    \]
+    where $\gamma = (\gamma_1,\dots,\gamma_n)$, $\beta = (\beta_1,\dots,\beta_n)$ and $a_{[\gamma,\beta]}$ are constants,
+    $Q^m u(x)$ can be written as
+    \begin{align*}
+        Q^m u(x) & = \int_B T_y^m u(x) \phi(y)\,dy = \sum_{|\alpha|<m} \int_B \frac{1}{\alpha !} D^\alpha u(y) (x-y)^\alpha \phi(y)\,dy
+        \\
+                 & = \sum_{|\alpha|<m}  \sum_{\gamma+\beta = \alpha}
+        \left(\frac{1}{\alpha !} a_{[\gamma,\beta]}  \int_B D^\alpha u(y) y^{\beta} \phi(y)\,dy \right) x^{\gamma}
+    \end{align*}
+\end{proof}
+
+\begin{note}
+    The degree of $Q^m u$ is at most $m-1$.
+\end{note}
+
+
+Though we use the assumption that $u$ is in a Sobolev space $W_p^{m-1}(\Omega)$,
+we can extend the definition of $Q^m u$ to $L^1(B)$ by integrating by parts:
+\begin{equation}\label{eq:avg_taylor2}
+    Q^m u(x) = \sum_{|\alpha|<m}  \sum_{\gamma+\beta = \alpha}
+    \left(\frac{(-1)^{|\alpha|}}{\alpha !} a_{[\gamma,\beta]}  \int_B u(y) D^\alpha(y^{\beta} \phi(y))\,dy \right) x^{\gamma}.
+\end{equation}
+It is equivalent to \eqref{eq:avg_taylor} if $u \in W_p^{m-1}(\Omega)$.
+
+\begin{proposition}
+    \begin{equation} \label{eq:avg_taylor3}
+        Q^m u(x) = \sum_{|\lambda| < m} \left( \int_B \psi_\lambda(y) u(y)\,dy \right) x^\lambda
+    \end{equation}
+    where $\psi_\lambda \in C_0^\infty(\mathbb{R}^n)$ and $\mathrm{supp}(\phi_\lambda) \in \overline{B}$.
+\end{proposition}
+
+\begin{proof}
+    This follows from \eqref{eq:avg_taylor2} if we define
+    \begin{equation}
+        \psi_\lambda(y) = \sum_{\alpha \ge \lambda,|\alpha|<m}
+        \frac{(-1)^{|\alpha|}}{\alpha !} a_{[\lambda,\alpha-\lambda]} D^\alpha(y^{\alpha-\lambda} \phi(y)).
+    \end{equation}
+\end{proof}
+
+\begin{corollary}
+    If $\Omega$ is a bounded domain in $\mathbb{R}^n$, then for any $k$, $Q^m$ is a bounded map of $L^1(B)$ into $W^{k}_\infty(\Omega)$.
+    There exist a constant $C = C(m,n,\rho,\Omega)$, such that for all $u \in L^1(B)$,
+    \begin{equation}
+        \Vert Q^m u \Vert_{W^{k}_\infty(\Omega)} \le C \Vert u \Vert_{L^1(B)}.
+    \end{equation}
+\end{corollary}
+\begin{proof}
+    This follows from \eqref{eq:avg_taylor3} and the fact that both $\sup_{y \in B} |\psi_\lambda(y)|$ and $\sup_{x \in \Omega} |D^\alpha x^\lambda |$ are bounded.
+\end{proof}
+
+\begin{proposition}
+    For any $\alpha$ such than $|\alpha| \le m-1$,
+    \begin{equation}
+        D^\alpha Q^m u = Q^{m - |\alpha|} D^\alpha u, \forall u \in W_1^{|\alpha|}(B).
+    \end{equation}
+\end{proposition}
+\begin{proof}
+    It's easy to verify this proposition for all $u \in C^\infty(\Omega)$.
+    The proof is completed via a density argument.
+\end{proof}
+
+\section{Error Representation}
+
+\begin{definition}
+    $\Omega$ is star-shaped with respect to the ball $B$ if , for all $x \in \Omega$, the closed convex hull of $\{x\} \cup B$ is a subset of $\Omega$.
+\end{definition}
+
+From now on, we assume that $\Omega$ is star-shaped with respect to the ball $B$. Let $C_x$ denote the convex hull of $\{x\} \cup B$.
+
+The integral form of the Taylor remainder for $f \in C^m([0,1])$ is given by
+\begin{equation}
+    f(s) = \sum_{k=0}^{m-1}\frac{1}{k!} f^{(k)}(0) + \int_0^s \frac{1}{(m-1)!} f^{(m)}(t)(s-t)^{m-1}\,dt.
+\end{equation}
+Let $u$ be a $C^m$ function on $\Omega$. For $x \in \Omega$ and $y \in B$, define $f(s) = u(y + s(x-y))$.
+Then, we obtain
+\begin{equation}
+    \frac{1}{k!} f^{(k)}(s) = \sum_{|\alpha| = k}\frac{1}{\alpha !} D^\alpha u(y + s(x-y)) (x-y)^{\alpha}.
+\end{equation}
+Hence,
+\begin{align}
+    f(s) ={} & \sum_{k=0}^{m-1} \sum_{|\alpha| = k}\frac{1}{\alpha !} D^\alpha u(y) (x-y)^{\alpha} \notag                             \\
+             & + m \int_0^s \left(\sum_{|\alpha| = m}\frac{1}{\alpha !} D^\alpha u(y + t(x-y)) (x-y)^{\alpha} \right)(s-t)^{m-1}\,dt.
+\end{align}
+Take $s=1$, we have $f(1) = u(x)$. By using the variable substitution $t \to 1-t$ in the integral, we obtain
+\begin{align}
+    u(x) ={} & \sum_{|\alpha| < m}\frac{1}{\alpha !} D^\alpha u(y) (x-y)^{\alpha}  \notag                                         \\
+             & + m \int_0^1 \left(\sum_{|\alpha| = m}\frac{1}{\alpha !} D^\alpha u(x + t(y-x)) (x-y)^{\alpha} \right)t^{m-1}\,dt.
+    \\
+    ={}      & \sum_{|\alpha| < m}\frac{1}{\alpha !} D^\alpha u(y) (x-y)^{\alpha} \notag                                          \\
+             & + m \sum_{|\alpha| = m} (x-y)^{\alpha}\int_0^1 \frac{1}{\alpha !} D^\alpha u(x + t(y-x)) t^{m-1}\,dt.
+\end{align}
+
+\begin{definition}
+    The $m$-th order renaubder term of $Q^m u$ is given by
+    \[
+        R^m u(x) = u(x) - Q^m u(x)
+    \]
+\end{definition}
+
+Using the definition of $Q^m$ and cut-off function, we obtain
+\begin{align}
+    R^m u(x) ={} & u(x) - Q^m u(x) \notag                                                                                                              \\
+    ={}          & \int_B u(x) \phi(y)\,dy - \int_B T_y^m u(x) \phi(y)\,dy \notag                                                                      \\
+    ={}          & \int_B \left(u(x) - T_y^m u(x)\right) \phi(y)\,dy \notag                                                                            \\
+    ={}          & \int_B \left(m \sum_{|\alpha| = m} (x-y)^{\alpha}\int_0^1 \frac{1}{\alpha !} D^\alpha u(x + t(y-x)) t^{m-1}\,dt\right) \phi(y)\,dy.
+\end{align}
+
+\begin{proposition}\label{prop:avg_remainder}
+    The remainder $R^m u$ satisfies
+    \begin{equation}
+        R^m u(x) = m \sum_{|\alpha| = m} \int_{C_x} k_{\alpha}(x,z) D^\alpha u(z)\,dz
+    \end{equation}
+    where $z = x + t(y-z)$, $k_{\alpha}(x,z) = \frac{1}{\alpha !}(x-z)^{\alpha} k(x,z)$ and
+    \begin{equation}
+        \vert k(x,z) \vert \le C \left( 1 + \frac{1}{\rho}|x-x_0|\right)^n |x-z|^{-n}
+    \end{equation}
+\end{proposition}
+The proof is omitted.
+
+
+\begin{definition}
+    Suppose $\Omega$ has diameter $d$ and is star-shaped with respect to a ball $B$.
+    Then the chunkiness parameter of $\Omega$ is defined as
+    \[
+        \gamma = \frac{d}{\rho_{\max}},
+    \]
+    where $\rho_{\max}$ is the largest radius of all ball $B$,
+    \[
+        \rho_{\max} = \sup \{\rho \mid \text{$\Omega$ is star-shaped with respect to a ball of radius $\rho$}\}
+    \]
+\end{definition}
+
+\begin{corollary}
+    The ball $B$ can be chosen so that the function $k(x,z)$ in proposition \ref{prop:avg_remainder}
+    satisfies the following estimate:
+    \begin{equation}
+        |k(x,z)| \le C(1+\gamma)^n |x-z|^{-n}, \forall x \in \Omega,
+    \end{equation}
+    where $\gamma$ is the chunkiness parameter of $\Omega$.
+\end{corollary}
+\begin{proof}
+    Choose a ball $B$ such that $\Omega$ is star-shaped with respect to $B$ and the radius of $B$ satisfies $\rho \ge \frac12 \rho_{\max}$.
+    Then
+    \begin{align}
+        \vert k(x,z) \vert \le{} & C \left( 1 + \frac{1}{\rho}|x-x_0|\right)^n |x-z|^{-n} \notag  \\
+        \le{}                    & C \left( 1 + \frac{2d}{\rho_{\max}}\right)^n |x-z|^{-n} \notag \\
+        \le{}                    & 2^n C (1+\gamma)^n |x-z|^{-n}.
+    \end{align}
+\end{proof}
+
+
+\section{Bounds for Riesz Potentials}
+
+\begin{lemma}
+    If $f \in L^p(\Omega)$ for $1<p<\infty$ and $m > n/p$, then
+    \begin{equation}
+        \int_{\Omega} |x-z|^{-n+m} |f(z)|\,dz \le C_p d^{m-n/p} \Vert f \Vert_{L^p(\Omega)}, \forall x \in \Omega.
+    \end{equation}
+    This inequality also holds for $p=1$ if $m \ge n$.
+\end{lemma}
+
+\begin{proposition}
+    If $1<p<\infty$ and $m > n/p$, or $p=1$ and $m \ge n$, there exist a constant $C = C(m,n,\gamma,p)$, such that
+    \begin{equation}
+        \Vert R^m u \Vert_{L^\infty(\Omega)} \le C d^{m-n/p} |u|_{W^m_p(\Omega)}
+    \end{equation}
+    for all $u \in W^m_p(\Omega)$.
+\end{proposition}
+\begin{proof}
+    First, we assume that $u \in C^m(\Omega) \cap W^m_p(\Omega)$. We can use the pointwise representation of $R^mu(x)$.
+    \begin{align}
+        |R^mu(x)| ={} & m \left| \sum_{|\alpha| = m} \int_{C_x} k_{\alpha}(x,z) D^\alpha u(z)\,dz \right| \notag \\
+        \le{}         & C \sum_{|\alpha|=m} \int_{\Omega} |x-z|^{-n+m} |D^\alpha u(z)|\,dz \notag                \\
+        \le{}         & C' d^{m-n/p} |u|_{W^m_p(\Omega)}.
+    \end{align}
+    The proof can be completed via a density argument.
+\end{proof}
+
+\begin{lemma}
+    Let $f \in L^p(\Omega)$ for $p \ge 1$ and $m \ge 1$ and let
+    \[
+        g(x) = \int_\Omega |x-z|^{-n+m} |f(z)|\,dz
+    \]
+    Then
+    \begin{equation}
+        \Vert g \Vert_{L^p(\Omega)} \le C_{m,n} d^m \Vert f\Vert_{L^p(\Omega)}.
+    \end{equation}
+\end{lemma}
+
+\begin{lemma}[Bramble-Hilbert] \label{lemma:bramble-hilbert}
+    Let $B$ be a ball in $\Omega$ such that $\Omega$ is star-shaped with respect to $B$ and such that its radisu
+    $\rho > \frac 12 \rho_{\max}$. Let $Q^m u$ be the Taylor polynomial of order $m$ of $u$ averaged over $B$ where
+    $u \in W_p^m(\Omega)$ and $p \ge 1$. Then
+    \begin{equation}
+        \vert u - Q^m u \vert_{W^k_p(\Omega)} \le C_{m,n,\gamma} d^{m-k} |u|_{W^k_p(\Omega)}, \,\, k = 0,1,\dots,m,
+    \end{equation}
+    where $d = \mathrm{diam}(\Omega)$.
+\end{lemma}
+
+\begin{note}
+    Bramble-Hilbert lemma is an important result for the analysis of the approximation properties of finite elements.
+\end{note}
+
+\begin{corollary}
+    Under the assumption of the \autoref{lemma:bramble-hilbert}, the following inequality holds
+    \begin{equation}
+        \inf_{v \in P^{m-1}} \Vert u - v \Vert_{W^k_p(\Omega)} \le C_{m,n,\gamma} d^{m-k} |u|_{W^k_p(\Omega)}, \,\, k = 0,1,\dots,m,
+    \end{equation}
+\end{corollary}
+\begin{proof}
+    \autoref{lemma:bramble-hilbert} provides a constructive proof.
+\end{proof}
+
+\begin{lstlisting}[language=Python]
+# Python
+def hello():
+    print("Hello, world!")
+
+hello()
+\end{lstlisting}
+
+
+\end{document}

@@ -1,0 +1,100 @@
+% beamer-setup.tex
+% 2024-09-21
+
+\usetheme{default}
+\usecolortheme{default}
+\useoutertheme[subsection=false]{miniframes}
+\usefonttheme[onlymath]{serif}
+
+\definecolor{simplebeamercolor}{RGB}{57,89,199}
+\setbeamercolor{structure}{fg=simplebeamercolor} % default color: rgb{0.2 0.2 0.7}
+
+\setbeamertemplate{footline}[frame number]{}
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamercolor{section in head/foot}{fg=white, bg=structure}
+
+\setbeamertemplate{title page}[default][colsep=-4bp,rounded=true,shadow=true]
+\setbeamercolor*{title}{use=structure,fg=white,bg=structure.fg}
+
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}[subsections numbered]
+
+\setbeamerfont{institute}{size=\normalsize}
+\setbeamerfont{footnote}{size=\tiny}
+
+\setbeamercolor{block body}{bg=structure!10}
+\setbeamercolor{block title}{bg=structure!20}
+\setbeamercolor{block body alerted}{bg=alerted text.fg!10}
+\setbeamercolor{block title alerted}{bg=alerted text.fg!20}
+\setbeamercolor{block body example}{bg=green!10}
+\setbeamercolor{block title example}{bg=green!20}
+\setbeamercolor{block title proof}{bg=white}
+\setbeamercolor{block body proof}{bg=white}
+
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{enumerate items}[default]
+
+\setbeamertemplate{caption}[numbered]
+
+\AtBeginSection[]
+{
+    \begin{frame}<beamer>{Outline}
+        \tableofcontents[currentsection,currentsubsection,
+            hideothersubsections,sectionstyle=show/shaded]
+    \end{frame}
+}
+
+% fonts
+\usepackage[T1]{fontenc}
+% \usepackage{palatino}
+\usepackage{mathrsfs}
+\usepackage{calligra}
+\usepackage{bm}
+
+% math
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+
+\usepackage{extarrows}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{subcaption}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=,
+    filecolor=blue,
+    urlcolor=blue,
+    citecolor=cyan,
+}
+
+\usepackage{graphicx}
+\graphicspath{
+    {./figure/}{./figures/}{./image/}{./images/}{./graphic/}{./graphics/}{./picture/}{./pictures/}
+}
+
+\usepackage[ruled,linesnumbered,noline]{algorithm2e}
+
+\usepackage{listings}
+\lstdefinestyle{mystyle}{
+    basicstyle=\small\ttfamily,
+    commentstyle=\color[RGB]{34,139,34},
+    keywordstyle=\color[RGB]{0,0,255},
+    numberstyle=\tiny\color{gray},
+    stringstyle=\color[RGB]{128,0,128},
+    identifierstyle=\color{black},
+    showstringspaces=false,
+    tabsize=4,
+    breaklines=true,
+    numbers=left,
+    frame=single,
+    rulecolor=\color{black},
+    captionpos=b,
+    xleftmargin=\parindent,
+    aboveskip=\baselineskip,
+    belowskip=\baselineskip,
+    escapeinside={\%*}{*)},
+}
+\lstset{style=mystyle}

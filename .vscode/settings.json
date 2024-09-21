@@ -1,0 +1,69 @@
+{
+    "latex-workshop.latex.tools": [
+        {
+            "name": "xelatexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-xelatex",
+                "-auxdir=%DIR%/.aux",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "lualatexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-lualatex",
+                "-outdir=%OUTDIR%",
+                "-auxdir=%DIR%/.aux",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "-outdir=%OUTDIR%",
+                "-auxdir=%DIR%/.aux",
+                "%DOC%"
+            ]
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "XeLaTeXmk",
+            "tools": [
+                "xelatexmk"
+            ]
+        },
+        {
+            "name": "LuaLaTeXmk",
+            "tools": [
+                "lualatexmk"
+            ]
+        },
+        {
+            "name": "LaTeXmk",
+            "tools": [
+                "latexmk"
+            ]
+        }
+    ],
+    "[latex]": {
+        "editor.defaultFormatter": "James-Yu.latex-workshop",
+        "editor.unicodeHighlight.allowedLocales": {
+            "zh-hans": true
+        }
+    }
+}

@@ -1,0 +1,7 @@
+.aux/
+
+*.pdf
+*.synctex.gz
+*.synctex.gz.sum.synctex
+
+!*/demo/demo.pdf
