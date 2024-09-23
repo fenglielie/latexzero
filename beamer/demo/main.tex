@@ -1,22 +1,16 @@
 \documentclass[compress,aspectratio=43]{beamer}
 \input{../beamer-setup}
 
-% \usepackage[UTF8]{ctex}
 \usepackage[style=authoryear]{biblatex}
-\addbibresource{reference.bib}
+\IfFileExists{reference.bib}{\addbibresource{reference.bib}}{}
 
 \title{Title}
 \subtitle{Subtitle}
 \author{Author}
 \date{\today}
 \institute[XXXX]{University of XXXX}
-% \titlegraphic{
-%     \includegraphics[width=2cm]{ustc-logo.jpg}
-% }
-
 
 \begin{document}
-
 
 \begin{frame}[plain]
     \titlepage

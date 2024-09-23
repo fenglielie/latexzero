@@ -2,17 +2,15 @@
 \newcommand{\noteusemdframed}{true}
 \input{note-setup}
 
+\usepackage[style=numeric]{biblatex}
+\IfFileExists{reference.bib}{\addbibresource{reference.bib}}{}
+
 \title{Title}
 \author{Author}
 \date{\today}
 
-\usepackage[style=numeric]{biblatex}
-% \addbibresource{reference.bib} % reference.bib
-
-
 \begin{document}
 
 \maketitle
-
 
 \end{document}
