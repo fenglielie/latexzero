@@ -65,6 +65,17 @@
 
 
 \declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{RoyalPurple!70!black}, bodyfont=\normalfont,
+    mdframed={
+            linewidth=2pt,
+            rightline=false, topline=false, bottomline=false,
+            linecolor=RoyalPurple, backgroundcolor=RoyalPurple!8,
+            nobreak=false
+        }
+]{thmpurplebox}
+
+
+\declaretheoremstyle[
     headfont=\bfseries\sffamily\color{NavyBlue!70!black}, bodyfont=\normalfont,
     mdframed={
             linewidth=2pt,
@@ -73,7 +84,6 @@
             nobreak=false
         }
 ]{thmbluebox}
-
 
 \declaretheoremstyle[
     headfont=\bfseries\sffamily\color{ForestGreen!70!black}, bodyfont=\normalfont,
@@ -106,11 +116,11 @@
 ]{thmpinkbox}
 
 \declaretheoremstyle[
-    headfont=\bfseries\sffamily\color{ForestGreen}, bodyfont=\normalfont,
+    headfont=\bfseries\sffamily\color{LimeGreen}, bodyfont=\normalfont,
     mdframed={
             linewidth=2pt,
             rightline=false, topline=false, bottomline=false,
-            linecolor=ForestGreen,
+            linecolor=LimeGreen,
             nobreak=false
         }
 ]{thmgreenline}
@@ -134,10 +144,10 @@
 \fi
 
 \ifthenelse{\equal{\noteusemdframed}{true}}{
-    \declaretheorem[style=thmbluebox, numbered=yes, name=Theorem, numberwithin=section]{theorem}
+    \declaretheorem[style=thmpurplebox, numbered=yes, name=Theorem, numberwithin=section]{theorem}
     \declaretheorem[style=thmbluebox, name=Corollary, sibling=theorem]{corollary}
     \declaretheorem[style=thmbluebox, name=Lemma, sibling=theorem]{lemma}
-    \declaretheorem[style=thmbluebox, name=Proposition, sibling=theorem]{proposition}
+    \declaretheorem[style=thmpurplebox, name=Proposition, sibling=theorem]{proposition}
 
     \declaretheorem[style=thmgreenbox, numbered=yes, name=Definition, numberwithin=section]{definition}
     \declaretheorem[style=thmredbox, name=Example, numberwithin=section]{example}
