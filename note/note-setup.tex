@@ -56,76 +56,32 @@
 
 \renewcommand*{\proofname}{\normalfont\bfseries Proof}
 
-\usepackage{tikzsymbols}
-\renewcommand\qedsymbol{$\Changey{2}$} % QED
-
 \usepackage{thmtools}
 
 \usepackage[framemethod=TikZ]{mdframed}
-
 \mdfsetup{skipabove=0.5em,skipbelow=0.5em}
 
-
+\newcommand{\mydeclaretheoremstyle}[3]{%
 \declaretheoremstyle[
-    headfont=\bfseries\sffamily\color{RoyalPurple!70!black}, bodyfont=\normalfont,
-    mdframed={
-            linewidth=2pt,
-            rightline=false, topline=false, bottomline=false,
-            linecolor=RoyalPurple,
-            backgroundcolor=RoyalPurple!5,
-            nobreak=true
-        }
-]{purplehalfbox}
+    headfont=\bfseries\sffamily#2,
+    bodyfont=\normalfont,
+    mdframed={nobreak=true,#3}
+]{#1}}
 
+\mydeclaretheoremstyle{purplehalfbox}{\color{RoyalPurple!70!black}}{linewidth=2pt,rightline=false, topline=false, bottomline=false,linecolor=RoyalPurple,backgroundcolor=RoyalPurple!8}
+\mydeclaretheoremstyle{bluehalfbox}{\color{SkyBlue!70!black}}{linewidth=2pt,rightline=false, topline=false, bottomline=false,linecolor=NavyBlue,backgroundcolor=SkyBlue!8}
+\mydeclaretheoremstyle{greenfullbox}{\color{ForestGreen!40!black}}{linewidth=1pt,linecolor=ForestGreen,backgroundcolor=ForestGreen!5}
+\mydeclaretheoremstyle{redfullbox}{\color{RawSienna!70!black}}{linewidth=1pt,linecolor=RawSienna,backgroundcolor=RawSienna!5}
+\mydeclaretheoremstyle{pinkemptybox}{\color{WildStrawberry!70!black}}{linewidth=0pt,linecolor=WildStrawberry,backgroundcolor=WildStrawberry!5}
+\mydeclaretheoremstyle{brownemptybox}{\color{brown!70!black}}{leftline=false, rightline=false, topline=false, bottomline=false,skipabove=0em,skipbelow=0em}
+
+% solution
 \declaretheoremstyle[
-    headfont=\bfseries\sffamily\color{SkyBlue!70!black}, bodyfont=\normalfont,
-    mdframed={
-            linewidth=2pt,
-            rightline=false, topline=false, bottomline=false,
-            linecolor=NavyBlue,
-            backgroundcolor=SkyBlue!5,
-            nobreak=true
-        }
-]{bluehalfbox}
-
-\declaretheoremstyle[
-    headfont=\bfseries\sffamily\color{ForestGreen!40!black}, bodyfont=\normalfont,
-    mdframed={
-            linewidth=1pt,
-            linecolor=ForestGreen,
-            backgroundcolor=ForestGreen!5,
-            nobreak=true
-        }
-]{greenfullbox}
-
-\declaretheoremstyle[
-    headfont=\bfseries\sffamily\color{RawSienna!70!black}, bodyfont=\normalfont,
-    mdframed={
-            linewidth=1pt,
-            linecolor=RawSienna,
-            backgroundcolor=RawSienna!5,
-            nobreak=true
-        }
-]{redfullbox}
-
-\declaretheoremstyle[
-    headfont=\bfseries\sffamily\color{WildStrawberry!70!black}, bodyfont=\normalfont,
-    mdframed={
-            linewidth=2pt,
-            linecolor=WildStrawberry,
-            backgroundcolor=WildStrawberry!5,
-            nobreak=true
-        }
-]{pinkfullbox}
-
-
-\declaretheoremstyle[
-    headfont=\bfseries\sffamily\color{brown!70!black}, bodyfont=\normalfont,
-    mdframed={
-            leftline=false, rightline=false, topline=false, bottomline=false,
-            nobreak=true
-        }
-]{brownemptybox}
+  headfont=\bfseries,
+  bodyfont=\normalfont,
+  spaceabove=6pt,
+  spacebelow=6pt,
+]{solutionstyle}
 
 %================================
 % usage:
@@ -138,43 +94,52 @@
 \fi
 
 \ifthenelse{\equal{\noteusemdframed}{true}}{
+
     \declaretheorem[style=purplehalfbox, numbered=yes, name=Theorem, numberwithin=section]{theorem}
+    \declaretheorem[style=purplehalfbox, numbered=yes, name=Proposition, sibling=theorem]{proposition}
+
     \declaretheorem[style=bluehalfbox, numbered=yes, name=Corollary, sibling=theorem]{corollary}
     \declaretheorem[style=bluehalfbox, numbered=yes, name=Lemma, sibling=theorem]{lemma}
-    \declaretheorem[style=purplehalfbox, numbered=yes, name=Proposition, sibling=theorem]{proposition}
+    \declaretheorem[style=bluehalfbox, numbered=yes, name=Claim, sibling=theorem]{claim}
 
     \declaretheorem[style=greenfullbox, numbered=yes, name=Definition, numberwithin=section]{definition}
     \declaretheorem[style=redfullbox, numbered=yes, name=Example, numberwithin=section]{example}
-    \declaretheorem[style=pinkfullbox, numbered=yes, name=Problem, numberwithin=section]{problem}
+
+    \declaretheorem[style=pinkemptybox, numbered=yes, name=Problem, numberwithin=section]{problem}
+    \declaretheorem[style=solutionstyle, numbered=no, name=Solution]{solution}
 
     \declaretheorem[style=brownemptybox, numbered=yes, name=Remark, numberwithin=section]{remark}
     \declaretheorem[style=brownemptybox, numbered=no, name=Remark]{remark*}
 }{
     \declaretheorem[style=plain, numbered=yes, name=Theorem, numberwithin=section]{theorem}
+    \declaretheorem[style=plain, numbered=yes, name=Proposition, sibling=theorem]{proposition}
+
     \declaretheorem[style=plain, numbered=yes, name=Corollary, sibling=theorem]{corollary}
     \declaretheorem[style=plain, numbered=yes, name=Lemma, sibling=theorem]{lemma}
-    \declaretheorem[style=plain, numbered=yes, name=Proposition, sibling=theorem]{proposition}
+    \declaretheorem[style=plain, numbered=yes, name=Claim, sibling=theorem]{claim}
 
     \declaretheorem[style=definition, numbered=yes, name=Definition, numberwithin=section]{definition}
     \declaretheorem[style=definition, numbered=yes, name=Example, numberwithin=section]{example}
+
     \declaretheorem[style=definition, numbered=yes, name=Problem, numberwithin=section]{problem}
+    \declaretheorem[style=solutionstyle, numbered=no, name=Solution]{solution}
 
     \declaretheorem[style=remark, numbered=yes, name=Remark, numberwithin=section]{remark}
     \declaretheorem[style=remark, numbered=no, name=Remark]{remark*}
 }
+
 
 %================================
 % NOTE BOX
 %================================
 
 \usepackage[most,many,breakable]{tcolorbox}
-\usepackage{varwidth}
 
 \usetikzlibrary{arrows,calc,shadows.blur}
 \tcbuselibrary{skins}
 \newtcolorbox{note}[1][]{%
 	enhanced jigsaw,
-	colback=gray!20!white,%
+	colback=gray!10!white,
 	colframe=gray!80!black,
 	size=small,
 	boxrule=1pt,
@@ -182,7 +147,6 @@
 	halign title=flush center,
 	coltitle=black,
 	breakable,
-	drop shadow=black!50!white,
 	attach boxed title to top left={xshift=1cm,yshift=-\tcboxedtitleheight/2,yshifttext=-\tcboxedtitleheight/2},
 	minipage boxed title=1.5cm,
 	boxed title style={%
