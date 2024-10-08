@@ -95,37 +95,65 @@
 
 \ifthenelse{\equal{\noteusemdframed}{true}}{
 
-    \declaretheorem[style=purplehalfbox, numbered=yes, name=Theorem, numberwithin=section]{theorem}
-    \declaretheorem[style=purplehalfbox, numbered=yes, name=Proposition, sibling=theorem]{proposition}
+    \declaretheorem[style=purplehalfbox, name=Theorem, numbered=yes, numberwithin=section]{theorem}
+    \declaretheorem[style=purplehalfbox, name=Theorem, numbered=no]{theorem*}
 
-    \declaretheorem[style=bluehalfbox, numbered=yes, name=Corollary, sibling=theorem]{corollary}
-    \declaretheorem[style=bluehalfbox, numbered=yes, name=Lemma, sibling=theorem]{lemma}
-    \declaretheorem[style=bluehalfbox, numbered=yes, name=Claim, sibling=theorem]{claim}
+    \declaretheorem[style=purplehalfbox, name=Proposition, numbered=yes, sibling=theorem]{proposition}
+    \declaretheorem[style=purplehalfbox, name=Proposition, numbered=no]{proposition*}
 
-    \declaretheorem[style=greenfullbox, numbered=yes, name=Definition, numberwithin=section]{definition}
-    \declaretheorem[style=redfullbox, numbered=yes, name=Example, numberwithin=section]{example}
+    \declaretheorem[style=bluehalfbox, name=Corollary, numbered=yes, sibling=theorem]{corollary}
+    \declaretheorem[style=bluehalfbox, name=Corollary, numbered=no]{corollary*}
 
-    \declaretheorem[style=pinkemptybox, numbered=yes, name=Problem, numberwithin=section]{problem}
-    \declaretheorem[style=solutionstyle, numbered=no, name=Solution]{solution}
+    \declaretheorem[style=bluehalfbox, name=Lemma, numbered=yes, sibling=theorem]{lemma}
+    \declaretheorem[style=bluehalfbox, name=Lemma, numbered=no]{lemma*}
 
-    \declaretheorem[style=brownemptybox, numbered=yes, name=Remark, numberwithin=section]{remark}
-    \declaretheorem[style=brownemptybox, numbered=no, name=Remark]{remark*}
+    \declaretheorem[style=bluehalfbox, name=Claim, numbered=yes, sibling=theorem]{claim}
+    \declaretheorem[style=bluehalfbox, name=Claim, numbered=no]{claim*}
+
+    \declaretheorem[style=greenfullbox, name=Definition, numbered=yes, numberwithin=section]{definition}
+    \declaretheorem[style=greenfullbox, name=Definition, numbered=no]{definition*}
+
+    \declaretheorem[style=redfullbox, name=Example, numbered=yes, numberwithin=section]{example}
+    \declaretheorem[style=redfullbox, name=Example, numbered=no]{example*}
+
+    \declaretheorem[style=pinkemptybox, name=Problem, numbered=yes, numberwithin=section]{problem}
+    \declaretheorem[style=pinkemptybox, name=Problem, numbered=no]{problem*}
+
+    \declaretheorem[style=solutionstyle, name=Solution, numbered=yes, numberwithin=section]{solution}
+    \declaretheorem[style=solutionstyle, name=Solution, numbered=no]{solution*}
+
+    \declaretheorem[style=brownemptybox, name=Remark, numbered=yes, numberwithin=section]{remark}
+    \declaretheorem[style=brownemptybox, name=Remark, numbered=no]{remark*}
 }{
-    \declaretheorem[style=plain, numbered=yes, name=Theorem, numberwithin=section]{theorem}
-    \declaretheorem[style=plain, numbered=yes, name=Proposition, sibling=theorem]{proposition}
+    \declaretheorem[style=plain, name=Theorem, numbered=yes, numberwithin=section]{theorem}
+    \declaretheorem[style=plain, name=Theorem, numbered=no]{theorem*}
 
-    \declaretheorem[style=plain, numbered=yes, name=Corollary, sibling=theorem]{corollary}
-    \declaretheorem[style=plain, numbered=yes, name=Lemma, sibling=theorem]{lemma}
-    \declaretheorem[style=plain, numbered=yes, name=Claim, sibling=theorem]{claim}
+    \declaretheorem[style=plain, name=Proposition, numbered=yes, sibling=theorem]{proposition}
+    \declaretheorem[style=plain, name=Proposition, numbered=no]{proposition*}
 
-    \declaretheorem[style=definition, numbered=yes, name=Definition, numberwithin=section]{definition}
-    \declaretheorem[style=definition, numbered=yes, name=Example, numberwithin=section]{example}
+    \declaretheorem[style=plain, name=Corollary, numbered=yes, sibling=theorem]{corollary}
+    \declaretheorem[style=plain, name=Corollary, numbered=no]{corollary*}
 
-    \declaretheorem[style=definition, numbered=yes, name=Problem, numberwithin=section]{problem}
-    \declaretheorem[style=solutionstyle, numbered=no, name=Solution]{solution}
+    \declaretheorem[style=plain, name=Lemma, numbered=yes, sibling=theorem]{lemma}
+    \declaretheorem[style=plain, name=Lemma, numbered=no]{lemma*}
 
-    \declaretheorem[style=remark, numbered=yes, name=Remark, numberwithin=section]{remark}
-    \declaretheorem[style=remark, numbered=no, name=Remark]{remark*}
+    \declaretheorem[style=plain, name=Claim, numbered=yes, sibling=theorem]{claim}
+    \declaretheorem[style=plain, name=Claim, numbered=no]{claim*}
+
+    \declaretheorem[style=definition, name=Definition, numbered=yes, numberwithin=section]{definition}
+    \declaretheorem[style=definition, name=Definition, numbered=no]{definition*}
+
+    \declaretheorem[style=definition, name=Example, numbered=yes, numberwithin=section]{example}
+    \declaretheorem[style=definition, name=Example, numbered=no]{example*}
+
+    \declaretheorem[style=definition, name=Problem, numbered=yes, numberwithin=section]{problem}
+    \declaretheorem[style=definition, name=Problem, numbered=no]{problem*}
+
+    \declaretheorem[style=solutionstyle, name=Solution, numbered=yes, numberwithin=section]{solution}
+    \declaretheorem[style=solutionstyle, name=Solution, numbered=no]{solution*}
+
+    \declaretheorem[style=remark, name=Remark, numbered=yes, numberwithin=section]{remark}
+    \declaretheorem[style=remark, name=Remark, numbered=no]{remark*}
 }
 
 
