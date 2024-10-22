@@ -13,10 +13,3 @@ Not included:
 
 - Bibliography configuration
 - Chinese language support configuration
-
-Usage:
-
-```shell
-cd ~
-git clone https://github.com/fenglielie/latexzero.git
-```
