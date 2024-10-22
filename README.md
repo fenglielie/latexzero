@@ -1,13 +1,22 @@
-# LaTeX 数学模板
+# $\LaTeX{}$ Mathematical Template
 
-极简的LaTeX数学模板，只需要在开头input对应的文件即可使用，包括：
+A minimalist $\LaTeX{}$ mathematical template that requires only inputting the corresponding file at the beginning to use.
 
-- 数学公式符号必须的宏包
-- 图片和列表环境所需要的宏包
-- 数学定理环境配置
-- 算法和代码环境配置
+It includes:
 
-不包括：
+- Required packages for mathematical symbols
+- Packages for images and list environments
+- Configuration for mathematical theorem environments
+- Configuration for algorithm and code environments
 
-- 参考文献配置
-- 中文配置
+Not included:
+
+- Bibliography configuration
+- Chinese language support configuration
+
+Usage:
+
+```shell
+cd ~
+git clone https://github.com/fenglielie/latexzero.git
+```
