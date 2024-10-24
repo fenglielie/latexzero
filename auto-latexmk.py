@@ -10,8 +10,9 @@ SKIP_DIRS = ["chapters", "chapter", ".git"]
 
 success_count = 0
 failure_count = 0
-
 failed_msgs = []
+
+default_engine = "xelatex"
 
 def show_success(subdir, tex_file, latex_command):
     global success_count
@@ -28,17 +29,17 @@ def show_failure(subdir, tex_file, latex_command):
     failed_msgs.append(msg)
     failure_count += 1
 
-def compile_tex_file(tex_file, subdir):
+def compile_tex_file(tex_file, subdir,default_engine):
     tex_file_path = os.path.join(subdir, tex_file)
 
-    engine = get_tex_engine(tex_file_path)
+    engine = get_tex_engine(tex_file_path,default_engine)
     latex_command = f"-{engine}"
 
     logging.info(f"Compiling {tex_file} with {engine} in {subdir}")
 
     try:
         result = subprocess.run(
-            ["latexmk", latex_command, tex_file], cwd=subdir, capture_output=True, timeout=60
+            ["latexmk", latex_command, tex_file], cwd=subdir, capture_output=True, timeout=120
         )
 
         if result.returncode == 0:
@@ -68,8 +69,8 @@ def is_main_tex_file(tex_file_path):
         return False
 
 
-def get_tex_engine(tex_file_path):
-    """detect pdflatex or xelatex in .tex file"""
+def get_tex_engine(tex_file_path,default_engine):
+    """detect latex engine in .tex file"""
     try:
         # check shebang
         with open(tex_file_path, "r", encoding="utf-8") as f:
@@ -94,18 +95,18 @@ def get_tex_engine(tex_file_path):
 
     except Exception as e:
         logging.error(f"Error reading {tex_file_path}: {e}")
-        return "pdflatex"
+        return default_engine
 
-    return "pdflatex" # default: pdflatex
+    return default_engine
 
-def process_directory(subdir):
+def process_directory(subdir,default_engine):
     tex_files = [f for f in os.listdir(subdir) if f.endswith(".tex")]
 
     if len(tex_files) > 0:
         for tex_file in tex_files:
             tex_file_path = os.path.join(subdir, tex_file)
             if is_main_tex_file(tex_file_path):
-                compile_tex_file(tex_file, subdir)
+                compile_tex_file(tex_file, subdir,default_engine)
             else:
                 logging.debug(f"Ignoring {tex_file} (not a main file)")
     else:
@@ -126,7 +127,7 @@ def clean_aux_directory(subdir):
         logging.debug(f"No .aux directory found in {subdir}")
 
 
-def main(root_dir, clean_mode, log_level):
+def main(root_dir, clean_mode,default_engine, log_level):
     logging.basicConfig(
         level=log_level,
         format="[%(asctime)s]{%(levelname)s} %(message)s",
@@ -141,7 +142,7 @@ def main(root_dir, clean_mode, log_level):
         if clean_mode:
             clean_aux_directory(subdir)
         else:
-            process_directory(subdir)
+            process_directory(subdir,default_engine)
 
     if not clean_mode:
         print(f"Succeed: {success_count}   Failed: {failure_count}")
@@ -169,8 +170,15 @@ if __name__ == "__main__":
         default="WARNING",
         help="Set the logging level (default: WARNING).",
     )
+    parser.add_argument(
+        "--engine",
+        type=str,
+        choices=["xelatex", "pdflatex", "lualatex"],
+        default="xelatex",
+        help="Set the default LaTeX engine (default: xelatex).",
+    )
 
     args = parser.parse_args()
     log_level = getattr(logging, args.log_level)
 
-    main(args.root_dir, args.clean, log_level)
+    main(args.root_dir, args.clean, args.engine, log_level)
