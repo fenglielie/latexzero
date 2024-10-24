@@ -12,7 +12,6 @@ success_count = 0
 failure_count = 0
 failed_msgs = []
 
-default_engine = "xelatex"
 
 def show_success(subdir, tex_file, latex_command):
     global success_count
@@ -127,7 +126,7 @@ def clean_aux_directory(subdir):
         logging.debug(f"No .aux directory found in {subdir}")
 
 
-def main(root_dir, clean_mode,default_engine, log_level):
+def main(root_dir, mode, default_engine, log_level):
     logging.basicConfig(
         level=log_level,
         format="[%(asctime)s]{%(levelname)s} %(message)s",
@@ -139,12 +138,13 @@ def main(root_dir, clean_mode,default_engine, log_level):
 
         logging.debug(f"Processing directory: {subdir}")
 
-        clean_aux_directory(subdir)
+        if mode in ["clean", "both"]:
+            clean_aux_directory(subdir)
 
-        if not clean_mode:
-            process_directory(subdir,default_engine)
+        if mode in ["compile", "both"]:
+            process_directory(subdir, default_engine)
 
-    if not clean_mode:
+    if mode in ["compile", "both"]:
         print(f"Succeed: {success_count}   Failed: {failure_count}")
         if failed_msgs:
             print("Failed Files:")
@@ -159,9 +159,11 @@ if __name__ == "__main__":
         "root_dir", type=str, help="The root directory to search for .tex files."
     )
     parser.add_argument(
-        "--clean",
-        action="store_true",
-        help="Clean the .aux directories instead of compiling .tex files.",
+        "--mode",
+        type=str,
+        choices=["clean", "compile", "both"],
+        default="both",
+        help="Choose the operation mode: 'clean' to clean .aux files, 'compile' to compile .tex files, or 'both' to clean and compile (default: both)."
     )
     parser.add_argument(
         "--log-level",
@@ -181,4 +183,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
     log_level = getattr(logging, args.log_level)
 
-    main(args.root_dir, args.clean, args.engine, log_level)
+    main(args.root_dir, args.mode, args.engine, log_level)
