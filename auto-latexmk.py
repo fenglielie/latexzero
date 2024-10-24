@@ -139,9 +139,9 @@ def main(root_dir, clean_mode,default_engine, log_level):
 
         logging.debug(f"Processing directory: {subdir}")
 
-        if clean_mode:
-            clean_aux_directory(subdir)
-        else:
+        clean_aux_directory(subdir)
+
+        if not clean_mode:
             process_directory(subdir,default_engine)
 
     if not clean_mode:
