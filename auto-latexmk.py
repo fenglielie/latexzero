@@ -6,71 +6,110 @@ import logging
 import argparse
 import shutil
 
-LATEX_COMMAND = "-xelatex"
-
-SKIP_DIRS = ["chapters", ".git"]
+SKIP_DIRS = ["chapters", "chapter", ".git"]
 
 success_count = 0
 failure_count = 0
-failed_files = []
 
+failed_msgs = []
+
+def show_success(subdir, tex_file, latex_command):
+    global success_count
+
+    msg = f"- [✓] {tex_file} in {subdir} ({latex_command})"
+    print(msg)
+    success_count += 1
+
+def show_failure(subdir, tex_file, latex_command):
+    global failure_count, failed_msgs
+
+    msg = f"- [x] {tex_file} in {subdir} ({latex_command})"
+    print(msg)
+    failed_msgs.append(msg)
+    failure_count += 1
 
 def compile_tex_file(tex_file, subdir):
-    global success_count, failure_count, failed_files
-    logging.info(f"Compiling {tex_file} in {subdir}")
+    tex_file_path = os.path.join(subdir, tex_file)
+
+    engine = get_tex_engine(tex_file_path)
+    latex_command = f"-{engine}"
+
+    logging.info(f"Compiling {tex_file} with {engine} in {subdir}")
 
     try:
         result = subprocess.run(
-            ["latexmk", LATEX_COMMAND, tex_file], cwd=subdir, capture_output=True
+            ["latexmk", latex_command, tex_file], cwd=subdir, capture_output=True, timeout=60
         )
 
         if result.returncode == 0:
             logging.info(f"Successfully compiled {tex_file} in {subdir}")
-            print("[✓] " + tex_file)
-            success_count += 1
+            show_success(subdir, tex_file, latex_command)
         else:
             logging.error(f"Failed to compile {tex_file} in {subdir}")
-            print("[x] " + tex_file)
-            failed_files.append(tex_file)
-            failure_count += 1
+            show_failure(subdir, tex_file, latex_command)
             logging.debug(result.stderr.decode("utf-8"))
 
+    except subprocess.TimeoutExpired:
+        logging.error(f"Compilation of {tex_file} in {subdir} timed out.")
+        show_failure(subdir, tex_file, latex_command)
     except Exception as e:
-        logging.error(f"Error during compilation of {tex_file}: {e}")
-        failed_files.append(tex_file)
-        failure_count += 1
+        logging.error(f"Error during compilation of {tex_file} in {subdir}: {e}")
+        show_failure(subdir, tex_file, latex_command)
 
 
-def find_tex_files_in_directory(directory):
-    return [f for f in os.listdir(directory) if f.endswith(".tex")]
+def is_main_tex_file(tex_file_path):
+    """check \\documentclass in .tex file"""
+    try:
+        with open(tex_file_path, "r", encoding="utf-8") as f:
+            content = f.read()
+            return "\\documentclass" in content
+    except Exception as e:
+        logging.error(f"Error reading {tex_file_path}: {e}")
+        return False
 
 
-def should_skip_directory(subdir):
-    for skip_dir in SKIP_DIRS:
-        if skip_dir in subdir.split(os.sep):
-            logging.debug(f"Skipping directory {subdir} (contains '{skip_dir}').")
-            return True
-    return False
+def get_tex_engine(tex_file_path):
+    """detect pdflatex or xelatex in .tex file"""
+    try:
+        # check shebang
+        with open(tex_file_path, "r", encoding="utf-8") as f:
+            first_line = f.readline().strip()
+            if first_line.startswith("#!"):
+                logging.debug(f"Found shebang in {tex_file_path}")
+                if "xelatex" in first_line:
+                    return "xelatex"
+                elif "pdflatex" in first_line:
+                    return "pdflatex"
+                elif "lualatex" in first_line:
+                    return "lualatex"
 
+        # check ctex, use xelatex if found
+        with open(tex_file_path, "r", encoding="utf-8") as f:
+            for line in f:
+                if "\\begin{document}" in line:
+                    break
+                if "ctex" in line:
+                    logging.debug(f"Found ctex in {line}")
+                    return "xelatex"
+
+    except Exception as e:
+        logging.error(f"Error reading {tex_file_path}: {e}")
+        return "pdflatex"
+
+    return "pdflatex" # default: pdflatex
 
 def process_directory(subdir):
-    tex_files = find_tex_files_in_directory(subdir)
+    tex_files = [f for f in os.listdir(subdir) if f.endswith(".tex")]
 
     if len(tex_files) > 0:
-        if len(tex_files) == 1:
-            # only one .tex
-            compile_tex_file(tex_files[0], subdir)
-        else:
-            # many .tex, find main*.tex
-            main_file = next((f for f in tex_files if "main" in f), None)
-            if main_file:
-                compile_tex_file(main_file, subdir)
+        for tex_file in tex_files:
+            tex_file_path = os.path.join(subdir, tex_file)
+            if is_main_tex_file(tex_file_path):
+                compile_tex_file(tex_file, subdir)
             else:
-                logging.warning(
-                    f"Multiple .tex files found in {subdir}, but no 'main.tex' found."
-                )
+                logging.debug(f"Ignoring {tex_file} (not a main file)")
     else:
-        logging.debug(f"No .tex files found in {subdir}.")
+        logging.debug(f"No .tex files found in {subdir}")
 
 
 def clean_aux_directory(subdir):
@@ -80,11 +119,11 @@ def clean_aux_directory(subdir):
         logging.info(f"Cleaning .aux directory in {subdir}")
         try:
             shutil.rmtree(aux_dir)
-            logging.info(f"Successfully cleaned .aux directory in {subdir}.")
+            logging.info(f"Successfully cleaned .aux directory in {subdir}")
         except Exception as e:
             logging.error(f"Failed to clean .aux directory in {subdir}: {e}")
     else:
-        logging.debug(f"No .aux directory found in {subdir}.")
+        logging.debug(f"No .aux directory found in {subdir}")
 
 
 def main(root_dir, clean_mode, log_level):
@@ -94,9 +133,10 @@ def main(root_dir, clean_mode, log_level):
         handlers=[logging.StreamHandler()],  # -> console
     )
 
-    for subdir, _, _ in os.walk(root_dir):
-        if should_skip_directory(subdir):
-            continue
+    for subdir, dirs, _ in os.walk(root_dir, topdown=True):
+        dirs[:] = [d for d in dirs if d not in SKIP_DIRS] # remove skipped dirs
+
+        logging.debug(f"Processing directory: {subdir}")
 
         if clean_mode:
             clean_aux_directory(subdir)
@@ -105,11 +145,10 @@ def main(root_dir, clean_mode, log_level):
 
     if not clean_mode:
         print(f"Succeed: {success_count}   Failed: {failure_count}")
-        if failed_files:
+        if failed_msgs:
             print("Failed Files:")
-            for failed_file in failed_files:
-                print(f"[x] {failed_file}")
-
+            for failed_msg in failed_msgs:
+                print(failed_msg)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
