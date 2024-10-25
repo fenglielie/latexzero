@@ -6,7 +6,7 @@ import logging
 import argparse
 import shutil
 
-SKIP_DIRS = ["chapters", "chapter", ".git"]
+SKIP_DIRS = ["chapters", "chapter", ".git", ".aux"]
 
 success_count = 0
 failure_count = 0
@@ -20,6 +20,7 @@ def show_success(subdir, tex_file, latex_command):
     print(msg)
     success_count += 1
 
+
 def show_failure(subdir, tex_file, latex_command):
     global failure_count, failed_msgs
 
@@ -28,17 +29,25 @@ def show_failure(subdir, tex_file, latex_command):
     failed_msgs.append(msg)
     failure_count += 1
 
-def compile_tex_file(tex_file, subdir,default_engine):
+
+def compile_tex_file(tex_file, subdir, default_engine):
     tex_file_path = os.path.join(subdir, tex_file)
 
-    engine = get_tex_engine(tex_file_path,default_engine)
-    latex_command = f"-{engine}"
+    engine = get_tex_engine(tex_file_path, default_engine)
+
+    if engine == "pdflatex":
+        latex_command = "-pdf"
+    else:
+        latex_command = f"-{engine}"
 
     logging.info(f"Compiling {tex_file} with {engine} in {subdir}")
 
     try:
         result = subprocess.run(
-            ["latexmk", latex_command, tex_file], cwd=subdir, capture_output=True, timeout=120
+            ["latexmk", latex_command, tex_file],
+            cwd=subdir,
+            capture_output=True,
+            timeout=120,
         )
 
         if result.returncode == 0:
@@ -68,7 +77,7 @@ def is_main_tex_file(tex_file_path):
         return False
 
 
-def get_tex_engine(tex_file_path,default_engine):
+def get_tex_engine(tex_file_path, default_engine):
     """detect latex engine in .tex file"""
     try:
         # check shebang
@@ -98,14 +107,15 @@ def get_tex_engine(tex_file_path,default_engine):
 
     return default_engine
 
-def process_directory(subdir,default_engine):
+
+def process_directory(subdir, default_engine):
     tex_files = [f for f in os.listdir(subdir) if f.endswith(".tex")]
 
     if len(tex_files) > 0:
         for tex_file in tex_files:
             tex_file_path = os.path.join(subdir, tex_file)
             if is_main_tex_file(tex_file_path):
-                compile_tex_file(tex_file, subdir,default_engine)
+                compile_tex_file(tex_file, subdir, default_engine)
             else:
                 logging.debug(f"Ignoring {tex_file} (not a main file)")
     else:
@@ -134,7 +144,7 @@ def main(root_dir, mode, default_engine, log_level):
     )
 
     for subdir, dirs, _ in os.walk(root_dir, topdown=True):
-        dirs[:] = [d for d in dirs if d not in SKIP_DIRS] # remove skipped dirs
+        dirs[:] = [d for d in dirs if d not in SKIP_DIRS]  # remove skipped dirs
 
         logging.debug(f"Processing directory: {subdir}")
 
@@ -151,6 +161,7 @@ def main(root_dir, mode, default_engine, log_level):
             for failed_msg in failed_msgs:
                 print(failed_msg)
 
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Compile or clean .tex files in the given directory."
@@ -163,7 +174,7 @@ if __name__ == "__main__":
         type=str,
         choices=["clean", "compile", "both"],
         default="both",
-        help="Choose the operation mode: 'clean' to clean .aux files, 'compile' to compile .tex files, or 'both' to clean and compile (default: both)."
+        help="Choose the operation mode: 'clean' to clean .aux files, 'compile' to compile .tex files, or 'both' to clean and compile (default: both).",
     )
     parser.add_argument(
         "--log-level",
