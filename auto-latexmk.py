@@ -5,6 +5,7 @@ import subprocess
 import logging
 import argparse
 import shutil
+import time
 
 SKIP_DIRS = ["chapters", "chapter", ".git", ".aux"]
 
@@ -13,18 +14,18 @@ failure_count = 0
 failed_msgs = []
 
 
-def show_success(subdir, tex_file, latex_command):
+def show_success(subdir, tex_file, latex_command, elapsed_time):
     global success_count
 
-    msg = f"- [✓] {tex_file} in {subdir} ({latex_command})"
+    msg = f"- [✓] {tex_file} in {subdir} ({latex_command}) ({elapsed_time:.2f}s)"
     print(msg)
     success_count += 1
 
 
-def show_failure(subdir, tex_file, latex_command):
+def show_failure(subdir, tex_file, latex_command, elapsed_time):
     global failure_count, failed_msgs
 
-    msg = f"- [x] {tex_file} in {subdir} ({latex_command})"
+    msg = f"- [x] {tex_file} in {subdir} ({latex_command}) ({elapsed_time:.2f}s)"
     print(msg)
     failed_msgs.append(msg)
     failure_count += 1
@@ -42,6 +43,7 @@ def compile_tex_file(tex_file, subdir, default_engine):
 
     logging.info(f"Compiling {tex_file} with {engine} in {subdir}")
 
+    start_time = time.time()
     try:
         result = subprocess.run(
             ["latexmk", latex_command, tex_file],
@@ -50,20 +52,29 @@ def compile_tex_file(tex_file, subdir, default_engine):
             timeout=120,
         )
 
+        end_time = time.time()
+        elapsed_time = end_time - start_time
+
         if result.returncode == 0:
             logging.info(f"Successfully compiled {tex_file} in {subdir}")
-            show_success(subdir, tex_file, latex_command)
+            show_success(subdir, tex_file, latex_command, elapsed_time)
         else:
             logging.error(f"Failed to compile {tex_file} in {subdir}")
-            show_failure(subdir, tex_file, latex_command)
+            show_failure(subdir, tex_file, latex_command, elapsed_time)
             logging.debug(result.stderr.decode("utf-8"))
 
     except subprocess.TimeoutExpired:
+        end_time = time.time()
+        elapsed_time = end_time - start_time
+
         logging.error(f"Compilation of {tex_file} in {subdir} timed out.")
-        show_failure(subdir, tex_file, latex_command)
+        show_failure(subdir, tex_file, latex_command, elapsed_time)
     except Exception as e:
+        end_time = time.time()
+        elapsed_time = end_time - start_time
+
         logging.error(f"Error during compilation of {tex_file} in {subdir}: {e}")
-        show_failure(subdir, tex_file, latex_command)
+        show_failure(subdir, tex_file, latex_command, elapsed_time)
 
 
 def is_main_tex_file(tex_file_path):
