@@ -166,7 +166,7 @@ def main(root_dir, mode, default_engine, log_level):
             process_directory(subdir, default_engine)
 
     if mode in ["compile", "both"]:
-        print(f"Succeed: {success_count}   Failed: {failure_count}")
+        print(f"Succeeded: {success_count}   Failed: {failure_count}")
         if failed_msgs:
             print("Failed Files:")
             for failed_msg in failed_msgs:
