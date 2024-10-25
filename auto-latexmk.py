@@ -130,21 +130,21 @@ def process_directory(subdir, default_engine):
             else:
                 logging.debug(f"Ignoring {tex_file} (not a main file)")
     else:
-        logging.debug(f"No .tex files found in {subdir}")
+        logging.debug(f"No .tex file found in {subdir}")
 
 
 def clean_aux_directory(subdir):
     aux_dir = os.path.join(subdir, ".aux")
 
     if os.path.exists(aux_dir) and os.path.isdir(aux_dir):
-        logging.info(f"Cleaning .aux directory in {subdir}")
+        logging.info(f"Cleaning .aux/ directory in {subdir}")
         try:
             shutil.rmtree(aux_dir)
-            logging.info(f"Successfully cleaned .aux directory in {subdir}")
+            logging.info(f"Successfully cleaned .aux/ directory in {subdir}")
         except Exception as e:
-            logging.error(f"Failed to clean .aux directory in {subdir}: {e}")
+            logging.error(f"Failed to clean .aux/ directory in {subdir}: {e}")
     else:
-        logging.debug(f"No .aux directory found in {subdir}")
+        logging.debug(f"No .aux/ directory found in {subdir}")
 
 
 def main(root_dir, mode, default_engine, log_level):
@@ -184,8 +184,8 @@ if __name__ == "__main__":
         "--mode",
         type=str,
         choices=["clean", "compile", "both"],
-        default="both",
-        help="Choose the operation mode: 'clean' to clean .aux files, 'compile' to compile .tex files, or 'both' to clean and compile (default: both).",
+        default="compile",
+        help="Choose the operation mode: 'clean' to clean .aux files, 'compile' to compile .tex files, or 'both' to clean and compile (default: compile).",
     )
     parser.add_argument(
         "--log-level",
