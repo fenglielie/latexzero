@@ -1,5 +1,7 @@
+%================================
 % beamer-setup.tex
-% 2024-09-21
+% fenglielie@qq.com 2024-11-01
+%================================
 
 \usetheme{default}
 \usecolortheme{default}
@@ -78,23 +80,18 @@
 \usepackage[ruled,linesnumbered,noline]{algorithm2e}
 
 \usepackage{listings}
-\lstdefinestyle{mystyle}{
-    basicstyle=\small\ttfamily,
-    commentstyle=\color[RGB]{34,139,34},
-    keywordstyle=\color[RGB]{0,0,255},
-    numberstyle=\tiny\color{gray},
-    stringstyle=\color[RGB]{128,0,128},
-    identifierstyle=\color{black},
-    showstringspaces=false,
-    tabsize=4,
+\lstdefinestyle{simpleStyle}{
+    basicstyle=\ttfamily\small,
     breaklines=true,
+    keywordstyle=\color{blue},
+    identifierstyle=\color{black},
+    stringstyle=\color{violet},
+    commentstyle=\color[RGB]{34,139,34},
+    showstringspaces=false,
     numbers=left,
+    numbersep=2em,
+    numberstyle=\footnotesize,
     frame=single,
-    rulecolor=\color{black},
-    captionpos=b,
-    xleftmargin=\parindent,
-    aboveskip=\baselineskip,
-    belowskip=\baselineskip,
-    escapeinside={\%*}{*)},
+    framesep=1em,
 }
-\lstset{style=mystyle}
+\lstset{style=simpleStyle}
