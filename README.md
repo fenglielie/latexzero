@@ -1,6 +1,6 @@
-# $\LaTeX{}$ Mathematical Template
+# LaTeX Mathematical Template
 
-A minimalist $\LaTeX{}$ mathematical template that requires only inputting the corresponding file at the beginning to use.
+A minimalist LaTeX mathematical template that requires only inputting the corresponding file at the beginning to use.
 
 It includes:
 
