@@ -1,15 +1,15 @@
 # LaTeX Mathematical Template
 
-A minimalist LaTeX mathematical template that requires only inputting the corresponding file at the beginning to use.
+A simple LaTeX template designed for mathematical documents, requiring only the input of the corresponding file at the beginning.
 
-It includes:
+Includes:
 
-- Required packages for mathematical symbols
-- Packages for images and list environments
+- Essential packages for mathematical symbols
+- Packages for handling images and list environments
 - Configuration for mathematical theorem environments
 - Configuration for algorithm and code environments
 
-Not included:
+Excludes:
 
 - Bibliography configuration
 - Chinese language support configuration
