@@ -1,6 +1,6 @@
-# LaTeX Mathematical Template
+# LaTeX Templates for Math Notes
 
-A simple LaTeX template designed for mathematical documents, requiring only the input of the corresponding file at the beginning.
+A simple LaTeX template designed for math notes.
 
 Includes:
 
@@ -12,4 +12,22 @@ Includes:
 Excludes:
 
 - Bibliography configuration
-- Chinese language support configuration
+- Chinese language support
+
+
+Usage:
+
+```latex
+\documentclass{article}
+\newcommand{\noteusemdframed}{true}
+\input{/path/to/note-setup}
+
+...
+```
+
+```latex
+\documentclass[compress,aspectratio=43]{beamer}
+\input{/path/to/beamer-setup}
+
+...
+```
