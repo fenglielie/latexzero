@@ -20,6 +20,21 @@
     {./figure/}{./figures/}{./image/}{./images/}{./graphic/}{./graphics/}{./picture/}{./pictures/}
 }
 
+\lstdefinestyle{simpleStyle}{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    keywordstyle=\color{blue},
+    identifierstyle=\color{black},
+    stringstyle=\color{violet},
+    commentstyle=\color[RGB]{34,139,34},
+    showstringspaces=false,
+    numbers=left,
+    numbersep=2em,
+    numberstyle=\footnotesize,
+    frame=single,
+    framesep=1em,
+}
+\lstset{style=simpleStyle}
 
 \title{Lab Report Template}
 \author{Author}
@@ -65,13 +80,13 @@ xxxx.
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
         \includegraphics[width=\textwidth]{demo2-1.png}
-        \caption{Subfigure 1}
+        \caption{Subplot 1}
         \label{fig:demo2-a}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
         \includegraphics[width=\textwidth]{demo2-2.png}
-        \caption{Subfigure 2}
+        \caption{Subplot 2}
         \label{fig:demo2-b}
     \end{subfigure}
     \caption{Subplots}
@@ -81,5 +96,19 @@ xxxx.
 \section{Conclusion}
 
 xxxx.
+
+\section{Code Demo}
+
+\begin{lstlisting}[style=simpleStyle, caption=Demo (C++), language=c++, label=lst:cpp]
+#include <iostream>
+
+int main(){
+    std::cout << "Hello World!" << std::endl;
+    return 0;
+}
+\end{lstlisting}
+
+\lstinputlisting[style=simpleStyle, caption=Demo (Python), language=python, label=lst:python]{example.py}
+
 
 \end{document}
