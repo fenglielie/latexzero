@@ -1,6 +1,6 @@
-# LaTeX Templates for Math Notes
+# LaTeX Templates for Mathematical Notes
 
-A simple LaTeX template designed for math notes.
+A simple LaTeX template designed for mathematical notes.
 
 Includes:
 
