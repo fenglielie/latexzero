@@ -1,0 +1,97 @@
+{
+    "latex-workshop.latex.tools": [
+        {
+            "name": "xelatexmk",
+            "command": "latexmk",
+            "args": [
+                "-file-line-error",
+                "-halt-on-error",
+                "-interaction=nonstopmode",
+                "-synctex=1",
+                "-xelatex",
+                "-auxdir=%DIR%/.aux",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "lualatexmk",
+            "command": "latexmk",
+            "args": [
+                "-file-line-error",
+                "-halt-on-error",
+                "-interaction=nonstopmode",
+                "-synctex=1",
+                "-lualatex",
+                "-outdir=%OUTDIR%",
+                "-auxdir=%DIR%/.aux",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-file-line-error",
+                "-halt-on-error",
+                "-interaction=nonstopmode",
+                "-synctex=1",
+                "-pdf",
+                "-outdir=%OUTDIR%",
+                "-auxdir=%DIR%/.aux",
+                "%DOC%"
+            ]
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "XeLaTeXmk",
+            "tools": [
+                "xelatexmk"
+            ]
+        },
+        {
+            "name": "LuaLaTeXmk",
+            "tools": [
+                "lualatexmk"
+            ]
+        },
+        {
+            "name": "LaTeXmk",
+            "tools": [
+                "latexmk"
+            ]
+        }
+    ],
+    "latex-workshop.showContextMenu": true,
+    "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
+    "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false,
+    "latex-workshop.latex.recipe.default": "lastUsed",
+    "latex-workshop.latex.clean.args": [
+        "-outdir=%OUTDIR%",
+        "-c",
+        "%TEX%",
+        "-auxdir=%DIR%/.aux"
+    ],
+    "latex-workshop.message.error.show": false,
+    "latex-workshop.message.warning.show": false,
+    "latex-workshop.latex.build.rootfileInStatus": true,
+    "latex-workshop.latex.build.clearLog.everyRecipeStep.enabled": false,
+    "latex-workshop.bibtex-fields.sort.enabled": true,
+    "latex-workshop.bibtex-fields.order": [
+        "author",
+        "title",
+        "journal",
+        "year"
+    ],
+    "latex-workshop.formatting.latex": "latexindent",
+    "[latex]": {
+        "editor.defaultFormatter": "James-Yu.latex-workshop",
+        "editor.wordWrap": "on",
+        "editor.unicodeHighlight.allowedLocales": {
+            "zh-hans": true,
+            "zh-hant": true
+        },
+        "editor.snippetSuggestions": "bottom"
+    },
+}
