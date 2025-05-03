@@ -1,0 +1,96 @@
+%================================
+% note-setup-simple.tex
+% fenglielie@qq.com 2025-05-03
+%================================
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{appendix}
+\usepackage{indentfirst}
+\usepackage{silence}
+\usepackage{anyfontsize}
+\usepackage{xpatch}
+\usepackage{extarrows}
+\usepackage{booktabs,multirow,multicol}
+\usepackage{calligra}
+\usepackage{framed}
+\usepackage{subcaption}
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage[a4paper, margin=1in]{geometry}
+
+\usepackage{graphicx}
+\graphicspath{
+    {./figure/}{./figures/}{./image/}{./images/}{./graphic/}{./graphics/}{./picture/}{./pictures/}
+}
+
+\usepackage[shortlabels,inline]{enumitem}
+\setlist{nolistsep}
+
+\usepackage[ruled,linesnumbered,noline]{algorithm2e}
+
+\usepackage{listings}
+\lstdefinestyle{simpleStyle}{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    keywordstyle=\color{blue},
+    identifierstyle=\color{black},
+    stringstyle=\color{violet},
+    commentstyle=\color[RGB]{34,139,34},
+    showstringspaces=false,
+    numbers=left,
+    numbersep=2em,
+    numberstyle=\footnotesize,
+    frame=single,
+    framesep=1em,
+}
+\lstset{style=simpleStyle}
+
+\usepackage[colorlinks=true,linkcolor=cyan,urlcolor=magenta,citecolor=violet]{hyperref}
+
+\renewcommand*{\proofname}{\normalfont\bfseries Proof}
+
+\usepackage{thmtools}
+
+\declaretheorem[style=plain, name=Theorem, numbered=yes, numberwithin=section]{theorem}
+\declaretheorem[style=plain, name=Theorem, numbered=no]{theorem*}
+
+\declaretheorem[style=plain, name=Proposition, numbered=yes, sibling=theorem]{proposition}
+\declaretheorem[style=plain, name=Proposition, numbered=no]{proposition*}
+
+\declaretheorem[style=plain, name=Corollary, numbered=yes, sibling=theorem]{corollary}
+\declaretheorem[style=plain, name=Corollary, numbered=no]{corollary*}
+
+\declaretheorem[style=plain, name=Lemma, numbered=yes, sibling=theorem]{lemma}
+\declaretheorem[style=plain, name=Lemma, numbered=no]{lemma*}
+
+\declaretheorem[style=plain, name=Claim, numbered=yes, sibling=theorem]{claim}
+\declaretheorem[style=plain, name=Claim, numbered=no]{claim*}
+
+\declaretheorem[style=definition, name=Definition, numbered=yes, numberwithin=section]{definition}
+\declaretheorem[style=definition, name=Definition, numbered=no]{definition*}
+
+\declaretheorem[style=definition, name=Example, numbered=yes, numberwithin=section]{example}
+\declaretheorem[style=definition, name=Example, numbered=no]{example*}
+
+\declaretheorem[style=definition, name=Problem, numbered=yes, numberwithin=section]{problem}
+\declaretheorem[style=definition, name=Problem, numbered=no]{problem*}
+
+\declaretheorem[style=remark, name=Remark, numbered=yes, numberwithin=section]{remark}
+\declaretheorem[style=remark, name=Remark, numbered=no]{remark*}
+
+\declaretheoremstyle[headfont=\bfseries, bodyfont=\normalfont, spaceabove=6pt, spacebelow=6pt, qed=\ensuremath{\square}]{solutionstyle}
+
+\declaretheorem[style=solutionstyle, name=Solution, numbered=yes, numberwithin=section]{solution}
+\declaretheorem[style=solutionstyle, name=Solution, numbered=no]{solution*}
+
+% note
+\newenvironment{note}[1][]{
+    \par\medskip
+    \noindent\textbf{Note. }\ignorespaces
+}{
+    \par\medskip
+}

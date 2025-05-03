@@ -19,7 +19,6 @@ Usage:
 
 ```latex
 \documentclass{article}
-\newcommand{\noteusemdframed}{true}
 \input{/path/to/note-setup}
 
 ...
