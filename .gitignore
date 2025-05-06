@@ -5,4 +5,4 @@
 *.synctex.gz.sum.synctex
 indent.log
 
-!*/demo/demo.pdf
+!*/demo/demo*.pdf

@@ -1,6 +1,6 @@
 %================================
 % note-setup.tex
-% fenglielie@qq.com 2025-05-03
+% fenglielie@qq.com 2025-05-06
 %================================
 
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
@@ -16,7 +16,6 @@
 \usepackage{extarrows}
 \usepackage{booktabs,multirow,multicol}
 \usepackage{calligra}
-\usepackage{framed}
 \usepackage{subcaption}
 
 \usepackage[dvipsnames]{xcolor}
@@ -105,45 +104,12 @@
 \declaretheorem[style=brownemptybox, name=Remark, numbered=yes, numberwithin=section]{remark}
 \declaretheorem[style=brownemptybox, name=Remark, numbered=no]{remark*}
 
+\mydeclaretheoremstyle{greenemptybox}{\color{ForestGreen!40!black}}{leftline=false, rightline=false, topline=false, bottomline=false,skipabove=0em,skipbelow=0em}
+
+\declaretheorem[style=greenemptybox, name=Note, numbered=yes, numberwithin=section]{note}
+\declaretheorem[style=greenemptybox, name=Note, numbered=no]{note*}
+
 \declaretheoremstyle[headfont=\bfseries, bodyfont=\normalfont, spaceabove=6pt, spacebelow=6pt, qed=\ensuremath{\square}]{solutionstyle}
 
 \declaretheorem[style=solutionstyle, name=Solution, numbered=yes, numberwithin=section]{solution}
 \declaretheorem[style=solutionstyle, name=Solution, numbered=no]{solution*}
-
-\usepackage[most,many,breakable]{tcolorbox}
-\usetikzlibrary{arrows,calc,shadows.blur}
-\tcbuselibrary{skins}
-
-% note
-\newtcolorbox{note}[1][]{%
-    enhanced jigsaw,
-    colback=gray!10!white,
-    colframe=gray!80!black,
-    size=small,
-    boxrule=1pt,
-    title=\textbf{Note},
-    halign title=flush center,
-    coltitle=black,
-    breakable,
-    attach boxed title to top left={xshift=1cm,yshift=-\tcboxedtitleheight/2,yshifttext=-\tcboxedtitleheight/2},
-    minipage boxed title=1.5cm,
-    boxed title style={%
-            colback=white,
-            size=fbox,
-            boxrule=1pt,
-            boxsep=2pt,
-            underlay={%
-                    \coordinate (dotA) at ($(interior.west) + (-0.5pt,0)$);
-                    \coordinate (dotB) at ($(interior.east) + (0.5pt,0)$);
-                    \begin{scope}
-                        \clip (interior.north west) rectangle ([xshift=3ex]interior.east);
-                        \filldraw [white, blur shadow={shadow opacity=60, shadow yshift=-.75ex}, rounded corners=2pt] (interior.north west) rectangle (interior.south east);
-                    \end{scope}
-                    \begin{scope}[gray!80!black]
-                        \fill (dotA) circle (2pt);
-                        \fill (dotB) circle (2pt);
-                    \end{scope}
-                },
-        },
-    #1,
-}

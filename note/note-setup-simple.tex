@@ -1,6 +1,6 @@
 %================================
 % note-setup-simple.tex
-% fenglielie@qq.com 2025-05-03
+% fenglielie@qq.com 2025-05-06
 %================================
 
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
@@ -16,7 +16,6 @@
 \usepackage{extarrows}
 \usepackage{booktabs,multirow,multicol}
 \usepackage{calligra}
-\usepackage{framed}
 \usepackage{subcaption}
 
 \usepackage[dvipsnames]{xcolor}
@@ -82,15 +81,10 @@
 \declaretheorem[style=remark, name=Remark, numbered=yes, numberwithin=section]{remark}
 \declaretheorem[style=remark, name=Remark, numbered=no]{remark*}
 
+\declaretheorem[style=remark, name=Note, numbered=yes, numberwithin=section]{note}
+\declaretheorem[style=remark, name=Note, numbered=no]{note*}
+
 \declaretheoremstyle[headfont=\bfseries, bodyfont=\normalfont, spaceabove=6pt, spacebelow=6pt, qed=\ensuremath{\square}]{solutionstyle}
 
 \declaretheorem[style=solutionstyle, name=Solution, numbered=yes, numberwithin=section]{solution}
 \declaretheorem[style=solutionstyle, name=Solution, numbered=no]{solution*}
-
-% note
-\newenvironment{note}[1][]{
-    \par\medskip
-    \noindent\textbf{Note. }\ignorespaces
-}{
-    \par\medskip
-}
