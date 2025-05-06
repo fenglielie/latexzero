@@ -92,6 +92,6 @@
             "zh-hans": true,
             "zh-hant": true
         },
-        "editor.snippetSuggestions": "bottom"
+        "editor.snippetSuggestions": "top"
     },
 }

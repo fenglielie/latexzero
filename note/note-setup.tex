@@ -10,13 +10,14 @@
 \usepackage{float}
 \usepackage{appendix}
 \usepackage{indentfirst}
-\usepackage{silence}
 \usepackage{anyfontsize}
 \usepackage{xpatch}
 \usepackage{extarrows}
 \usepackage{booktabs,multirow,multicol}
-\usepackage{calligra}
 \usepackage{subcaption}
+
+\usepackage[l2tabu, orthodox]{nag}
+\usepackage[color=green]{todonotes}
 
 \usepackage[dvipsnames]{xcolor}
 \usepackage[a4paper, margin=1in]{geometry}
@@ -53,63 +54,59 @@
 \renewcommand*{\proofname}{\normalfont\bfseries Proof}
 
 \usepackage{thmtools}
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{theorems}
 
-\usepackage[framemethod=TikZ]{mdframed}
-\mdfsetup{skipabove=0.5em,skipbelow=0.5em}
+\newcommand{\newtcbenvironment}[2]{%
+    \tcolorboxenvironment{#1}{#2, boxrule=1pt, enhanced, breakable, sharp corners}
+    \tcolorboxenvironment{#1*}{#2, boxrule=1pt, enhanced, breakable, rounded corners}
+}
 
-\newcommand{\mydeclaretheoremstyle}[3]{%
-    \declaretheoremstyle[
-        headfont=\bfseries\sffamily#2,
-        bodyfont=\normalfont,
-        mdframed={nobreak=true,#3}
-    ]{#1}}
+%% define styles
 
+\newtcbenvironment{theorem}{colframe=RoyalPurple, colback=RoyalPurple!8}
+\newtcbenvironment{proposition}{colframe=RoyalPurple, colback=RoyalPurple!8}
+\newtcbenvironment{corollary}{colframe=NavyBlue, colback=SkyBlue!8}
+\newtcbenvironment{lemma}{colframe=NavyBlue, colback=SkyBlue!8}
+\newtcbenvironment{claim}{colframe=NavyBlue, colback=SkyBlue!8}
 
-\mydeclaretheoremstyle{purplehalfbox}{\color{RoyalPurple!70!black}}{linewidth=2pt, rightline=false, topline=false, bottomline=false, linecolor=RoyalPurple, backgroundcolor=RoyalPurple!8}
+\newtcbenvironment{definition}{colframe=ForestGreen, colback=ForestGreen!5}
+\newtcbenvironment{example}{colframe=RawSienna, colback=RawSienna!5}
+\newtcbenvironment{problem}{colframe=WildStrawberry!30, colback=WildStrawberry!5}
 
-\declaretheorem[style=purplehalfbox, name=Theorem, numbered=yes, numberwithin=section]{theorem}
-\declaretheorem[style=purplehalfbox, name=Theorem, numbered=no]{theorem*}
+%% define environments
 
-\declaretheorem[style=purplehalfbox, name=Proposition, numbered=yes, sibling=theorem]{proposition}
-\declaretheorem[style=purplehalfbox, name=Proposition, numbered=no]{proposition*}
+\declaretheorem[style=plain, name=Theorem, numbered=yes, numberwithin=section]{theorem}
+\declaretheorem[style=plain, name=Theorem, numbered=no]{theorem*}
 
-\mydeclaretheoremstyle{bluehalfbox}{\color{SkyBlue!70!black}}{linewidth=2pt, rightline=false, topline=false, bottomline=false, linecolor=NavyBlue, backgroundcolor=SkyBlue!8}
+\declaretheorem[style=plain, name=Proposition, numbered=yes, sibling=theorem]{proposition}
+\declaretheorem[style=plain, name=Proposition, numbered=no]{proposition*}
 
-\declaretheorem[style=bluehalfbox, name=Corollary, numbered=yes, sibling=theorem]{corollary}
-\declaretheorem[style=bluehalfbox, name=Corollary, numbered=no]{corollary*}
+\declaretheorem[style=plain, name=Corollary, numbered=yes, sibling=theorem]{corollary}
+\declaretheorem[style=plain, name=Corollary, numbered=no]{corollary*}
 
-\declaretheorem[style=bluehalfbox, name=Lemma, numbered=yes, sibling=theorem]{lemma}
-\declaretheorem[style=bluehalfbox, name=Lemma, numbered=no]{lemma*}
+\declaretheorem[style=plain, name=Lemma, numbered=yes, sibling=theorem]{lemma}
+\declaretheorem[style=plain, name=Lemma, numbered=no]{lemma*}
 
-\declaretheorem[style=bluehalfbox, name=Claim, numbered=yes, sibling=theorem]{claim}
-\declaretheorem[style=bluehalfbox, name=Claim, numbered=no]{claim*}
+\declaretheorem[style=plain, name=Claim, numbered=yes, sibling=theorem]{claim}
+\declaretheorem[style=plain, name=Claim, numbered=no]{claim*}
 
-\mydeclaretheoremstyle{greenfullbox}{\color{ForestGreen!40!black}}{linewidth=1pt, linecolor=ForestGreen, backgroundcolor=ForestGreen!5}
+\declaretheorem[style=definition, name=Definition, numbered=yes, numberwithin=section]{definition}
+\declaretheorem[style=definition, name=Definition, numbered=no]{definition*}
 
-\declaretheorem[style=greenfullbox, name=Definition, numbered=yes, numberwithin=section]{definition}
-\declaretheorem[style=greenfullbox, name=Definition, numbered=no]{definition*}
+\declaretheorem[style=definition, name=Example, numbered=yes, numberwithin=section]{example}
+\declaretheorem[style=definition, name=Example, numbered=no]{example*}
 
-\mydeclaretheoremstyle{redfullbox}{\color{RawSienna!70!black}}{linewidth=1pt, linecolor=RawSienna, backgroundcolor=RawSienna!5}
+\declaretheorem[style=definition, name=Problem, numbered=yes, numberwithin=section]{problem}
+\declaretheorem[style=definition, name=Problem, numbered=no]{problem*}
 
-\declaretheorem[style=redfullbox, name=Example, numbered=yes, numberwithin=section]{example}
-\declaretheorem[style=redfullbox, name=Example, numbered=no]{example*}
+\declaretheorem[style=remark, name=Remark, numbered=yes, numberwithin=section]{remark}
+\declaretheorem[style=remark, name=Remark, numbered=no]{remark*}
 
-\mydeclaretheoremstyle{pinkemptybox}{\color{WildStrawberry!70!black}}{linewidth=0pt, linecolor=WildStrawberry, backgroundcolor=WildStrawberry!5}
+\declaretheorem[style=remark, name=Note, numbered=yes, numberwithin=section]{note}
+\declaretheorem[style=remark, name=Note, numbered=no]{note*}
 
-\declaretheorem[style=pinkemptybox, name=Problem, numbered=yes, numberwithin=section]{problem}
-\declaretheorem[style=pinkemptybox, name=Problem, numbered=no]{problem*}
-
-\mydeclaretheoremstyle{brownemptybox}{\color{brown!70!black}}{leftline=false, rightline=false, topline=false, bottomline=false, skipabove=0em, skipbelow=0em}
-
-\declaretheorem[style=brownemptybox, name=Remark, numbered=yes, numberwithin=section]{remark}
-\declaretheorem[style=brownemptybox, name=Remark, numbered=no]{remark*}
-
-\mydeclaretheoremstyle{greenemptybox}{\color{ForestGreen!40!black}}{leftline=false, rightline=false, topline=false, bottomline=false, skipabove=0em, skipbelow=0em}
-
-\declaretheorem[style=greenemptybox, name=Note, numbered=yes, numberwithin=section]{note}
-\declaretheorem[style=greenemptybox, name=Note, numbered=no]{note*}
-
-\declaretheoremstyle[headfont=\bfseries, bodyfont=\normalfont, spaceabove=6pt, spacebelow=6pt, qed=\ensuremath{\square}]{solutionstyle}
+\declaretheoremstyle[headfont=\bfseries, bodyfont=\normalfont, spaceabove=3pt, spacebelow=3pt, qed=\ensuremath{\square}]{solutionstyle}
 
 \declaretheorem[style=solutionstyle, name=Solution, numbered=yes, numberwithin=section]{solution}
 \declaretheorem[style=solutionstyle, name=Solution, numbered=no]{solution*}

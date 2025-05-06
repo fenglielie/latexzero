@@ -10,13 +10,14 @@
 \usepackage{float}
 \usepackage{appendix}
 \usepackage{indentfirst}
-\usepackage{silence}
 \usepackage{anyfontsize}
 \usepackage{xpatch}
 \usepackage{extarrows}
 \usepackage{booktabs,multirow,multicol}
-\usepackage{calligra}
 \usepackage{subcaption}
+
+\usepackage[l2tabu, orthodox]{nag}
+\usepackage[color=green]{todonotes}
 
 \usepackage[dvipsnames]{xcolor}
 \usepackage[a4paper, margin=1in]{geometry}
@@ -56,71 +57,56 @@
 \usepackage[most]{tcolorbox}
 \tcbuselibrary{theorems}
 
-\newcommand{\bindtcbtheorem}[2]{%
-    \tcolorboxenvironment{#1}{#2}
-    \tcolorboxenvironment{#1*}{#2}
+\newcommand{\newtcbenvironment}[2]{%
+    \tcolorboxenvironment{#1}{#2, boxrule=1pt, enhanced, breakable, sharp corners}
+    \tcolorboxenvironment{#1*}{#2, boxrule=1pt, enhanced, breakable, rounded corners}
 }
 
-% Purple half box: Theorem, Proposition
+%% define styles
 
-\bindtcbtheorem{theorem}{boxrule=1pt, colframe=RoyalPurple, colback=RoyalPurple!8, enhanced, breakable}
+\newtcbenvironment{theorem}{colframe=RoyalPurple, colback=RoyalPurple!8}
+\newtcbenvironment{proposition}{colframe=RoyalPurple, colback=RoyalPurple!8}
+\newtcbenvironment{corollary}{colframe=NavyBlue, colback=SkyBlue!8}
+\newtcbenvironment{lemma}{colframe=NavyBlue, colback=SkyBlue!8}
+\newtcbenvironment{claim}{colframe=NavyBlue, colback=SkyBlue!8}
+
+\newtcbenvironment{definition}{colframe=ForestGreen, colback=ForestGreen!5}
+\newtcbenvironment{example}{colframe=RawSienna, colback=RawSienna!5}
+\newtcbenvironment{problem}{colframe=WildStrawberry!30, colback=WildStrawberry!5}
+
+%% define environments
 
 \declaretheorem[style=plain, name=Theorem, numbered=yes, numberwithin=section]{theorem}
 \declaretheorem[style=plain, name=Theorem, numbered=no]{theorem*}
 
-\bindtcbtheorem{proposition}{boxrule=1pt, colframe=RoyalPurple, colback=RoyalPurple!8, enhanced, breakable}
-
 \declaretheorem[style=plain, name=Proposition, numbered=yes, sibling=theorem]{proposition}
 \declaretheorem[style=plain, name=Proposition, numbered=no]{proposition*}
-
-% Blue half box: Corollary, Lemma, Claim
-
-\bindtcbtheorem{corollary}{boxrule=1pt, colframe=NavyBlue, colback=SkyBlue!8, enhanced, breakable}
 
 \declaretheorem[style=plain, name=Corollary, numbered=yes, sibling=theorem]{corollary}
 \declaretheorem[style=plain, name=Corollary, numbered=no]{corollary*}
 
-\bindtcbtheorem{lemma}{boxrule=1pt, colframe=NavyBlue, colback=SkyBlue!8, enhanced, breakable}
-
 \declaretheorem[style=plain, name=Lemma, numbered=yes, sibling=theorem]{lemma}
 \declaretheorem[style=plain, name=Lemma, numbered=no]{lemma*}
-
-\bindtcbtheorem{claim}{boxrule=1pt, colframe=NavyBlue, colback=SkyBlue!8, enhanced, breakable}
 
 \declaretheorem[style=plain, name=Claim, numbered=yes, sibling=theorem]{claim}
 \declaretheorem[style=plain, name=Claim, numbered=no]{claim*}
 
-% Green full box: Definition
-\bindtcbtheorem{definition}{boxrule=1pt, colframe=ForestGreen, colback=ForestGreen!5, enhanced, breakable}
-
 \declaretheorem[style=definition, name=Definition, numbered=yes, numberwithin=section]{definition}
 \declaretheorem[style=definition, name=Definition, numbered=no]{definition*}
-
-% Red full box: Example
-\bindtcbtheorem{example}{boxrule=1pt, colframe=RawSienna, colback=RawSienna!5, enhanced, breakable}
 
 \declaretheorem[style=definition, name=Example, numbered=yes, numberwithin=section]{example}
 \declaretheorem[style=definition, name=Example, numbered=no]{example*}
 
-% Pink empty box: Problem
-\bindtcbtheorem{problem}{boxrule=0pt, colback=WildStrawberry!5, enhanced, breakable}
-
 \declaretheorem[style=definition, name=Problem, numbered=yes, numberwithin=section]{problem}
 \declaretheorem[style=definition, name=Problem, numbered=no]{problem*}
-
-% Brown empty box: Remark
-\bindtcbtheorem{remark}{boxrule=0pt, colback=white, enhanced, breakable, frame hidden}
 
 \declaretheorem[style=remark, name=Remark, numbered=yes, numberwithin=section]{remark}
 \declaretheorem[style=remark, name=Remark, numbered=no]{remark*}
 
-% Green empty box: Note
-\bindtcbtheorem{note}{boxrule=0pt, colback=white, enhanced, breakable, frame hidden}
-
 \declaretheorem[style=remark, name=Note, numbered=yes, numberwithin=section]{note}
 \declaretheorem[style=remark, name=Note, numbered=no]{note*}
 
-\declaretheoremstyle[headfont=\bfseries, bodyfont=\normalfont, spaceabove=6pt, spacebelow=6pt, qed=\ensuremath{\square}]{solutionstyle}
+\declaretheoremstyle[headfont=\bfseries, bodyfont=\normalfont, spaceabove=3pt, spacebelow=3pt, qed=\ensuremath{\square}]{solutionstyle}
 
 \declaretheorem[style=solutionstyle, name=Solution, numbered=yes, numberwithin=section]{solution}
 \declaretheorem[style=solutionstyle, name=Solution, numbered=no]{solution*}
