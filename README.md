@@ -10,7 +10,7 @@ Styles:
 - `note-setup-simple`
 - `note-setup-box` (tcolorbox)
 - `note-setup-leftsidebox` (tcolorbox)
-- `note-setup-mframed` (mframed, legacy)
+- `note-setup-mdframed` (mdframed, legacy)
 
 **note-setup-simple**
 
