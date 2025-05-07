@@ -2,21 +2,9 @@
 
 Simple LaTeX templates designed for mathematical notes.
 
-Includes:
-
-- Essential packages for mathematical symbols
-- Packages for handling images and list environments
-- Configuration for mathematical theorem environments
-- Configuration for algorithm and code environments
-
-Excludes:
-
-- Bibliography configuration
-- Chinese language support
-
 ## Note
 
-styles:
+Styles:
 
 - `note-setup` = `note-setup-box`
 - `note-setup-simple`
@@ -37,7 +25,7 @@ styles:
 <img src="./note/image/note-setup-leftsidebox-demo.png" alt="note-setup-leftsidebox-demo"/>
 
 
-environments:
+Environments:
 
 | Environment                   | Style           | Numbering Rule              |
 | ----------------------------- | --------------- | --------------------------- |
