@@ -2,6 +2,8 @@
 
 Simple LaTeX templates designed for mathematical notes.
 
+> Tested on Overleaf with TeX Live 2022/2023/2024.
+
 ## Note
 
 Styles:
