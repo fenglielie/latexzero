@@ -4,34 +4,26 @@
 %================================
 
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{mathtools}
 \usepackage{mathrsfs}
 \usepackage{bm}
-\usepackage{mathtools}
+\usepackage{extarrows}
+\usepackage[a4paper, margin=1in]{geometry}
 \usepackage{float}
-\usepackage{appendix}
 \usepackage{indentfirst}
 \usepackage{anyfontsize}
-\usepackage{xpatch}
-\usepackage{extarrows}
 \usepackage{booktabs,multirow,multicol}
-\usepackage{subcaption}
-
-\usepackage[l2tabu, orthodox]{nag}
-\usepackage[color=green]{todonotes}
+\usepackage[shortlabels,inline]{enumitem}
+\usepackage{appendix}
 
 \usepackage[dvipsnames]{xcolor}
-\usepackage[a4paper, margin=1in]{geometry}
-
 \usepackage{graphicx}
 \graphicspath{
     {./figure/}{./figures/}{./image/}{./images/}{./graphic/}{./graphics/}{./picture/}{./pictures/}
 }
-
-\usepackage[shortlabels,inline]{enumitem}
-\setlist{nolistsep}
+\usepackage{subcaption}
 
 \usepackage[ruled,linesnumbered,noline]{algorithm2e}
-
 \usepackage{listings}
 \lstdefinestyle{simpleStyle}{
     basicstyle=\ttfamily\small,
@@ -55,11 +47,10 @@
 
 \usepackage{thmtools}
 \usepackage[most]{tcolorbox}
-\tcbuselibrary{theorems}
 
-\newcommand{\newtcbenvironment}[2]{%
-    \tcolorboxenvironment{#1}{#2, boxrule=1pt, enhanced, breakable, sharp corners}
-    \tcolorboxenvironment{#1*}{#2, boxrule=1pt, enhanced, breakable, rounded corners}
+\newcommand{\newtcbenvironment}[2]{
+    \tcolorboxenvironment{#1}{#2, enhanced, breakable, sharp corners, boxrule=1pt}
+    \tcolorboxenvironment{#1*}{#2, enhanced, breakable, rounded corners, boxrule=1pt}
 }
 
 %% define styles

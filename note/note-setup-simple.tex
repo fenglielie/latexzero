@@ -4,34 +4,26 @@
 %================================
 
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{mathtools}
 \usepackage{mathrsfs}
 \usepackage{bm}
-\usepackage{mathtools}
+\usepackage{extarrows}
+\usepackage[a4paper, margin=1in]{geometry}
 \usepackage{float}
-\usepackage{appendix}
 \usepackage{indentfirst}
 \usepackage{anyfontsize}
-\usepackage{xpatch}
-\usepackage{extarrows}
 \usepackage{booktabs,multirow,multicol}
-\usepackage{subcaption}
-
-\usepackage[l2tabu, orthodox]{nag}
-\usepackage[color=green]{todonotes}
+\usepackage[shortlabels,inline]{enumitem}
+\usepackage{appendix}
 
 \usepackage[dvipsnames]{xcolor}
-\usepackage[a4paper, margin=1in]{geometry}
-
 \usepackage{graphicx}
 \graphicspath{
     {./figure/}{./figures/}{./image/}{./images/}{./graphic/}{./graphics/}{./picture/}{./pictures/}
 }
-
-\usepackage[shortlabels,inline]{enumitem}
-\setlist{nolistsep}
+\usepackage{subcaption}
 
 \usepackage[ruled,linesnumbered,noline]{algorithm2e}
-
 \usepackage{listings}
 \lstdefinestyle{simpleStyle}{
     basicstyle=\ttfamily\small,
@@ -54,6 +46,7 @@
 \renewcommand*{\proofname}{\normalfont\bfseries Proof}
 
 \usepackage{thmtools}
+
 %% define environments
 
 \declaretheorem[style=plain, name=Theorem, numbered=yes, numberwithin=section]{theorem}
