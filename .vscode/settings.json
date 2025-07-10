@@ -63,35 +63,10 @@
             ]
         }
     ],
-    "latex-workshop.showContextMenu": true,
-    "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
-    "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false,
-    "latex-workshop.latex.recipe.default": "lastUsed",
     "latex-workshop.latex.clean.args": [
         "-outdir=%OUTDIR%",
         "-c",
         "%TEX%",
         "-auxdir=%DIR%/.aux"
     ],
-    "latex-workshop.message.error.show": false,
-    "latex-workshop.message.warning.show": false,
-    "latex-workshop.latex.build.rootfileInStatus": true,
-    "latex-workshop.latex.build.clearLog.everyRecipeStep.enabled": false,
-    "latex-workshop.bibtex-fields.sort.enabled": true,
-    "latex-workshop.bibtex-fields.order": [
-        "author",
-        "title",
-        "journal",
-        "year"
-    ],
-    "latex-workshop.formatting.latex": "latexindent",
-    "[latex]": {
-        "editor.defaultFormatter": "James-Yu.latex-workshop",
-        "editor.wordWrap": "on",
-        "editor.unicodeHighlight.allowedLocales": {
-            "zh-hans": true,
-            "zh-hant": true
-        },
-        "editor.snippetSuggestions": "top"
-    },
 }
