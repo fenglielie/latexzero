@@ -1,6 +1,6 @@
 %================================
 % note-setup-leftsidebox.tex
-% fenglielie@qq.com 2025-05-06
+% fenglielie@qq.com 2025-07-10
 %================================
 
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
@@ -46,24 +46,6 @@
 \renewcommand*{\proofname}{\normalfont\bfseries Proof}
 
 \usepackage{thmtools}
-\usepackage[most]{tcolorbox}
-
-\newcommand{\newtcbenvironment}[2]{
-    \tcolorboxenvironment{#1}{#2, enhanced, breakable, sharp corners,leftrule=2pt, rightrule=0pt, toprule=0pt, bottomrule=0pt}
-    \tcolorboxenvironment{#1*}{#2, enhanced, breakable, rounded corners,leftrule=2pt, rightrule=0pt, toprule=0pt, bottomrule=0pt}
-}
-
-%% define styles
-
-\newtcbenvironment{theorem}{colframe=RoyalPurple, colback=RoyalPurple!8}
-\newtcbenvironment{proposition}{colframe=RoyalPurple, colback=RoyalPurple!8}
-\newtcbenvironment{corollary}{colframe=NavyBlue, colback=SkyBlue!8}
-\newtcbenvironment{lemma}{colframe=NavyBlue, colback=SkyBlue!8}
-\newtcbenvironment{claim}{colframe=NavyBlue, colback=SkyBlue!8}
-
-\newtcbenvironment{definition}{colframe=ForestGreen, colback=ForestGreen!5}
-\newtcbenvironment{example}{colframe=RawSienna, colback=RawSienna!5}
-\newtcbenvironment{problem}{colframe=WildStrawberry!30, colback=WildStrawberry!5}
 
 %% define environments
 
@@ -101,3 +83,22 @@
 
 \declaretheorem[style=solutionstyle, name=Solution, numbered=yes, numberwithin=section]{solution}
 \declaretheorem[style=solutionstyle, name=Solution, numbered=no]{solution*}
+
+\usepackage[most]{tcolorbox}
+
+\newcommand{\newtcbenvironment}[2]{
+    \tcolorboxenvironment{#1}{#2, enhanced, breakable, sharp corners,leftrule=2pt, rightrule=0pt, toprule=0pt, bottomrule=0pt}
+    \tcolorboxenvironment{#1*}{#2, enhanced, breakable, rounded corners,leftrule=2pt, rightrule=0pt, toprule=0pt, bottomrule=0pt}
+}
+
+%% define styles
+
+\newtcbenvironment{theorem}{colframe=RoyalPurple, colback=RoyalPurple!8}
+\newtcbenvironment{proposition}{colframe=RoyalPurple, colback=RoyalPurple!8}
+\newtcbenvironment{corollary}{colframe=NavyBlue, colback=SkyBlue!8}
+\newtcbenvironment{lemma}{colframe=NavyBlue, colback=SkyBlue!8}
+\newtcbenvironment{claim}{colframe=NavyBlue, colback=SkyBlue!8}
+
+\newtcbenvironment{definition}{colframe=ForestGreen, colback=ForestGreen!5}
+\newtcbenvironment{example}{colframe=RawSienna, colback=RawSienna!5}
+\newtcbenvironment{problem}{colframe=WildStrawberry!30, colback=WildStrawberry!5}
