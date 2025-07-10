@@ -1,0 +1,103 @@
+%================================
+% note-setup-borderless.tex
+% fenglielie@qq.com 2025-05-06
+%================================
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage{extarrows}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{float}
+\usepackage{indentfirst}
+\usepackage{anyfontsize}
+\usepackage{booktabs,multirow,multicol}
+\usepackage[shortlabels,inline]{enumitem}
+\usepackage{appendix}
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage{graphicx}
+\graphicspath{
+    {./figure/}{./figures/}{./image/}{./images/}{./graphic/}{./graphics/}{./picture/}{./pictures/}
+}
+\usepackage{subcaption}
+
+\usepackage[ruled,linesnumbered,noline]{algorithm2e}
+\usepackage{listings}
+\lstdefinestyle{simpleStyle}{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    keywordstyle=\color{blue},
+    identifierstyle=\color{black},
+    stringstyle=\color{violet},
+    commentstyle=\color[RGB]{34,139,34},
+    showstringspaces=false,
+    numbers=left,
+    numbersep=2em,
+    numberstyle=\footnotesize,
+    frame=single,
+    framesep=1em,
+}
+\lstset{style=simpleStyle}
+
+\usepackage[colorlinks=true,linkcolor=cyan,urlcolor=magenta,citecolor=violet]{hyperref}
+
+\renewcommand*{\proofname}{\normalfont\bfseries Proof}
+
+\usepackage{thmtools}
+\usepackage[most]{tcolorbox}
+
+\newcommand{\newtcbenvironment}[2]{
+    \tcolorboxenvironment{#1}{#2, enhanced, breakable, sharp corners, boxrule=0pt, colframe=white}
+    \tcolorboxenvironment{#1*}{#2, enhanced, breakable, rounded corners, boxrule=0pt, colframe=white}
+}
+
+%% define styles
+
+\newtcbenvironment{theorem}{colframe=RoyalPurple, colback=RoyalPurple!8}
+\newtcbenvironment{proposition}{colframe=RoyalPurple, colback=RoyalPurple!8}
+\newtcbenvironment{corollary}{colframe=NavyBlue, colback=SkyBlue!8}
+\newtcbenvironment{lemma}{colframe=NavyBlue, colback=SkyBlue!8}
+\newtcbenvironment{claim}{colframe=NavyBlue, colback=SkyBlue!8}
+
+\newtcbenvironment{definition}{colframe=ForestGreen, colback=ForestGreen!5}
+\newtcbenvironment{example}{colframe=RawSienna, colback=RawSienna!5}
+\newtcbenvironment{problem}{colframe=WildStrawberry!30, colback=WildStrawberry!5}
+
+%% define environments
+
+\declaretheorem[style=plain, name=Theorem, numbered=yes, numberwithin=section]{theorem}
+\declaretheorem[style=plain, name=Theorem, numbered=no]{theorem*}
+
+\declaretheorem[style=plain, name=Proposition, numbered=yes, sibling=theorem]{proposition}
+\declaretheorem[style=plain, name=Proposition, numbered=no]{proposition*}
+
+\declaretheorem[style=plain, name=Corollary, numbered=yes, sibling=theorem]{corollary}
+\declaretheorem[style=plain, name=Corollary, numbered=no]{corollary*}
+
+\declaretheorem[style=plain, name=Lemma, numbered=yes, sibling=theorem]{lemma}
+\declaretheorem[style=plain, name=Lemma, numbered=no]{lemma*}
+
+\declaretheorem[style=plain, name=Claim, numbered=yes, sibling=theorem]{claim}
+\declaretheorem[style=plain, name=Claim, numbered=no]{claim*}
+
+\declaretheorem[style=definition, name=Definition, numbered=yes, numberwithin=section]{definition}
+\declaretheorem[style=definition, name=Definition, numbered=no]{definition*}
+
+\declaretheorem[style=definition, name=Example, numbered=yes, numberwithin=section]{example}
+\declaretheorem[style=definition, name=Example, numbered=no]{example*}
+
+\declaretheorem[style=definition, name=Problem, numbered=yes, numberwithin=section]{problem}
+\declaretheorem[style=definition, name=Problem, numbered=no]{problem*}
+
+\declaretheorem[style=remark, name=Remark, numbered=yes, numberwithin=section]{remark}
+\declaretheorem[style=remark, name=Remark, numbered=no]{remark*}
+
+\declaretheorem[style=remark, name=Note, numbered=yes, numberwithin=section]{note}
+\declaretheorem[style=remark, name=Note, numbered=no]{note*}
+
+\declaretheoremstyle[headfont=\bfseries, bodyfont=\normalfont, spaceabove=3pt, spacebelow=3pt, qed=\ensuremath{\square}]{solutionstyle}
+
+\declaretheorem[style=solutionstyle, name=Solution, numbered=yes, numberwithin=section]{solution}
+\declaretheorem[style=solutionstyle, name=Solution, numbered=no]{solution*}

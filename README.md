@@ -12,6 +12,7 @@ Styles:
 - `note-setup-simple`
 - `note-setup-box` (tcolorbox)
 - `note-setup-leftsidebox` (tcolorbox)
+- `note-setup-borderless` (tcolorbox)
 - `note-setup-mdframed` (mdframed, legacy)
 
 **note-setup-simple**
@@ -25,6 +26,10 @@ Styles:
 **note-setup-leftsidebox**
 
 <img src="./note/image/note-setup-leftsidebox-demo.png" alt="note-setup-leftsidebox-demo"/>
+
+**note-setup-borderless**
+
+<img src="./note/image/note-setup-borderless-demo.png" alt="note-setup-borderless-demo"/>
 
 
 Environments:
