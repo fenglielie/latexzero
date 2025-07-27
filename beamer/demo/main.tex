@@ -2,13 +2,24 @@
 \input{../beamer-setup}
 
 \usepackage[style=authoryear]{biblatex}
-\IfFileExists{reference.bib}{\addbibresource{reference.bib}}{}
+\addbibresource{reference.bib}
 
 \title{Title}
 \subtitle{Subtitle}
 \author{Author}
 \date{\today}
-\institute[XXXX]{University of XXXX}
+\institute{University of XXXX}
+
+\AtBeginSection[]{
+    \begin{frame}<beamer>{Outline}
+        \tableofcontents[currentsection,currentsubsection]
+    \end{frame}
+}
+\AtBeginSubsection[]{
+    \begin{frame}<beamer>{Outline}
+        \tableofcontents[currentsection,currentsubsection]
+    \end{frame}
+}
 
 \begin{document}
 
@@ -17,86 +28,148 @@
 \end{frame}
 
 \begin{frame}{Outline}
-    \tableofcontents[sectionstyle=show,subsectionstyle=show/shaded/hide,
-        subsubsectionstyle=show/shaded/hide]
+    \tableofcontents
 \end{frame}
 
-\section{Introduction}
+\section{Guide}
 
-\begin{frame}
-    xxx xxx xxx xxx xxx xxx xxx.
-    xxx xxx xxx xxx xxx xxx.
-    xxx xxx xxx xxx xxx xxx.
-    xxx xxx xxx xxx xxx xxx.
-    xxx xxx xxx xxx xxx xxx.
+\begin{frame}{Global Structure}
+    To create the ``global structure" of a presentation, with the time constraints in mind, proceed as follows:
+
+    \medskip
+    \begin{enumerate}
+        \item Make a mental inventory of the things you can reasonably talk about within the time available.
+
+        \item Categorize the inventory into sections and subsections. Both the sections and the subsections should follow a logical pattern.
+
+        \item Do not use more than four sections and not less than two per part.
+
+        \item Keep section and subsection titles self-explaining.
+    \end{enumerate}
+
 \end{frame}
 
-\section{Section 1}
-
-\begin{frame}{Lists}
+\begin{frame}{Time Control}
     \begin{itemize}
-        \item Item 1
-        \item Item 2
-              \begin{enumerate}
-                  \item First item
-                  \item Second item
-                  \item Third item
-              \end{enumerate}
-        \item Item 3
-              \begin{enumerate}
-                  \item First item
-                  \item Second item
-                  \item Third item
-              \end{enumerate}
+        \item A simple rule for the number of frames is that you should have at most one frame per minute.
+
+              \medskip
+        \item In most situations, you will have less time for your presentation than you would like.
+
+              \medskip
+        \item Do not try to squeeze more into a presentation than time allows for.
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Description}
-    \begin{description}
-        \item[Description 1] Explanation 1
-        \item[Description 2] Explanation 2
-        \item[Description 3] Explanation 3
-    \end{description}
+
+\begin{frame}{Beginning and End}
+    People pay most attention at the beginning and at the end of talks.
+
+    \medskip
+    \begin{itemize}
+        \item Begin with an explanation of what your talk is all about. Then explain what you or someone else has found out concerning the subject matter.
+
+              \medskip
+        \item Always conclude your talk with a summary that repeats the main message of the talk in a short and simple way.
+    \end{itemize}
+
 \end{frame}
 
-\begin{frame}{Columns}
-    \begin{columns}
-        \column{0.5\textwidth}
-        % \centering
-        This is column one with 0.5 text width.
-        \column{0.5\textwidth}
-        % \centering
-        This is column two with 0.5 text width.
-    \end{columns}
+\begin{frame}{Frame Title}
+    \begin{enumerate}
+        \item The title should really explain things, not just give a cryptic summary that cannot be understood unless one has understood the whole slide.
+
+              \medskip
+        \item In English, you should either always capitalize all words in a frame title except for words like ``a" or ``the" (as in a title), or you always use the normal lowercase letters.
+              \begin{itemize}
+                  \item Introduction to Algorithms.
+                  \item Introduction to algorithms.
+              \end{itemize}
+    \end{enumerate}
 \end{frame}
 
+\begin{frame}{Frame Content}
+    \begin{enumerate}
+        \item Use block environments like `theorem' and so on.
 
-\begin{frame}{Columns}
+              \medskip
+        \item Prefer enumerations and itemize environments over plain text.
 
-    \begin{columns}
-        \begin{column}{0.49\textwidth}
-            \begin{itemize}
-                \item First item
-                \item Second item
-                \item Third item
-            \end{itemize}
-        \end{column}
-        \hfill
-        \begin{column}{0.49\textwidth}
-            This is column two with 0.49 text width.
-            \textcite{kochDynamicalLowRank2007}.
-        \end{column}
+              \medskip
+        \item Do not use more than two levels of subitemizing.
 
-    \end{columns}
+              \medskip
+        \item A frame with too little on it is better than a frame with too much on it.
+    \end{enumerate}
+\end{frame}
 
+\begin{frame}{Graphic}
+    \begin{enumerate}
+        \item Visualization is helpful to the audience.
+
+              \medskip
+        \item Like text, you should explain everything that is shown on a graphic.
+
+              \medskip
+        \item Sometimes the complexity of a graphic is intentional and you are willing to spend much time explaining the graphic in great detail.
+    \end{enumerate}
+
+\end{frame}
+
+\section{Demo}
+
+\subsection{Basic}
+
+\begin{frame}{Highlighted Math}
+    Some important formulas will be \alert{highlighted} because it's important.
+
+    \medskip
+    We consider the system of linear equations
+    \begin{equation}\label{eq:LE}
+        \tcbhighmath{Ax = b}
+    \end{equation}
+    where $A\in\mathbb{R}^{n \times n}$, $b\in\mathbb{R}^n$.
 \end{frame}
 
 \begin{frame}{Reference}
-    xxx xxx xxx xxx xxx xxx \footfullcite{kochDynamicalLowRank2007}.
-    xxx xxx xxx xxx xxx xxx.
+    Dynamical Low-Rank Approximation \footfullcite{kochDynamicalLowRank2007}.
 \end{frame}
 
-\section{Section 2}
+\begin{frame}{Columns \& Description \& List}
+
+    \begin{columns}
+
+        \begin{column}{0.49\textwidth}
+            \begin{description}
+                \item[Description 1] Explanation 1
+                \item[Description 2] Explanation 2
+                \item[Description 3] Explanation 3
+            \end{description}
+        \end{column}
+
+        \hfill
+
+        \begin{column}{0.49\textwidth}
+            \begin{itemize}
+                \item Item 1
+                \item Item 2
+                      \begin{enumerate}
+                          \item First item
+                          \item Second item
+                          \item Third item
+                      \end{enumerate}
+                \item Item 3
+                      \begin{enumerate}
+                          \item First item
+                          \item Second item
+                      \end{enumerate}
+            \end{itemize}
+        \end{column}
+    \end{columns}
+
+\end{frame}
+
+\subsection{Block}
 
 \begin{frame}
     \frametitle{Blocks 1}
@@ -136,7 +209,10 @@
 \begin{frame}
     \frametitle{Blocks 3}
     \begin{theorem}[XXX]
-        This is a theorem block. $a^2 + b^2 = c^2$
+        This is a theorem block.
+        \[
+            a^2 + b^2 = c^2
+        \]
     \end{theorem}
 
     \begin{proof}
@@ -145,12 +221,11 @@
 
 \end{frame}
 
-
-
-\section{Section 3}
+\subsection{Table \& Figure}
 
 \begin{frame}{Tables}
     \begin{table}
+        \caption{Example Table}
         \begin{tabular}{|c|c|c|}
             \hline
             Header 1 & Header 2 & Header 3 \\
@@ -159,11 +234,11 @@
             Cell 4   & Cell 5   & Cell 6   \\
             \hline
         \end{tabular}
-        \caption{Example Table}
     \end{table}
 
     \begin{table}[ht]
         \centering
+        \caption{Error and order}\label{tab:1}
         \begin{tabular}{c|ccccc}
             \hline
             m     & 80      & 160     & 320     & 640     \\
@@ -175,22 +250,39 @@
             order & -       & 2.00    & 2.00    & 2.00    \\
             \hline
         \end{tabular}
-        \caption{Error and order}\label{tab:1}
     \end{table}
 \end{frame}
 
 \begin{frame}{Figure}
     \begin{figure}
-        \includegraphics[width=0.75\linewidth]{rank-time.png}
+        \includegraphics[width=0.5\linewidth]{rank-time.png}
         \caption{XXX}
     \end{figure}
 \end{frame}
 
-\begin{frame}{Columns}
+\begin{frame}{Figures}
+    \begin{figure}[htbp]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{bug.png}
+            \caption{XXX}\label{fig:subfig-a}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.45\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{ie.png}
+            \caption{XXX}\label{fig:subfig-b}
+        \end{subfigure}
+        \caption{XXX}\label{fig:example}
+    \end{figure}
+\end{frame}
+
+
+\begin{frame}{Figure + Columns}
     \begin{columns}
         \column{0.6\textwidth}
         \begin{figure}
-            \includegraphics[width=\linewidth]{rank-time.png}
+            \includegraphics[width=0.8\linewidth]{rank-time.png}
             \caption{XXX}
         \end{figure}
         \column{0.4\textwidth}
@@ -198,25 +290,7 @@
     \end{columns}
 \end{frame}
 
-\begin{frame}{Figures}
-    \begin{figure}[htbp]
-        \centering
-        \begin{subfigure}[b]{0.47\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{bug.png}
-            \caption{XXX}
-            \label{fig:subfig-a}
-        \end{subfigure}
-        \begin{subfigure}[b]{0.47\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{ie.png}
-            \caption{XXX}
-            \label{fig:subfig-b}
-        \end{subfigure}
-        \caption{XXX}
-        \label{fig:example}
-    \end{figure}
-\end{frame}
+\subsection{Algorithm \& Code}
 
 \begin{frame}{Algorithm}
     \begin{algorithm}[H]
@@ -243,12 +317,8 @@ int main() {
     return 0;
 }
 \end{lstlisting}
-
     \begin{lstlisting}[language=python]
 def greet(name):
-    """
-    greets the person passed in as a parameter.
-    """
     print(f"Hello, {name}!")
 
 greet("John")
@@ -259,16 +329,17 @@ greet("John")
 
 \section{Conclusion}
 
-\begin{frame}{Conclusion}
-    xxx xxx xxx xxx xxx xxx.
-    xxx xxx xxx xxx xxx xxx.
-    xxx xxx xxx xxx xxx xxx.
-    xxx xxx xxx xxx xxx xxx.
+\begin{frame}{Conclusion \& Future work}
+    \begin{itemize}
+        \item This is the conclusion
+              \medskip
+        \item This is the future work
+    \end{itemize}
 \end{frame}
 
-\begin{frame}{Future work}
-    xxx.
+\begin{frame}[plain]
+    \vspace{0.3\textheight}
+    \Huge{\centerline{\color{simplebeamercolor}\textbf{Thank You!}}}
 \end{frame}
-
 
 \end{document}

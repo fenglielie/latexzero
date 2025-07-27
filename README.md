@@ -60,6 +60,11 @@ Usage:
 
 ## Beamer
 
+Styles:
+
+- `beamer-setup`
+- `beamer-setup-plain`
+
 <p align="center">
     <img src="./beamer/image/beamer-demo-1.png" alt="beamer-demo-1" width="80%"/>
 </p>

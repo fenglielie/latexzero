@@ -8,7 +8,15 @@
 \subtitle{Subtitle}
 \author{Author}
 \date{\today}
-\institute[XXXX]{University of XXXX}
+\institute{University of XXXX}
+
+\AtBeginSection[]
+{
+    \begin{frame}<beamer>{Outline}
+        \tableofcontents[currentsection,currentsubsection,
+            hideothersubsections,sectionstyle=show/shaded]
+    \end{frame}
+}
 
 \begin{document}
 
@@ -23,20 +31,43 @@
 
 \section{Introduction}
 
-\begin{frame}
+\begin{frame}{Frame 1}
 
 \end{frame}
 
-\section{Body}
+\section{Body section A}
 
-\begin{frame}
+\subsection{Subsection A1}
+
+\begin{frame}{Frame 2}
+
+\end{frame}
+
+\begin{frame}{Frame 3}
+
+\end{frame}
+
+\subsection{Subsection A2}
+
+\begin{frame}{Frame 4}
+
+\end{frame}
+
+\section{Body section B}
+
+\begin{frame}{Frame 5}
 
 \end{frame}
 
 \section{Conclusion}
 
-\begin{frame}
+\begin{frame}{Conclusion \& Future work}
 
+\end{frame}
+
+\begin{frame}[plain]
+    \vspace{0.3\textheight}
+    \Huge{\centerline{\color{simplebeamercolor}\textbf{Thank You!}}}
 \end{frame}
 
 \end{document}
