@@ -6,32 +6,28 @@
 \usetheme{default}
 \useoutertheme[subsection=false]{miniframes}
 \usefonttheme[onlymath]{serif}
-
 \definecolor{simplebeamercolor}{RGB}{57,89,199}
 \usecolortheme[named=simplebeamercolor]{structure}
 
-\setbeamertemplate{footline}[frame number]{}
-\setbeamertemplate{navigation symbols}{}
-
-\setbeamercolor{section in head/foot}{fg=white, bg=structure}
-
 \setbeamertemplate{title page}[default][colsep=-4bp,rounded=true,shadow=true]
-\setbeamercolor*{title}{use=structure,fg=white,bg=structure.fg}
-
 \setbeamertemplate{section in toc}[sections numbered]
 \setbeamertemplate{subsection in toc}[subsections numbered]
+\addtobeamertemplate{subsection in toc}{\hspace{2em}}{}
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{enumerate items}[default]
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{footline}[frame number]{}
+\setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{frametitle}{\vspace*{0.5em}\insertframetitle\par\vskip-6pt\hrulefill\vspace{-0.1em}}
 
+\setbeamercolor{title}{use=structure,fg=white,bg=structure.fg}
+\setbeamercolor{section in head/foot}{fg=white,bg=structure.fg}
 \setbeamercolor{block body}{bg=structure!10}
 \setbeamercolor{block title}{bg=structure!20}
 \setbeamercolor{block body alerted}{bg=alerted text.fg!10}
 \setbeamercolor{block title alerted}{bg=alerted text.fg!20}
 \setbeamercolor{block body example}{bg=green!10}
 \setbeamercolor{block title example}{bg=green!20}
-
-\setbeamertemplate{itemize items}[circle]
-\setbeamertemplate{enumerate items}[default]
-\setbeamertemplate{caption}[numbered]
 
 % fonts
 \usepackage[T1]{fontenc}
@@ -46,24 +42,22 @@
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{multicol}
-\usepackage{subcaption}
 
 \usepackage[most]{tcolorbox}
-\tcbset{highlight math style={enhanced, colframe=blue!40,colback=yellow!20,arc=4pt,boxrule=1pt}}
+\tcbset{
+    highlight math style={enhanced, colframe=blue!40,colback=yellow!20,arc=4pt,boxrule=1pt}
+}
 
 \usepackage{hyperref}
 \hypersetup{
-    colorlinks=true,
-    linkcolor=,
-    filecolor=blue,
-    urlcolor=blue,
-    citecolor=cyan,
+    colorlinks=true,linkcolor=cyan,urlcolor=blue
 }
 
 \usepackage{graphicx}
 \graphicspath{
     {./figure/}{./figures/}{./image/}{./images/}{./graphic/}{./graphics/}{./picture/}{./pictures/}
 }
+\usepackage{subcaption}
 
 \usepackage[ruled,linesnumbered,noline]{algorithm2e}
 

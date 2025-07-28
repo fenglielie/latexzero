@@ -1,7 +1,7 @@
 \documentclass[compress,aspectratio=43]{beamer}
 \input{../beamer-setup}
 
-\usepackage[style=authoryear]{biblatex}
+\usepackage{biblatex}
 \addbibresource{reference.bib}
 
 \title{Title}
@@ -116,7 +116,7 @@
 
 \end{frame}
 
-\section{Demo}
+\section{Demo}\label{sec:demo}
 
 \subsection{Basic}
 
@@ -131,9 +131,6 @@
     where $A\in\mathbb{R}^{n \times n}$, $b\in\mathbb{R}^n$.
 \end{frame}
 
-\begin{frame}{Reference}
-    Dynamical Low-Rank Approximation \footfullcite{kochDynamicalLowRank2007}.
-\end{frame}
 
 \begin{frame}{Columns \& Description \& List}
 
@@ -167,6 +164,18 @@
         \end{column}
     \end{columns}
 
+\end{frame}
+
+\begin{frame}{Reference \& URL}
+    \begin{itemize}
+        \item A citation example~\cite{kochDynamicalLowRank2007}.
+
+        \item A foot full citation example~\footfullcite{kochDynamicalLowRank2007}.
+
+        \item See Section~\ref{sec:demo} for details.
+
+        \item Here is a URL link to \href{https://www.openai.com}{OpenAI website}.
+    \end{itemize}
 \end{frame}
 
 \subsection{Block}
