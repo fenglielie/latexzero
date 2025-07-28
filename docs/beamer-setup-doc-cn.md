@@ -96,7 +96,7 @@
 ```latex
 \usepackage{hyperref}
 \hypersetup{
-    colorlinks=true,linkcolor=cyan,urlcolor=blue
+    colorlinks=true,linkcolor=,urlcolor=cyan
 }
 ```
 
