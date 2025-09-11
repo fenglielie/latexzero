@@ -233,10 +233,6 @@ tcolorbox 宏包的功能非常复杂，这里只需要使用 `\tcolorboxenviron
     \newgeometry{margin=0in}
     \parindent=0pt
     \includegraphics[width=\linewidth]{#1} % size = 1280*1024
-    \setlength{\fboxsep}{0pt}%
-    \colorbox{cyan!30!gray}{%
-      \makebox[\linewidth][c]{\shortstack[c]{\vspace{0.5in}}}%
-    }
     \vfill
     \begin{center}
         \parbox{0.618\textwidth}{%
