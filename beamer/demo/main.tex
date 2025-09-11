@@ -1,22 +1,22 @@
-\documentclass[compress,aspectratio=43]{beamer}
-\input{../beamer-setup}
+\documentclass[compress,aspectratio=169]{beamer}
+\input{../beamer-setup-plain}
 
-\usepackage{biblatex}
+\usepackage[style=authoryear]{biblatex}
 \addbibresource{reference.bib}
 
 \title{Title}
 \subtitle{Subtitle}
 \author{Author}
-\date{\today}
+\date{July 27, 2025}
 \institute{University of XXXX}
 
 \AtBeginSection[]{
-    \begin{frame}<beamer>{Outline}
+    \begin{frame}{Outline}
         \tableofcontents[currentsection,currentsubsection]
     \end{frame}
 }
 \AtBeginSubsection[]{
-    \begin{frame}<beamer>{Outline}
+    \begin{frame}{Outline}
         \tableofcontents[currentsection,currentsubsection]
     \end{frame}
 }
@@ -25,6 +25,10 @@
 
 \begin{frame}[plain]
     \titlepage
+
+    \begin{center}
+        \small Joint work with XXX and XXX.
+    \end{center}
 \end{frame}
 
 \begin{frame}{Outline}
@@ -168,9 +172,9 @@
 
 \begin{frame}{Reference \& URL}
     \begin{itemize}
-        \item A citation example~\cite{kochDynamicalLowRank2007}.
+        \item A citation example~\cite{vaswaniAttentionAllYou2023}.
 
-        \item A foot full citation example~\footfullcite{kochDynamicalLowRank2007}.
+        \item A foot full citation example~\footfullcite{vaswaniAttentionAllYou2023}.
 
         \item See Section~\ref{sec:demo} for details.
 
@@ -264,7 +268,7 @@
 
 \begin{frame}{Figure}
     \begin{figure}
-        \includegraphics[width=0.5\linewidth]{rank-time.png}
+        \includegraphics[width=0.3\linewidth]{img.png}
         \caption{XXX}
     \end{figure}
 \end{frame}
@@ -274,12 +278,12 @@
         \centering
         \begin{subfigure}[b]{0.45\textwidth}
             \centering
-            \includegraphics[width=\textwidth]{bug.png}
+            \includegraphics[width=0.7\textwidth]{img1.png}
             \caption{XXX}\label{fig:subfig-a}
         \end{subfigure}
         \begin{subfigure}[b]{0.45\textwidth}
             \centering
-            \includegraphics[width=\textwidth]{ie.png}
+            \includegraphics[width=0.7\textwidth]{img2.png}
             \caption{XXX}\label{fig:subfig-b}
         \end{subfigure}
         \caption{XXX}\label{fig:example}
@@ -291,8 +295,7 @@
     \begin{columns}
         \column{0.6\textwidth}
         \begin{figure}
-            \includegraphics[width=0.8\linewidth]{rank-time.png}
-            \caption{XXX}
+            \includegraphics[width=0.5\linewidth]{img.png}
         \end{figure}
         \column{0.4\textwidth}
         This is column one with 0.4 text width.
@@ -346,9 +349,13 @@ greet("John")
     \end{itemize}
 \end{frame}
 
-\begin{frame}[plain]
-    \vspace{0.3\textheight}
+\begin{frame}
+    \vspace{0.05\textheight}
     \Huge{\centerline{\color{simplebeamercolor}\textbf{Thank You!}}}
+    \vspace{0.2\textheight}
+
+    % \nocite{*}
+    \printbibliography[keyword=important,heading=none]
 \end{frame}
 
 \end{document}

@@ -57,6 +57,10 @@ Usage:
 ...
 ```
 
+Update: add cover page (`\makecover`)
+
+<img src="./note/image/note-cover-demo.png" alt="note-cover-demo"/>
+
 
 ## Beamer
 
@@ -65,26 +69,22 @@ Styles:
 - `beamer-setup`
 - `beamer-setup-plain`
 
-<p align="center">
-    <img src="./beamer/image/beamer-demo-1.png" alt="beamer-demo-1" width="80%"/>
-</p>
+**beamer-setup**
 
 <p align="center">
-    <img src="./beamer/image/beamer-demo-2.png" alt="beamer-demo-2" width="80%"/>
+    <img src="./beamer/image/beamer-setup-demo.png" alt="beamer-setup-demo" width="80%"/>
 </p>
 
-<p align="center">
-    <img src="./beamer/image/beamer-demo-3.png" alt="beamer-demo-3" width="80%"/>
-</p>
+**beamer-setup-plain**
 
 <p align="center">
-    <img src="./beamer/image/beamer-demo-4.png" alt="beamer-demo-4" width="80%"/>
+    <img src="./beamer/image/beamer-setup-plain-demo.png" alt="beamer-setup-plain-demo" width="80%"/>
 </p>
 
 
 Usage:
 ```latex
-\documentclass[compress,aspectratio=43]{beamer}
+\documentclass[compress,aspectratio=169]{beamer}
 \input{/path/to/beamer-setup}
 
 ...
