@@ -203,3 +203,71 @@ tcolorbox 宏包的功能非常复杂，这里只需要使用 `\tcolorboxenviron
 
 - 这里采用 `xcolor` 宏包所提供的标准颜色，`xxx!n`代表将颜色 `xxx` 以 `n%` 比例和白色混合得到的浅颜色。
 - 为了避免颜色过多，对语义类似的环境合并采用相同的盒子颜色。
+
+此外，还添加了一个没有标题的简单盒子 `cbox`
+```latex
+%% cbox
+\newtcolorbox{cbox}[1][]{%
+    enhanced,
+    breakable,
+    sharp corners,
+    leftrule=2pt, rightrule=0pt, toprule=0pt, bottomrule=0pt,
+    colframe=SkyBlue,
+    colback=SkyBlue!8,
+    #1
+}
+```
+
+
+## 自定义封面页
+
+自定义封面页（参考 [ElegantBook](https://github.com/ElegantLaTeX/ElegantBook) 以及它的若干衍生模板）
+```latex
+%% cover
+\usepackage{titling}
+\newcommand{\extrainfo}{}
+\renewcommand{\extrainfo}[1]{\renewcommand{\extrainfocontent}{#1}}
+\newcommand{\extrainfocontent}{}
+\newcommand{\makecover}[1]{%
+    \begin{titlepage}
+    \newgeometry{margin=0in}
+    \parindent=0pt
+    \includegraphics[width=\linewidth]{#1} % size = 1280*1024
+    \setlength{\fboxsep}{0pt}%
+    \colorbox{cyan!30!gray}{%
+      \makebox[\linewidth][c]{\shortstack[c]{\vspace{0.5in}}}%
+    }
+    \vfill
+    \begin{center}
+        \parbox{0.618\textwidth}{%
+            \raggedleft{\bfseries \Huge \thetitle} \\[0.6pt]
+            \rule{0.618\textwidth}{4pt} \\
+        }
+    \end{center}
+    \vfill
+    \begin{center}
+        \parbox{0.618\textwidth}{%
+          \raggedleft\Large
+            \begin{tabular}{r}
+                \theauthor \\
+                \thedate \\
+            \end{tabular}%
+        }
+    \end{center}
+    \vfill
+    \begin{center}
+        \parbox[t]{0.7\textwidth}{\centering \itshape \extrainfocontent}
+    \end{center}
+    \vfill
+    \end{titlepage}
+    \restoregeometry
+    \thispagestyle{empty}
+}
+% USAGE
+% \extrainfo{xxx}
+% \makecover{/path/to/cover.png}
+```
+
+这里没有选择覆盖`\maketitle`，而是改成新命令`\makecover`，接收的一个必要参数为封面图的路径。
+
+封面图建议尺寸为1280*1024，尤其对于jpg格式的图片，尺寸不同会导致编译报错。
