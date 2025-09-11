@@ -1,6 +1,6 @@
 %================================
 % note-setup-borderless.tex
-% fenglielie@qq.com 2025-07-10
+% fenglielie@qq.com 2025-09-12
 %================================
 
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
@@ -41,7 +41,10 @@
 }
 \lstset{style=simpleStyle}
 
-\usepackage[colorlinks=true,linkcolor=,urlcolor=magenta,citecolor=violet]{hyperref}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,linkcolor=,urlcolor=cyan
+}
 
 \renewcommand*{\proofname}{\normalfont\bfseries Proof}
 
@@ -102,3 +105,58 @@
 \newtcbenvironment{definition}{colframe=ForestGreen, colback=ForestGreen!5}
 \newtcbenvironment{example}{colframe=RawSienna, colback=RawSienna!5}
 \newtcbenvironment{problem}{colframe=WildStrawberry!30, colback=WildStrawberry!5}
+
+%% cbox
+\newtcolorbox{cbox}[1][]{%
+    enhanced,
+    breakable,
+    sharp corners,
+    leftrule=2pt, rightrule=0pt, toprule=0pt, bottomrule=0pt,
+    colframe=SkyBlue,
+    colback=SkyBlue!8,
+    #1
+}
+
+%% cover
+\usepackage{titling}
+\newcommand{\extrainfo}{}
+\renewcommand{\extrainfo}[1]{\renewcommand{\extrainfocontent}{#1}}
+\newcommand{\extrainfocontent}{}
+\newcommand{\makecover}[1]{%
+    \begin{titlepage}
+    \newgeometry{margin=0in}
+    \parindent=0pt
+    \includegraphics[width=\linewidth]{#1} % size = 1280*1024
+    \setlength{\fboxsep}{0pt}%
+    \colorbox{cyan!30!gray}{%
+      \makebox[\linewidth][c]{\shortstack[c]{\vspace{0.5in}}}%
+    }
+    \vfill
+    \begin{center}
+        \parbox{0.618\textwidth}{%
+            \raggedleft{\bfseries \Huge \thetitle} \\[0.6pt]
+            \rule{0.618\textwidth}{4pt} \\
+        }
+    \end{center}
+    \vfill
+    \begin{center}
+        \parbox{0.618\textwidth}{%
+          \raggedleft\Large
+            \begin{tabular}{r}
+                \theauthor \\
+                \thedate \\
+            \end{tabular}%
+        }
+    \end{center}
+    \vfill
+    \begin{center}
+        \parbox[t]{0.7\textwidth}{\centering \itshape \extrainfocontent}
+    \end{center}
+    \vfill
+    \end{titlepage}
+    \restoregeometry
+    \thispagestyle{empty}
+}
+% USAGE
+% \extrainfo{xxx}
+% \makecover{/path/to/cover.png}

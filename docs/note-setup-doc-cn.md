@@ -60,7 +60,10 @@
 
 导入超链接支持的宏包
 ```latex
-\usepackage[colorlinks=true,linkcolor=,urlcolor=magenta,citecolor=violet]{hyperref}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,linkcolor=,urlcolor=cyan
+}
 ```
 
 
