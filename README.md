@@ -17,19 +17,19 @@ Styles:
 
 **note-setup-simple**
 
-<img src="./note/image/note-setup-simple-demo.png" alt="note-setup-simple-demo"/>
+<img src="assets/note-setup-simple-demo.png" alt="note-setup-simple-demo"/>
 
 **note-setup-box**
 
-<img src="./note/image/note-setup-box-demo.png" alt="note-setup-box-demo"/>
+<img src="assets/note-setup-box-demo.png" alt="note-setup-box-demo"/>
 
 **note-setup-leftsidebox**
 
-<img src="./note/image/note-setup-leftsidebox-demo.png" alt="note-setup-leftsidebox-demo"/>
+<img src="assets/note-setup-leftsidebox-demo.png" alt="note-setup-leftsidebox-demo"/>
 
 **note-setup-borderless**
 
-<img src="./note/image/note-setup-borderless-demo.png" alt="note-setup-borderless-demo"/>
+<img src="assets/note-setup-borderless-demo.png" alt="note-setup-borderless-demo"/>
 
 
 Environments:
@@ -57,9 +57,9 @@ Usage:
 ...
 ```
 
-Update: add cover page (`\makecover`)
+Add cover page (`\makecover`)
 
-<img src="./note/image/note-cover-demo.png" alt="note-cover-demo"/>
+<img src="assets/note-cover-demo.png" alt="note-cover-demo"/>
 
 
 ## Beamer
@@ -72,13 +72,13 @@ Styles:
 **beamer-setup**
 
 <p align="center">
-    <img src="./beamer/image/beamer-setup-demo.png" alt="beamer-setup-demo" width="80%"/>
+    <img src="assets/beamer-setup-demo.png" alt="beamer-setup-demo" width="80%"/>
 </p>
 
 **beamer-setup-plain**
 
 <p align="center">
-    <img src="./beamer/image/beamer-setup-plain-demo.png" alt="beamer-setup-plain-demo" width="80%"/>
+    <img src="assets/beamer-setup-plain-demo.png" alt="beamer-setup-plain-demo" width="80%"/>
 </p>
 
 
