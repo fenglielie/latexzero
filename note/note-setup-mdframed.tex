@@ -1,6 +1,6 @@
 %================================
 % note-setup-mdframed.tex
-% fenglielie@qq.com 2025-09-12
+% fenglielie@qq.com 2025-10-22
 %================================
 
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
@@ -102,15 +102,17 @@
 \declaretheorem[style=solutionstyle, name=Solution, numbered=no]{solution*}
 
 %% cbox
-\newtcolorbox{cbox}[1][]{%
-    enhanced,
-    breakable,
-    sharp corners,
-    leftrule=2pt, rightrule=0pt, toprule=0pt, bottomrule=0pt,
-    colframe=SkyBlue,
-    colback=SkyBlue!8,
-    #1
-}
+\newmdenv[
+    linecolor=SkyBlue,
+    backgroundcolor=SkyBlue!8,
+    leftline=true,
+    rightline=false,
+    topline=false,
+    bottomline=false,
+    linewidth=2pt,
+    roundcorner=0pt, % sharp corners
+    frametitlebackgroundcolor=SkyBlue!20,
+]{cbox}
 
 %% cover
 \usepackage{titling}
