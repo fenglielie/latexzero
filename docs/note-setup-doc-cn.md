@@ -124,13 +124,19 @@
 \declaretheorem[style=definition, name=Problem, numbered=yes, numberwithin=section]{problem}
 \declaretheorem[style=definition, name=Problem, numbered=no]{problem*}
 ```
-- 采用 remark 样式，定义 `remark`/`remark*`、`note`/`note*` 环境
+- 采用 remark 样式，定义 `remark`/`remark*` 环境
 ```latex
 \declaretheorem[style=remark, name=Remark, numbered=yes, numberwithin=section]{remark}
 \declaretheorem[style=remark, name=Remark, numbered=no]{remark*}
-
-\declaretheorem[style=remark, name=Note, numbered=yes, numberwithin=section]{note}
-\declaretheorem[style=remark, name=Note, numbered=no]{note*}
+```
+- 使用 `\declaretheoremstyle` 命令定义新的 notestyle 样式，类似 remark 环境，但是引导词变成 Note，并且有颜色
+```latex
+\declaretheoremstyle[headfont=\color{orange!80}\bfseries, bodyfont=\normalfont, spaceabove=3pt, spacebelow=3pt]{notestyle}
+```
+- 采用新定义的 notestyle 样式，定义 `note`/`note*` 环境
+```latex
+\declaretheorem[style=notestyle, name=Note, numbered=yes, numberwithin=section]{note}
+\declaretheorem[style=notestyle, name=Note, numbered=no]{note*}
 ```
 - 使用 `\declaretheoremstyle` 命令定义新的 solutionstyle 样式，类似 proof 环境，但是引导词变成 Solution
 ```latex

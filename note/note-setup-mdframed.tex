@@ -93,8 +93,10 @@
 \declaretheorem[style=brownemptybox, name=Remark, numbered=yes, numberwithin=section]{remark}
 \declaretheorem[style=brownemptybox, name=Remark, numbered=no]{remark*}
 
-\declaretheorem[style=greenemptybox, name=Note, numbered=yes, numberwithin=section]{note}
-\declaretheorem[style=greenemptybox, name=Note, numbered=no]{note*}
+\declaretheoremstyle[headfont=\color{orange!80}\bfseries, bodyfont=\normalfont, spaceabove=3pt, spacebelow=3pt]{notestyle}
+
+\declaretheorem[style=notestyle, name=Note, numbered=yes, numberwithin=section]{note}
+\declaretheorem[style=notestyle, name=Note, numbered=no]{note*}
 
 \declaretheoremstyle[headfont=\bfseries, bodyfont=\normalfont, spaceabove=3pt, spacebelow=3pt, qed=\ensuremath{\square}]{solutionstyle}
 
