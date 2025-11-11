@@ -126,31 +126,31 @@
 \newcommand{\extrainfocontent}{}
 \newcommand{\makecover}[1]{%
     \begin{titlepage}
-    \newgeometry{margin=0in}
-    \parindent=0pt
-    \includegraphics[width=\linewidth]{#1} % size = 1280*1024
-    \vfill
-    \begin{center}
-        \parbox{0.618\textwidth}{%
-            \raggedleft{\bfseries \Huge \thetitle} \\[0.6pt]
-            \rule{0.618\textwidth}{4pt} \\
-        }
-    \end{center}
-    \vfill
-    \begin{center}
-        \parbox{0.618\textwidth}{%
-          \raggedleft\Large
-            \begin{tabular}{r}
-                \theauthor \\
-                \thedate \\
-            \end{tabular}%
-        }
-    \end{center}
-    \vfill
-    \begin{center}
-        \parbox[t]{0.7\textwidth}{\centering \itshape \extrainfocontent}
-    \end{center}
-    \vfill
+        \newgeometry{margin=0in}
+        \parindent=0pt
+        \includegraphics[width=\linewidth]{#1} % size = 1280*1024
+        \vfill
+        \begin{center}
+            \parbox{0.618\textwidth}{%
+                \raggedleft{\bfseries \Huge \thetitle} \\[0.6pt]
+                \rule{0.618\textwidth}{4pt} \\
+            }
+        \end{center}
+        \vfill
+        \begin{center}
+            \parbox{0.618\textwidth}{%
+                \raggedleft\Large
+                \begin{tabular}{r}
+                    \theauthor \\
+                    \thedate   \\
+                \end{tabular}%
+            }
+        \end{center}
+        \vfill
+        \begin{center}
+            \parbox[t]{0.7\textwidth}{\centering \itshape \extrainfocontent}
+        \end{center}
+        \vfill
     \end{titlepage}
     \restoregeometry
     \thispagestyle{empty}
