@@ -4,6 +4,27 @@ Simple LaTeX templates designed for mathematical notes.
 
 > Tested on Overleaf with TeX Live 2022/2023/2024.
 
+## How to use it?
+
+1. Clone or download the repo, or you can just download the relevant file(s),  such as [note-setup.tex](./note/note-setup.tex)
+
+2. input setup file to the preamble of your document.
+```latex
+\documentclass{article}
+\input{./note-setup}
+
+\title{Title}
+\author{Author}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\end{document}
+```
+
+
 ## Note
 
 Styles:
