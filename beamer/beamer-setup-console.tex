@@ -1,0 +1,79 @@
+%================================
+% beamer-setup-console.tex
+% fenglielie@qq.com 2025-11-12
+%================================
+
+\usetheme{default}
+\useoutertheme{default}
+\usefonttheme[onlymath]{serif}
+\definecolor{simplebeamercolor}{RGB}{255,216,80}
+\usecolortheme[named=simplebeamercolor]{structure}
+
+\setbeamertemplate{title page}[default][colsep=-4bp,rounded=true,shadow=true]
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}[subsections numbered]
+\addtobeamertemplate{subsection in toc}{\hspace{2em}}{}
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{enumerate items}[default]
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{footline}[frame number]{}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{frametitle}{\hspace*{-1em}{\usebeamercolor[fg]{normal text}\texttt{\mdseries>\hbox{}>\hbox{}> }}\boldmath\insertframetitle}
+\setbeamercolor{background canvas}{bg=black!80}
+\setbeamercolor{normal text}{fg=white}
+
+% \setbeamercolor{title}{use=structure}
+\setbeamercolor{section in head/foot}{fg=white,bg=black!85}
+\setbeamercolor{block body}{fg=structure!10,bg=black!70}
+\setbeamercolor{block title}{fg=structure!50,bg=black!60}
+\setbeamercolor{block body alerted}{fg=alerted text.fg!10,bg=black!70}
+\setbeamercolor{block title alerted}{fg=alerted text.fg!60,bg=black!60}
+\setbeamercolor{block body example}{fg=green!10,bg=black!70}
+\setbeamercolor{block title example}{fg=green!50,bg=black!60}
+
+% fonts
+\usepackage[T1]{fontenc}
+\usepackage{mathrsfs}
+\usepackage{calligra}
+\usepackage{bm}
+
+% math
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+
+\usepackage{extarrows}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{multicol}
+
+\usepackage[most]{tcolorbox}
+\tcbset{
+    highlight math style={enhanced, colframe=blue!40,colback=yellow!20,arc=4pt,boxrule=1pt}
+}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,linkcolor=,urlcolor=cyan
+}
+
+\usepackage{graphicx}
+\graphicspath{
+    {./figure/}{./figures/}{./image/}{./images/}{./graphic/}{./graphics/}{./picture/}{./pictures/}
+}
+\usepackage{subcaption}
+
+\usepackage[ruled,linesnumbered,noline]{algorithm2e}
+
+\usepackage{listings}
+\lstdefinestyle{simpleStyle}{
+    basicstyle=\ttfamily\small\color{white!90},
+    breaklines=true,
+    keywordstyle=\color{cyan!70!white},
+    identifierstyle=\color{white},
+    stringstyle=\color{yellow!80!orange},
+    commentstyle=\color{green!60!black},
+    showstringspaces=false,
+    frame=single,
+    rulecolor=\color{white!30},
+    framesep=1em,
+}
+\lstset{style=simpleStyle}

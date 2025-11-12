@@ -68,19 +68,25 @@ Styles:
 
 - `beamer-setup`
 - `beamer-setup-plain`
+- `beamer-setup-console` (inspired by [kmbeamer](https://github.com/kmaed/kmbeamer))
 
 **beamer-setup**
 
 <p align="center">
-    <img src="assets/beamer-setup-demo.png" alt="beamer-setup-demo" width="80%"/>
+    <img src="assets/beamer-setup-demo.png" alt="beamer-setup-demo"/>
 </p>
 
 **beamer-setup-plain**
 
 <p align="center">
-    <img src="assets/beamer-setup-plain-demo.png" alt="beamer-setup-plain-demo" width="80%"/>
+    <img src="assets/beamer-setup-plain-demo.png" alt="beamer-setup-plain-demo"/>
 </p>
 
+**beamer-setup-console**
+
+<p align="center">
+    <img src="assets/beamer-setup-console-demo.png" alt="beamer-setup-console-demo"/>
+</p>
 
 Usage:
 ```latex

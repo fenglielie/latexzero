@@ -105,6 +105,9 @@
               \medskip
         \item A frame with too little on it is better than a frame with too much on it.
     \end{enumerate}
+
+    \bigskip
+    Alert: \alert{Avoid using animations in Beamer slides.}
 \end{frame}
 
 \begin{frame}{Graphic}
@@ -141,7 +144,7 @@
     \begin{columns}
 
         \begin{column}{0.49\textwidth}
-            \begin{description}
+            \begin{description}[leftmargin=1cm]
                 \item[Description 1] Explanation 1
                 \item[Description 2] Explanation 2
                 \item[Description 3] Explanation 3
@@ -324,7 +327,7 @@
     \begin{lstlisting}[language=c++]
 #include <iostream>
 
-int main() {
+int main() { // Hello World
     std::cout << "Hello, world!" << std::endl;
     return 0;
 }
