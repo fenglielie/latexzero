@@ -101,21 +101,21 @@
 \usepackage[most]{tcolorbox}
 
 \newcommand{\newtcbenvironment}[2]{
-    \tcolorboxenvironment{#1}{#2, enhanced, breakable, sharp corners, boxrule=1pt, fontupper=\color{white}}
-    \tcolorboxenvironment{#1*}{#2, enhanced, breakable, rounded corners, boxrule=1pt, fontupper=\color{white}}
+    \tcolorboxenvironment{#1}{#2, enhanced, breakable, sharp corners, boxrule=1pt, colupper=white}
+    \tcolorboxenvironment{#1*}{#2, enhanced, breakable, rounded corners, boxrule=1pt, colupper=white}
 }
 
 %% define styles
 
 \newtcbenvironment{theorem}{colframe=RoyalPurple!70, colback=RoyalPurple!20!black!85}
-\newtcbenvironment{proposition}{colframe=RoyalPurple!70, colback=RoyalPurple!15!black!85}
+\newtcbenvironment{proposition}{colframe=RoyalPurple!70, colback=RoyalPurple!20!black!85}
 \newtcbenvironment{corollary}{colframe=SkyBlue!80, colback=SkyBlue!20!black!85}
 \newtcbenvironment{lemma}{colframe=SkyBlue!70, colback=SkyBlue!15!black!85}
 \newtcbenvironment{claim}{colframe=SkyBlue!70, colback=SkyBlue!15!black!85}
 
 \newtcbenvironment{definition}{colframe=SpringGreen!80, colback=SpringGreen!15!black!85}
 \newtcbenvironment{example}{colframe=Goldenrod!70, colback=Goldenrod!15!black!85}
-\newtcbenvironment{problem}{colframe=WildStrawberry!70, colback=WildStrawberry!10!black!85}
+\newtcbenvironment{problem}{colframe=WildStrawberry!60, colback=WildStrawberry!10!black!85}
 
 %% cbox
 \newtcolorbox{cbox}[1][]{%
@@ -124,8 +124,8 @@
     sharp corners,
     leftrule=2pt, rightrule=0pt, toprule=0pt, bottomrule=0pt,
     colframe=SkyBlue!60!white,
-    colback=black!70,
-    fontupper=\color{white},
+    colback=black!65,
+    colupper=white,
     #1
 }
 
