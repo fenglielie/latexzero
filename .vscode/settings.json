@@ -4,11 +4,11 @@
             "name": "xelatexmk",
             "command": "latexmk",
             "args": [
+                "-pdfxe",
                 "-file-line-error",
                 "-halt-on-error",
                 "-interaction=nonstopmode",
                 "-synctex=1",
-                "-xelatex",
                 "-auxdir=%DIR%/.aux",
                 "-outdir=%OUTDIR%",
                 "%DOC%"
@@ -18,11 +18,11 @@
             "name": "lualatexmk",
             "command": "latexmk",
             "args": [
+                "-pdflua",
                 "-file-line-error",
                 "-halt-on-error",
                 "-interaction=nonstopmode",
                 "-synctex=1",
-                "-lualatex",
                 "-outdir=%OUTDIR%",
                 "-auxdir=%DIR%/.aux",
                 "%DOC%"
@@ -32,11 +32,11 @@
             "name": "latexmk",
             "command": "latexmk",
             "args": [
+                "-pdf",
                 "-file-line-error",
                 "-halt-on-error",
                 "-interaction=nonstopmode",
                 "-synctex=1",
-                "-pdf",
                 "-outdir=%OUTDIR%",
                 "-auxdir=%DIR%/.aux",
                 "%DOC%"
