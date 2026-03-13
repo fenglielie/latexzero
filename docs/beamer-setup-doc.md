@@ -1,8 +1,8 @@
-# beamer-setup 配置说明
+# beamer-setup Documentation
 
-## Beamer 样式配置
+## Beamer Style Configuration
 
-设置主题，包括导航栏样式、数学字体和主题颜色
+Set the theme, including the navigation bar style, math font, and theme color.
 ```latex
 \usetheme{default}
 \useoutertheme[subsection=false]{miniframes}
@@ -11,51 +11,51 @@
 \usecolortheme[named=simplebeamercolor]{structure}
 ```
 
-设置标题页样式：圆角和阴影
+Set the title page style: rounded corners and shadow.
 ```latex
 \setbeamertemplate{title page}[default][colsep=-4bp,rounded=true,shadow=true]
 ```
 
-设置目录样式：`section` 和 `subsection` 均显示编号，并为 `subsection` 添加缩进
+Set the table of contents style: show numbering for both `section` and `subsection`, and add indentation to `subsection`.
 ```latex
 \setbeamertemplate{section in toc}[sections numbered]
 \setbeamertemplate{subsection in toc}[subsections numbered]
 \addtobeamertemplate{subsection in toc}{\hspace{2em}}{}
 ```
 
-设置无序列表和有序列表的样式
+Set the styles for unordered and ordered lists.
 ```latex
 \setbeamertemplate{itemize items}[circle]
 \setbeamertemplate{enumerate items}[default]
 ```
 
-设置 `caption` 样式：显示编号
+Set the `caption` style to display numbering.
 ```latex
 \setbeamertemplate{caption}[numbered]
 ```
 
-设置底部样式：仅显示页码，移除导航按钮
+Set the footer style: show only page numbers and remove navigation symbols.
 ```latex
 \setbeamertemplate{footline}[frame number]{}
 \setbeamertemplate{navigation symbols}{}
 ```
 
-设置帧标题样式：在帧标题下面添加一条横线
+Set the frame title style by adding a horizontal rule below the frame title.
 ```latex
 \setbeamertemplate{frametitle}{\vspace*{0.5em}\insertframetitle\par\vskip-6pt\hrulefill\vspace{-0.1em}}
 ```
 
-设置标题样式
+Set the title style.
 ```latex
 \setbeamercolor{title}{use=structure,fg=white,bg=structure.fg}
 ```
 
-设置顶部导航栏中的 `section` 样式
+Set the `section` style in the top navigation bar.
 ```latex
 \setbeamercolor{section in head/foot}{fg=white,bg=structure.fg}
 ```
 
-设置各个元素的颜色样式
+Set color styles for the various elements.
 ```latex
 \setbeamercolor{block body}{bg=structure!10}
 \setbeamercolor{block title}{bg=structure!20}
@@ -65,9 +65,9 @@
 \setbeamercolor{block title example}{bg=green!20}
 ```
 
-## 其它配置
+## Other Configuration
 
-导入常用基础宏包
+Import commonly used base packages.
 ```latex
 % fonts
 \usepackage[T1]{fontenc}
@@ -84,7 +84,7 @@
 \usepackage{multicol}
 ```
 
-导入盒子宏包，并为 `\tcbhighmath` 命令设置预设样式
+Import the box package and define a preset style for `\tcbhighmath`.
 ```latex
 \usepackage[most]{tcolorbox}
 \tcbset{
@@ -92,7 +92,7 @@
 }
 ```
 
-导入超链接宏包
+Import the hyperlink package.
 ```latex
 \usepackage{hyperref}
 \hypersetup{
@@ -100,7 +100,7 @@
 }
 ```
 
-导入图片与子图相关宏包，并配置图片搜索路径
+Import packages for images and subfigures, and configure image search paths.
 ```latex
 \usepackage{graphicx}
 \graphicspath{
@@ -109,12 +109,12 @@
 \usepackage{subcaption}
 ```
 
-导入算法环境宏包
+Import the package for algorithm environments.
 ```latex
 \usepackage[ruled,linesnumbered,noline]{algorithm2e}
 ```
 
-导入代码环境宏包并配置样式
+Import the package for code blocks and configure its style.
 ```latex
 \usepackage{listings}
 \lstdefinestyle{simpleStyle}{
@@ -129,3 +129,4 @@
     framesep=1em,
 }
 \lstset{style=simpleStyle}
+```

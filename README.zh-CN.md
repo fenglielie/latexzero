@@ -1,31 +1,31 @@
-# LaTeX Templates for Mathematical Notes
+# 数学笔记 LaTeX 模板
 
-English | [简体中文](./README.zh-CN.md)
+[English](./README.md) | 简体中文
 
-Simple LaTeX templates for mathematical notes and Beamer slides.
+适用于数学笔记与 Beamer 的简洁 LaTeX 模板。
 
-> Tested on Overleaf with TeX Live 2022, 2023, and 2024.
+> 已在 Overleaf 的 TeX Live 2022、2023 和 2024 环境下测试。
 
-## Overview
+## 概览
 
-- Templates for mathematical notes and Beamer slides
-- Multiple note and presentation styles with preview images
-- Suitable for Overleaf and local TeX Live workflows
+- 提供数学笔记与 Beamer 模板
+- 包含多种笔记和演示风格，并附带预览图
+- 适用于 Overleaf 和本地 TeX Live 工作流
 
-## Table of Contents
+## 目录
 
-- [How to use it?](#how-to-use-it)
+- [如何使用？](#如何使用)
 - [Note](#note)
 - [Beamer](#beamer)
-- [More](#more)
+- [补充](#补充)
 
-## How to use it?
+## 如何使用？
 
-1. Clone or download this repository, or simply download the file(s) you need, such as [note-setup.tex](./note/note-setup.tex).
+1. 克隆或下载本仓库，或者只下载你需要的文件，例如 [note-setup.tex](./note/note-setup.tex)。
 
-2. Input the setup file in the preamble of your document.
+2. 在文档导言区通过 `\input` 引入对应的设置文件。
 
-Usage example:
+使用示例：
 ```latex
 \documentclass{article}
 \input{./note-setup}
@@ -44,16 +44,16 @@ Usage example:
 
 ## Note
 
-### Available styles
+### 可用样式
 
-All note styles share the same commands and environments, so you can switch between them directly by changing the setup file.
+这些 note 样式共享同一套命令和环境定义，因此只需替换对应的 setup 文件即可直接切换。
 
 - `note-setup` = `note-setup-box`
 - `note-setup-simple`
 - `note-setup-box` (tcolorbox)
 - `note-setup-leftsidebox` (tcolorbox)
 - `note-setup-borderless` (tcolorbox)
-- `note-setup-dark` (tcolorbox, experimental; may have issues in practical use)
+- `note-setup-dark` (tcolorbox，实验性样式，实际使用时可能存在一些问题)
 - `note-setup-mdframed` (mdframed, legacy)
 
 **note-setup-simple**
@@ -76,7 +76,7 @@ All note styles share the same commands and environments, so you can switch betw
 
 ![note-setup-dark-demo](assets/note-setup-dark-demo.png)
 
-### Supported environments
+### 支持的环境
 
 | Environment                   | Style           | Numbering Rule              |
 | ----------------------------- | --------------- | --------------------------- |
@@ -93,7 +93,7 @@ All note styles share the same commands and environments, so you can switch betw
 | `solution`, `solution*`       | (solutionstyle) | within section              |
 
 
-### Usage
+### 用法
 ```latex
 \documentclass{article}
 \input{/path/to/note-setup}
@@ -101,22 +101,22 @@ All note styles share the same commands and environments, so you can switch betw
 ...
 ```
 
-### Cover page
+### 封面页
 
-To add a cover page, use `\makecover`.
+如需添加封面页，可使用 `\makecover`。
 
 ![note-cover-demo](assets/note-cover-demo.png)
 
 
 ## Beamer
 
-### Available styles
+### 可用样式
 
-All Beamer styles share the same commands and structure, so you can switch between them directly by changing the setup file.
+这些 Beamer 样式共享同一套命令和结构，因此只需替换对应的 setup 文件即可直接切换。
 
 - `beamer-setup`
 - `beamer-setup-plain`
-- `beamer-setup-console` (inspired by [kmbeamer](https://github.com/kmaed/kmbeamer))
+- `beamer-setup-console`（灵感来自 [kmbeamer](https://github.com/kmaed/kmbeamer)）
 
 **beamer-setup**
 
@@ -130,7 +130,7 @@ All Beamer styles share the same commands and structure, so you can switch betwe
 
 ![beamer-setup-console-demo](assets/beamer-setup-console-demo.png)
 
-### Usage
+### 用法
 ```latex
 \documentclass[compress,aspectratio=169]{beamer}
 \input{/path/to/beamer-setup}
@@ -138,7 +138,7 @@ All Beamer styles share the same commands and structure, so you can switch betwe
 ...
 ```
 
-## More
+## 补充
 
-- The repository also includes a `lab-report` template under [`lab-report/`](./lab-report/).
-- The repository also includes a usable VS Code LaTeX Workshop configuration in [`.vscode/settings.json`](./.vscode/settings.json).
+- 仓库中还提供了一个位于 [`lab-report/`](./lab-report/) 下的 `lab-report` 模板。
+- 仓库中还附带了一份可用的 VS Code LaTeX Workshop 配置，见 [`.vscode/settings.json`](./.vscode/settings.json)。

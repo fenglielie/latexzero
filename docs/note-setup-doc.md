@@ -1,8 +1,8 @@
-# note-setup 配置说明
+# note-setup Documentation
 
-## 基本配置
+## Basic Configuration
 
-导入常用基础宏包
+Import commonly used base packages.
 ```latex
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
 \usepackage{mathtools}
@@ -18,12 +18,12 @@
 \usepackage{appendix}
 ```
 
-导入颜色相关宏包
+Import color-related packages.
 ```latex
 \usepackage[dvipsnames]{xcolor}
 ```
 
-导入图片与子图相关宏包，并配置图片搜索路径
+Import packages for images and subfigures, and configure image search paths.
 ```latex
 \usepackage{graphicx}
 \graphicspath{
@@ -33,12 +33,12 @@
 \usepackage{subcaption}
 ```
 
-导入算法环境宏包
+Import the package for algorithm environments.
 ```latex
 \usepackage[ruled,linesnumbered,noline]{algorithm2e}
 ```
 
-导入代码环境宏包并配置样式
+Import the package for code blocks and configure its style.
 ```latex
 \usepackage{listings}
 \lstdefinestyle{simpleStyle}{
@@ -58,7 +58,7 @@
 \lstset{style=simpleStyle}
 ```
 
-导入超链接宏包
+Import the hyperlink package.
 ```latex
 \usepackage{hyperref}
 \hypersetup{
@@ -67,34 +67,34 @@
 ```
 
 
-## 定理环境
+## Theorem Environments
 
-将 `proof` 环境的标题改为 `Proof`，并设置为加粗正体
+Change the title of the `proof` environment to `Proof` and set it in bold upright text.
 ```latex
 \renewcommand*{\proofname}{\normalfont\bfseries Proof}
 ```
 
-导入 `thmtools` 宏包，并使用 `\declaretheorem` 命令定义各类定理环境（相比 `\newtheorem` 更方便）
+Import `thmtools` and use `\declaretheorem` to define theorem-like environments more conveniently than `\newtheorem`.
 ```latex
 \usepackage{thmtools}
 ```
 
-这里使用的 `\declaretheorem` 命令参数包括：
+The `\declaretheorem` options used here include:
 
-- `style`：定理环境样式，`amsthm` 内置的样式包括
-  - plain（默认）：引导词是正体，内容是斜体
-  - definition：引导词和内容都是正体
-  - remark：引导词是斜体，内容是正体
-- `name`：显示在正文中的引导词（不等于环境的名称）
-- `numbered`：是否开启编号
-- `numberwithin`、`sibling`：定义编号规则，例如
-  - `numberwithin=section`：基于 `section` 编号
-  - `sibling=theorem`：共享 `theorem` 环境的编号
+- `style`: theorem style; built-in `amsthm` styles include
+  - plain (default): upright heading, italic body
+  - definition: upright heading and upright body
+  - remark: italic heading and upright body
+- `name`: the printed heading shown in the document body
+- `numbered`: whether numbering is enabled
+- `numberwithin`, `sibling`: numbering rules, for example
+  - `numberwithin=section`: number within `section`
+  - `sibling=theorem`: share the counter with `theorem`
 
 
-具体包括：
+Specifically:
 
-- 采用 `plain` 样式，定义 `theorem` / `theorem*`、`proposition` / `proposition*`、`corollary` / `corollary*`、`lemma` / `lemma*`、`claim` / `claim*` 环境
+- Use the `plain` style to define `theorem` / `theorem*`, `proposition` / `proposition*`, `corollary` / `corollary*`, `lemma` / `lemma*`, and `claim` / `claim*`
 ```latex
 %% define environments
 
@@ -113,7 +113,7 @@
 \declaretheorem[style=plain, name=Claim, numbered=yes, sibling=theorem]{claim}
 \declaretheorem[style=plain, name=Claim, numbered=no]{claim*}
 ```
-- 采用 `definition` 样式，定义 `definition` / `definition*`、`example` / `example*`、`problem` / `problem*` 环境
+- Use the `definition` style to define `definition` / `definition*`, `example` / `example*`, and `problem` / `problem*`
 ```latex
 \declaretheorem[style=definition, name=Definition, numbered=yes, numberwithin=section]{definition}
 \declaretheorem[style=definition, name=Definition, numbered=no]{definition*}
@@ -124,41 +124,41 @@
 \declaretheorem[style=definition, name=Problem, numbered=yes, numberwithin=section]{problem}
 \declaretheorem[style=definition, name=Problem, numbered=no]{problem*}
 ```
-- 采用 `remark` 样式，定义 `remark` / `remark*` 环境
+- Use the `remark` style to define `remark` / `remark*`
 ```latex
 \declaretheorem[style=remark, name=Remark, numbered=yes, numberwithin=section]{remark}
 \declaretheorem[style=remark, name=Remark, numbered=no]{remark*}
 ```
-- 使用 `\declaretheoremstyle` 命令定义新的 `notestyle` 样式，类似 `remark` 环境，但引导词改为 `Note`，并带有颜色
+- Use `\declaretheoremstyle` to define a new `notestyle`, similar to `remark`, but with the heading changed to `Note` and colored
 ```latex
 \declaretheoremstyle[headfont=\color{orange!80}\bfseries, bodyfont=\normalfont, spaceabove=3pt, spacebelow=3pt]{notestyle}
 ```
-- 采用新定义的 `notestyle` 样式，定义 `note` / `note*` 环境
+- Use the custom `notestyle` to define `note` / `note*`
 ```latex
 \declaretheorem[style=notestyle, name=Note, numbered=yes, numberwithin=section]{note}
 \declaretheorem[style=notestyle, name=Note, numbered=no]{note*}
 ```
-- 使用 `\declaretheoremstyle` 命令定义新的 `solutionstyle` 样式，类似 `proof` 环境，但引导词改为 `Solution`
+- Use `\declaretheoremstyle` to define a new `solutionstyle`, similar to `proof`, but with the heading changed to `Solution`
 ```latex
 \declaretheoremstyle[headfont=\bfseries, bodyfont=\normalfont, spaceabove=3pt, spacebelow=3pt, qed=\ensuremath{\square}]{solutionstyle}
 ```
-- 采用新定义的 `solutionstyle` 样式，定义 `solution` / `solution*` 环境
+- Use the custom `solutionstyle` to define `solution` / `solution*`
 ```latex
 \declaretheorem[style=solutionstyle, name=Solution, numbered=yes, numberwithin=section]{solution}
 \declaretheorem[style=solutionstyle, name=Solution, numbered=no]{solution*}
 ```
 
 
-## 定理环境的美化
+## Theorem Styling
 
-导入 `tcolorbox` 宏包，用盒子样式美化现有的定理环境
+Import `tcolorbox` to style existing theorem environments with boxes.
 ```latex
 \usepackage[most]{tcolorbox}
 ```
 
-`tcolorbox` 宏包功能非常丰富，这里只用到 `\tcolorboxenvironment` 命令。
+`tcolorbox` is very feature-rich, but only `\tcolorboxenvironment` is needed here.
 
-首先封装一个 `\newtcbenvironment` 命令：
+First, wrap it into a `\newtcbenvironment` command:
 ```latex
 \newcommand{\newtcbenvironment}[2]{
     \tcolorboxenvironment{#1}{#2, enhanced, breakable, sharp corners, boxrule=1pt}
@@ -166,21 +166,21 @@
 }
 ```
 
-它可以同时为 `#1` 和 `#1*` 这两个环境加上盒子，其中公共参数包括：
+This adds boxes to both `#1` and `#1*`. The shared options are:
 
-- `#2`：定义时传入的参数，这里主要是边框颜色和背景色
-- `enhanced`：样式增强
-- `breakable`：允许跨页
-- `boxrule=1pt`：边框宽度为 1pt
+- `#2`: options passed in during definition, mainly frame and background colors
+- `enhanced`: enhanced styling
+- `breakable`: allow page breaks
+- `boxrule=1pt`: set frame width to 1pt
 
-此外还有以下区别：
+The differences are:
 
-- `#1` 盒子使用直角边框（`sharp corners`）
-- `#1*` 盒子使用圆角边框（`rounded corners`）
+- `#1` uses sharp corners
+- `#1*` uses rounded corners
 
-> 调整 `\newtcbenvironment` 内部的公共参数后，可以进一步实现仅保留左侧边框、或四周无边框等不同效果。
+> By adjusting the shared options inside `\newtcbenvironment`, you can also achieve other effects, such as left-border-only boxes or borderless boxes.
 
-下面为前面的各类定理环境加上盒子，主要参数是盒子的边框颜色 `colframe` 和背景色 `colback`。
+Next, apply boxes to the theorem environments above. The main parameters are the frame color `colframe` and background color `colback`.
 ```latex
 %% define styles
 
@@ -195,9 +195,9 @@
 \newtcbenvironment{problem}{colframe=WildStrawberry!30, colback=WildStrawberry!5}
 ```
 
-具体颜色如下表：
+The colors are as follows:
 
-|            环境名             |   盒子边框颜色    |    盒子背景色    |
+|          Environment          |    Frame Color    | Background Color |
 | :---------------------------: | :---------------: | :--------------: |
 |   `theorem`, `proposition`    |    RoyalPurple    |  RoyalPurple!8   |
 | `corollary`, `lemma`, `claim` |     NavyBlue      |    SkyBlue!8     |
@@ -205,12 +205,12 @@
 |           `example`           |     RawSienna     |   RawSienna!5    |
 |           `problem`           | WildStrawberry!30 | WildStrawberry!5 |
 
-说明：
+Notes:
 
-- 这里采用 `xcolor` 宏包提供的标准颜色，`xxx!n` 表示将颜色 `xxx` 按 `n%` 的比例与白色混合得到的浅色。
-- 为了避免颜色过多，对语义类似的环境合并采用相同的盒子颜色。
+- The standard colors provided by `xcolor` are used here. `xxx!n` means mixing color `xxx` with white at a ratio of `n%`.
+- To avoid too many colors, environments with similar semantics share the same box colors.
 
-此外，还添加了一个没有标题的简单盒子 `cbox`：
+In addition, a simple untitled box `cbox` is defined:
 ```latex
 %% cbox
 \newtcolorbox{cbox}[1][]{%
@@ -225,9 +225,9 @@
 ```
 
 
-## 自定义封面页
+## Custom Cover Page
 
-自定义封面页（参考 [ElegantBook](https://github.com/ElegantLaTeX/ElegantBook) 及其若干衍生模板）：
+Define a custom cover page, inspired by [ElegantBook](https://github.com/ElegantLaTeX/ElegantBook) and several of its derived templates:
 ```latex
 %% cover
 \usepackage{titling}
@@ -270,6 +270,6 @@
 % \makecover{/path/to/cover.png}
 ```
 
-这里没有选择覆盖 `\maketitle`，而是定义了一个新的 `\makecover` 命令，并将封面图路径作为其必需参数。
+Instead of overriding `\maketitle`, this defines a new `\makecover` command that takes the cover image path as a required argument.
 
-封面图建议使用 `1280 × 1024` 的尺寸；尤其对于 `jpg` 格式的图片，尺寸不同会导致编译报错。
+The recommended cover image size is `1280 × 1024`; especially for `jpg` images, using a different size will cause compilation errors.
