@@ -6,6 +6,8 @@ Simple LaTeX templates for mathematical notes and Beamer slides.
 
 > Tested on Overleaf with TeX Live 2022, 2023, and 2024.
 
+> Github page: https://fenglielie.github.io/latexzero/
+
 ## Overview
 
 - Templates for mathematical notes and Beamer slides
