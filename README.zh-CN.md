@@ -52,6 +52,7 @@
 \end{document}
 ```
 
+本地编译时，纯英文 note 和 Beamer 文档可使用 `pdflatex`、`xelatex` 或 `lualatex`；包含中文或 CJK 混排时，推荐使用 `xelatex` 或 `lualatex`。
 
 ## Note
 

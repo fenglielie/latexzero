@@ -43,6 +43,7 @@ Usage example:
 \end{document}
 ```
 
+For local builds, English-only note and Beamer documents can be compiled with `pdflatex`, `xelatex`, or `lualatex`; for CJK or mixed-language documents, `xelatex` or `lualatex` is recommended.
 
 ## Note
 
