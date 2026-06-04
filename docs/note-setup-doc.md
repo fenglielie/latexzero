@@ -148,6 +148,33 @@ Specifically:
 \declaretheorem[style=solutionstyle, name=Solution, numbered=no]{solution*}
 ```
 
+To keep `hyperref` anchors unique across sections, explicitly define the PDF destination names for numbered theorem environments:
+```latex
+% thmtools numberwithin=section does not always propagate the section prefix to
+% hyperref destinations. Include the section anchor explicitly to avoid duplicate
+% PDF destination names such as example.1 in different sections.
+\makeatletter
+\@ifpackageloaded{hyperref}{%
+    \newcommand{\fixTheoremHref}[1]{%
+        \@namedef{theH#1}{\theHsection.\arabic{#1}}%
+    }%
+    \fixTheoremHref{theorem}%
+    \fixTheoremHref{definition}%
+    \fixTheoremHref{example}%
+    \fixTheoremHref{problem}%
+    \fixTheoremHref{remark}%
+    \fixTheoremHref{note}%
+    \fixTheoremHref{solution}%
+    \@namedef{theHproposition}{\theHtheorem}%
+    \@namedef{theHcorollary}{\theHtheorem}%
+    \@namedef{theHlemma}{\theHtheorem}%
+    \@namedef{theHclaim}{\theHtheorem}%
+}{}
+\makeatother
+```
+
+This avoids duplicate PDF destination names when theorem counters restart in each section. The environments declared with `numberwithin=section` receive anchors of the form `section-anchor.counter`. The environments declared with `sibling=theorem` share the `theorem` counter, so their anchors reuse `\theHtheorem`.
+
 
 ## Theorem Styling
 
@@ -227,7 +254,7 @@ In addition, a simple untitled box `cbox` is defined:
 
 ## Custom Cover Page
 
-Define a custom cover page, inspired by [ElegantBook](https://github.com/ElegantLaTeX/ElegantBook) and several of its derived templates:
+Define a custom cover page, inspired by [ElegantBook](https://github.com/ElegantLaTeX/ElegantBook):
 ```latex
 %% cover
 \usepackage{titling}

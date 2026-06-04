@@ -1,6 +1,6 @@
 %================================
 % note-setup-leftsidebox.tex
-% fenglielie@qq.com 2025-09-12
+% fenglielie@qq.com 2026-06-04
 %================================
 
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
@@ -88,6 +88,28 @@
 
 \declaretheorem[style=solutionstyle, name=Solution, numbered=yes, numberwithin=section]{solution}
 \declaretheorem[style=solutionstyle, name=Solution, numbered=no]{solution*}
+
+% thmtools numberwithin=section does not always propagate the section prefix to
+% hyperref destinations. Include the section anchor explicitly to avoid duplicate
+% PDF destination names such as example.1 in different sections.
+\makeatletter
+\@ifpackageloaded{hyperref}{%
+    \newcommand{\fixTheoremHref}[1]{%
+        \@namedef{theH#1}{\theHsection.\arabic{#1}}%
+    }%
+    \fixTheoremHref{theorem}%
+    \fixTheoremHref{definition}%
+    \fixTheoremHref{example}%
+    \fixTheoremHref{problem}%
+    \fixTheoremHref{remark}%
+    \fixTheoremHref{note}%
+    \fixTheoremHref{solution}%
+    \@namedef{theHproposition}{\theHtheorem}%
+    \@namedef{theHcorollary}{\theHtheorem}%
+    \@namedef{theHlemma}{\theHtheorem}%
+    \@namedef{theHclaim}{\theHtheorem}%
+}{}
+\makeatother
 
 \usepackage[most]{tcolorbox}
 

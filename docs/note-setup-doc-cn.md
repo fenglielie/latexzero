@@ -148,6 +148,33 @@
 \declaretheorem[style=solutionstyle, name=Solution, numbered=no]{solution*}
 ```
 
+为了保证 `hyperref` 生成的锚点在不同章节中保持唯一，需要显式定义带编号定理环境的 PDF destination 名称：
+```latex
+% thmtools numberwithin=section does not always propagate the section prefix to
+% hyperref destinations. Include the section anchor explicitly to avoid duplicate
+% PDF destination names such as example.1 in different sections.
+\makeatletter
+\@ifpackageloaded{hyperref}{%
+    \newcommand{\fixTheoremHref}[1]{%
+        \@namedef{theH#1}{\theHsection.\arabic{#1}}%
+    }%
+    \fixTheoremHref{theorem}%
+    \fixTheoremHref{definition}%
+    \fixTheoremHref{example}%
+    \fixTheoremHref{problem}%
+    \fixTheoremHref{remark}%
+    \fixTheoremHref{note}%
+    \fixTheoremHref{solution}%
+    \@namedef{theHproposition}{\theHtheorem}%
+    \@namedef{theHcorollary}{\theHtheorem}%
+    \@namedef{theHlemma}{\theHtheorem}%
+    \@namedef{theHclaim}{\theHtheorem}%
+}{}
+\makeatother
+```
+
+这可以避免定理计数器在每个章节内重新开始编号时产生重复的 PDF destination 名称。使用 `numberwithin=section` 声明的环境会得到形如 `section-anchor.counter` 的锚点。使用 `sibling=theorem` 声明的环境共享 `theorem` 计数器，因此它们的锚点复用 `\theHtheorem`。
+
 
 ## 定理环境的美化
 
@@ -227,7 +254,7 @@
 
 ## 自定义封面页
 
-自定义封面页（参考 [ElegantBook](https://github.com/ElegantLaTeX/ElegantBook) 及其若干衍生模板）：
+自定义封面页，参考 [ElegantBook](https://github.com/ElegantLaTeX/ElegantBook) ：
 ```latex
 %% cover
 \usepackage{titling}
