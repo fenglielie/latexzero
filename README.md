@@ -136,6 +136,7 @@ All Beamer styles share the same commands and structure, so you can switch betwe
 ### Usage
 ```latex
 \documentclass[compress,aspectratio=169]{beamer}
+% \definecolor{simplebeamercolor}{RGB}{200,50,50}% define before \input to customize theme color
 \input{/path/to/beamer-setup}
 
 ...

@@ -145,6 +145,7 @@
 ### 用法
 ```latex
 \documentclass[compress,aspectratio=169]{beamer}
+% \definecolor{simplebeamercolor}{RGB}{200,50,50}% 在 \input 前定义以自定义主题色
 \input{/path/to/beamer-setup}
 
 ...

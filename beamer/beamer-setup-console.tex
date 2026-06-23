@@ -1,12 +1,13 @@
 %================================
 % beamer-setup-console.tex
-% fenglielie@qq.com 2025-11-12
+% fenglielie@qq.com 2026-06-23
 %================================
 
 \usetheme{default}
 \useoutertheme{default}
 \usefonttheme[onlymath]{serif}
-\definecolor{simplebeamercolor}{RGB}{255,216,80}
+% define simplebeamercolor before \input to override
+\providecolor{simplebeamercolor}{RGB}{255,216,80}
 \usecolortheme[named=simplebeamercolor]{structure}
 
 \setbeamertemplate{title page}[default][colsep=-4bp,rounded=true,shadow=true]

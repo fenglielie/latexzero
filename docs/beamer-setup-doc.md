@@ -7,7 +7,8 @@ Set the theme, including the navigation bar style, math font, and theme color.
 \usetheme{default}
 \useoutertheme[subsection=false]{miniframes}
 \usefonttheme[onlymath]{serif}
-\definecolor{simplebeamercolor}{RGB}{57,89,199}
+% define simplebeamercolor before \input to override
+\providecolor{simplebeamercolor}{RGB}{57,89,199}
 \usecolortheme[named=simplebeamercolor]{structure}
 ```
 

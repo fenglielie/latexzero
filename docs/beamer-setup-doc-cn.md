@@ -7,7 +7,8 @@
 \usetheme{default}
 \useoutertheme[subsection=false]{miniframes}
 \usefonttheme[onlymath]{serif}
-\definecolor{simplebeamercolor}{RGB}{57,89,199}
+% define simplebeamercolor before \input to override
+\providecolor{simplebeamercolor}{RGB}{57,89,199}
 \usecolortheme[named=simplebeamercolor]{structure}
 ```
 
