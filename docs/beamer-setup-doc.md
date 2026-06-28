@@ -41,9 +41,9 @@ Set the footer style: show only page numbers and remove navigation symbols.
 \setbeamertemplate{navigation symbols}{}
 ```
 
-Set the frame title style by adding a horizontal rule below the frame title.
+Set the frame title style by adding a 0.6pt horizontal rule below the frame title.
 ```latex
-\setbeamertemplate{frametitle}{\vspace*{0.5em}\insertframetitle\par\vskip-6pt\hrulefill\vspace{-0.1em}}
+\setbeamertemplate{frametitle}{\vspace*{0.5em}\insertframetitle\par\vskip-6pt\noindent\rule{\linewidth}{0.6pt}\vspace{-0.1em}}
 ```
 
 Set the title style.

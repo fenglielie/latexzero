@@ -6,8 +6,6 @@ Simple LaTeX templates for mathematical notes and Beamer slides.
 
 > Tested on Overleaf with TeX Live 2022, 2023, and 2024.
 
-> Github page: https://fenglielie.github.io/latexzero/
-
 ## Overview
 
 - Templates for mathematical notes and Beamer slides
@@ -119,6 +117,7 @@ All Beamer styles share the same commands and structure, so you can switch betwe
 
 - `beamer-setup`
 - `beamer-setup-plain`
+- `beamer-setup-simple` (derived from `beamer-setup-plain`, with a simpler title page)
 - `beamer-setup-console` (inspired by [kmbeamer](https://github.com/kmaed/kmbeamer))
 
 **beamer-setup**
@@ -128,6 +127,10 @@ All Beamer styles share the same commands and structure, so you can switch betwe
 **beamer-setup-plain**
 
 ![beamer-setup-plain-demo](assets/beamer-setup-plain-demo.png)
+
+**beamer-setup-simple**
+
+Derived from `beamer-setup-plain`, with a simpler left-aligned title page and a horizontal rule.
 
 **beamer-setup-console**
 

@@ -4,5 +4,3 @@
 *.synctex.gz
 *.synctex.gz.sum.synctex
 indent.log
-
-!demo*.pdf

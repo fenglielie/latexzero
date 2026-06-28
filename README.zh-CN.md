@@ -6,8 +6,6 @@
 
 > 已在 Overleaf 的 TeX Live 2022、2023 和 2024 环境下测试。
 
-> Github page: https://fenglielie.github.io/latexzero/
-
 ## 概览
 
 - 提供数学笔记与 Beamer 模板
@@ -128,6 +126,7 @@
 
 - `beamer-setup`
 - `beamer-setup-plain`
+- `beamer-setup-simple`（从 `beamer-setup-plain` 衍生，封面更简洁）
 - `beamer-setup-console`（灵感来自 [kmbeamer](https://github.com/kmaed/kmbeamer)）
 
 **beamer-setup**
@@ -137,6 +136,10 @@
 **beamer-setup-plain**
 
 ![beamer-setup-plain-demo](assets/beamer-setup-plain-demo.png)
+
+**beamer-setup-simple**
+
+从 `beamer-setup-plain` 衍生，使用左对齐文字和横线的简洁封面。
 
 **beamer-setup-console**
 

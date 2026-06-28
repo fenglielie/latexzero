@@ -41,9 +41,9 @@
 \setbeamertemplate{navigation symbols}{}
 ```
 
-设置帧标题样式：在帧标题下面添加一条横线
+设置帧标题样式：在帧标题下面添加一条 `0.6pt` 的横线
 ```latex
-\setbeamertemplate{frametitle}{\vspace*{0.5em}\insertframetitle\par\vskip-6pt\hrulefill\vspace{-0.1em}}
+\setbeamertemplate{frametitle}{\vspace*{0.5em}\insertframetitle\par\vskip-6pt\noindent\rule{\linewidth}{0.6pt}\vspace{-0.1em}}
 ```
 
 设置标题样式
