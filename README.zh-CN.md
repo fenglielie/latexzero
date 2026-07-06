@@ -141,6 +141,9 @@
 
 从 `beamer-setup-plain` 衍生，使用左对齐文字和横线的简洁封面。
 
+![titlepage](assets/beamer-titlepage.png)
+![titlepage-simple](assets/beamer-titlepage-simple.png)
+
 **beamer-setup-console**
 
 ![beamer-setup-console-demo](assets/beamer-setup-console-demo.png)

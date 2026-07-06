@@ -132,6 +132,9 @@ All Beamer styles share the same commands and structure, so you can switch betwe
 
 Derived from `beamer-setup-plain`, with a simpler left-aligned title page and a horizontal rule.
 
+![titlepage](assets/beamer-titlepage.png)
+![titlepage-simple](assets/beamer-titlepage-simple.png)
+
 **beamer-setup-console**
 
 ![beamer-setup-console-demo](assets/beamer-setup-console-demo.png)
