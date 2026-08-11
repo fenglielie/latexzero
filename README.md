@@ -4,7 +4,7 @@ English | [简体中文](./README.zh-CN.md)
 
 Simple LaTeX templates for mathematical notes and Beamer slides.
 
-> Tested on Overleaf with TeX Live 2022, 2023, and 2024.
+> The latest supported release is TeX Live 2025. TeX Live 2026 is currently unsupported due to [thmtools issue #75](https://github.com/muzimuzhi/thmtools/issues/75).
 
 ## Overview
 

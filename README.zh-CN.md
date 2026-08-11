@@ -4,7 +4,7 @@
 
 适用于数学笔记与 Beamer 的简洁 LaTeX 模板。
 
-> 已在 Overleaf 的 TeX Live 2022、2023 和 2024 环境下测试。
+> 当前支持的最新版本为 TeX Live 2025。TeX Live 2026 目前因 [thmtools issue #75](https://github.com/muzimuzhi/thmtools/issues/75) 暂不受支持。
 
 ## 概览
 
