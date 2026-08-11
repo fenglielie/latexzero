@@ -4,8 +4,6 @@
 
 适用于数学笔记与 Beamer 的简洁 LaTeX 模板。
 
-> 当前支持的最新版本为 TeX Live 2025。TeX Live 2026 目前因 [thmtools issue #75](https://github.com/muzimuzhi/thmtools/issues/75) 暂不受支持。
-
 ## 概览
 
 - 提供数学笔记与 Beamer 模板
@@ -54,6 +52,11 @@
 
 ## Note
 
+> **兼容性更新：** Note 模板已由 `thmtools` 迁移至 `keytheorems`，以规避
+> TeX Live 2026 引入 alias counter 后出现的共享计数器兼容性问题。由于
+> `keytheorems` 不支持原有的 `mdframed` 集成，旧的 `mdframed` 样式也已移除。
+> 详见 [thmtools issue #75](https://github.com/muzimuzhi/thmtools/issues/75)。
+
 ### 可用样式
 
 这些 note 样式共享同一套命令和环境定义，因此只需替换对应的 setup 文件即可直接切换。
@@ -64,7 +67,6 @@
 - `note-setup-leftsidebox` (tcolorbox)
 - `note-setup-borderless` (tcolorbox)
 - `note-setup-dark` (tcolorbox，实验性样式，实际使用时可能存在一些问题)
-- `note-setup-mdframed` (mdframed, legacy)
 
 **note-setup-simple**
 

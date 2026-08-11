@@ -4,8 +4,6 @@ English | [简体中文](./README.zh-CN.md)
 
 Simple LaTeX templates for mathematical notes and Beamer slides.
 
-> The latest supported release is TeX Live 2025. TeX Live 2026 is currently unsupported due to [thmtools issue #75](https://github.com/muzimuzhi/thmtools/issues/75).
-
 ## Overview
 
 - Templates for mathematical notes and Beamer slides
@@ -45,6 +43,13 @@ For local builds, English-only note and Beamer documents can be compiled with `p
 
 ## Note
 
+> **Compatibility update:** The note templates now use `keytheorems` instead
+> of `thmtools`. This avoids the shared-counter incompatibility caused by the
+> alias-counter changes in TeX Live 2026. The legacy `mdframed` setup has also
+> been removed because its `thmtools` integration is not supported by
+> `keytheorems`. See [thmtools issue #75](https://github.com/muzimuzhi/thmtools/issues/75)
+> for details.
+
 ### Available styles
 
 All note styles share the same commands and environments, so you can switch between them directly by changing the setup file.
@@ -55,7 +60,6 @@ All note styles share the same commands and environments, so you can switch betw
 - `note-setup-leftsidebox` (tcolorbox)
 - `note-setup-borderless` (tcolorbox)
 - `note-setup-dark` (tcolorbox, experimental; may have issues in practical use)
-- `note-setup-mdframed` (mdframed, legacy)
 
 **note-setup-simple**
 

@@ -74,12 +74,12 @@ Change the title of the `proof` environment to `Proof` and set it in bold uprigh
 \renewcommand*{\proofname}{\normalfont\bfseries Proof}
 ```
 
-Import `thmtools` and use `\declaretheorem` to define theorem-like environments more conveniently than `\newtheorem`.
+Import `keytheorems` and use `\newkeytheorem` to define theorem-like environments with a key-value interface.
 ```latex
-\usepackage{thmtools}
+\usepackage{keytheorems}
 ```
 
-The `\declaretheorem` options used here include:
+The `\newkeytheorem` options used here include:
 
 - `style`: theorem style; built-in `amsthm` styles include
   - plain (default): upright heading, italic body
@@ -87,8 +87,8 @@ The `\declaretheorem` options used here include:
   - remark: italic heading and upright body
 - `name`: the printed heading shown in the document body
 - `numbered`: whether numbering is enabled
-- `numberwithin`, `sibling`: numbering rules, for example
-  - `numberwithin=section`: number within `section`
+- `parent`, `sibling`: numbering rules, for example
+  - `parent=section`: number within `section`
   - `sibling=theorem`: share the counter with `theorem`
 
 
@@ -98,83 +98,55 @@ Specifically:
 ```latex
 %% define environments
 
-\declaretheorem[style=plain, name=Theorem, numbered=yes, numberwithin=section]{theorem}
-\declaretheorem[style=plain, name=Theorem, numbered=no]{theorem*}
+\newkeytheorem{theorem}[style=plain, name=Theorem, numbered=true, parent=section]
+\newkeytheorem{theorem*}[style=plain, name=Theorem, numbered=false]
 
-\declaretheorem[style=plain, name=Proposition, numbered=yes, sibling=theorem]{proposition}
-\declaretheorem[style=plain, name=Proposition, numbered=no]{proposition*}
+\newkeytheorem{proposition}[style=plain, name=Proposition, numbered=true, sibling=theorem]
+\newkeytheorem{proposition*}[style=plain, name=Proposition, numbered=false]
 
-\declaretheorem[style=plain, name=Corollary, numbered=yes, sibling=theorem]{corollary}
-\declaretheorem[style=plain, name=Corollary, numbered=no]{corollary*}
+\newkeytheorem{corollary}[style=plain, name=Corollary, numbered=true, sibling=theorem]
+\newkeytheorem{corollary*}[style=plain, name=Corollary, numbered=false]
 
-\declaretheorem[style=plain, name=Lemma, numbered=yes, sibling=theorem]{lemma}
-\declaretheorem[style=plain, name=Lemma, numbered=no]{lemma*}
+\newkeytheorem{lemma}[style=plain, name=Lemma, numbered=true, sibling=theorem]
+\newkeytheorem{lemma*}[style=plain, name=Lemma, numbered=false]
 
-\declaretheorem[style=plain, name=Claim, numbered=yes, sibling=theorem]{claim}
-\declaretheorem[style=plain, name=Claim, numbered=no]{claim*}
+\newkeytheorem{claim}[style=plain, name=Claim, numbered=true, sibling=theorem]
+\newkeytheorem{claim*}[style=plain, name=Claim, numbered=false]
 ```
 - Use the `definition` style to define `definition` / `definition*`, `example` / `example*`, and `problem` / `problem*`
 ```latex
-\declaretheorem[style=definition, name=Definition, numbered=yes, numberwithin=section]{definition}
-\declaretheorem[style=definition, name=Definition, numbered=no]{definition*}
+\newkeytheorem{definition}[style=definition, name=Definition, numbered=true, parent=section]
+\newkeytheorem{definition*}[style=definition, name=Definition, numbered=false]
 
-\declaretheorem[style=definition, name=Example, numbered=yes, numberwithin=section]{example}
-\declaretheorem[style=definition, name=Example, numbered=no]{example*}
+\newkeytheorem{example}[style=definition, name=Example, numbered=true, parent=section]
+\newkeytheorem{example*}[style=definition, name=Example, numbered=false]
 
-\declaretheorem[style=definition, name=Problem, numbered=yes, numberwithin=section]{problem}
-\declaretheorem[style=definition, name=Problem, numbered=no]{problem*}
+\newkeytheorem{problem}[style=definition, name=Problem, numbered=true, parent=section]
+\newkeytheorem{problem*}[style=definition, name=Problem, numbered=false]
 ```
 - Use the `remark` style to define `remark` / `remark*`
 ```latex
-\declaretheorem[style=remark, name=Remark, numbered=yes, numberwithin=section]{remark}
-\declaretheorem[style=remark, name=Remark, numbered=no]{remark*}
+\newkeytheorem{remark}[style=remark, name=Remark, numbered=true, parent=section]
+\newkeytheorem{remark*}[style=remark, name=Remark, numbered=false]
 ```
-- Use `\declaretheoremstyle` to define a new `notestyle`, similar to `remark`, but with the heading changed to `Note` and colored
+- Use `\newkeytheoremstyle` to define a new `notestyle`, similar to `remark`, but with the heading changed to `Note` and colored
 ```latex
-\declaretheoremstyle[headfont=\color{orange!80}\bfseries, bodyfont=\normalfont, spaceabove=3pt, spacebelow=3pt]{notestyle}
+\newkeytheoremstyle{notestyle}{headfont=\color{orange!80}\bfseries, bodyfont=\normalfont, spaceabove=3pt, spacebelow=3pt}
 ```
 - Use the custom `notestyle` to define `note` / `note*`
 ```latex
-\declaretheorem[style=notestyle, name=Note, numbered=yes, numberwithin=section]{note}
-\declaretheorem[style=notestyle, name=Note, numbered=no]{note*}
+\newkeytheorem{note}[style=notestyle, name=Note, numbered=true, parent=section]
+\newkeytheorem{note*}[style=notestyle, name=Note, numbered=false]
 ```
-- Use `\declaretheoremstyle` to define a new `solutionstyle`, similar to `proof`, but with the heading changed to `Solution`
+- Use `\newkeytheoremstyle` to define a new `solutionstyle`, similar to `proof`, but with the heading changed to `Solution`
 ```latex
-\declaretheoremstyle[headfont=\bfseries, bodyfont=\normalfont, spaceabove=3pt, spacebelow=3pt, qed=\ensuremath{\square}]{solutionstyle}
+\newkeytheoremstyle{solutionstyle}{headfont=\bfseries, bodyfont=\normalfont, spaceabove=3pt, spacebelow=3pt, qed=\ensuremath{\square}}
 ```
 - Use the custom `solutionstyle` to define `solution` / `solution*`
 ```latex
-\declaretheorem[style=solutionstyle, name=Solution, numbered=yes, numberwithin=section]{solution}
-\declaretheorem[style=solutionstyle, name=Solution, numbered=no]{solution*}
+\newkeytheorem{solution}[style=solutionstyle, name=Solution, numbered=true, parent=section]
+\newkeytheorem{solution*}[style=solutionstyle, name=Solution, numbered=false]
 ```
-
-To keep `hyperref` anchors unique across sections, explicitly define the PDF destination names for numbered theorem environments:
-```latex
-% thmtools numberwithin=section does not always propagate the section prefix to
-% hyperref destinations. Include the section anchor explicitly to avoid duplicate
-% PDF destination names such as example.1 in different sections.
-\makeatletter
-\@ifpackageloaded{hyperref}{%
-    \newcommand{\fixTheoremHref}[1]{%
-        \@namedef{theH#1}{\theHsection.\arabic{#1}}%
-    }%
-    \fixTheoremHref{theorem}%
-    \fixTheoremHref{definition}%
-    \fixTheoremHref{example}%
-    \fixTheoremHref{problem}%
-    \fixTheoremHref{remark}%
-    \fixTheoremHref{note}%
-    \fixTheoremHref{solution}%
-    \@namedef{theHproposition}{\theHtheorem}%
-    \@namedef{theHcorollary}{\theHtheorem}%
-    \@namedef{theHlemma}{\theHtheorem}%
-    \@namedef{theHclaim}{\theHtheorem}%
-}{}
-\makeatother
-```
-
-This avoids duplicate PDF destination names when theorem counters restart in each section. The environments declared with `numberwithin=section` receive anchors of the form `section-anchor.counter`. The environments declared with `sibling=theorem` share the `theorem` counter, so their anchors reuse `\theHtheorem`.
-
 
 ## Theorem Styling
 

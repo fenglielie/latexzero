@@ -74,12 +74,12 @@
 \renewcommand*{\proofname}{\normalfont\bfseries Proof}
 ```
 
-导入 `thmtools` 宏包，并使用 `\declaretheorem` 命令定义各类定理环境（相比 `\newtheorem` 更方便）
+导入 `keytheorems` 宏包，并使用 `\newkeytheorem` 命令通过键值接口定义各类定理环境
 ```latex
-\usepackage{thmtools}
+\usepackage{keytheorems}
 ```
 
-这里使用的 `\declaretheorem` 命令参数包括：
+这里使用的 `\newkeytheorem` 命令参数包括：
 
 - `style`：定理环境样式，`amsthm` 内置的样式包括
   - plain（默认）：引导词是正体，内容是斜体
@@ -87,8 +87,8 @@
   - remark：引导词是斜体，内容是正体
 - `name`：显示在正文中的引导词（不等于环境的名称）
 - `numbered`：是否开启编号
-- `numberwithin`、`sibling`：定义编号规则，例如
-  - `numberwithin=section`：基于 `section` 编号
+- `parent`、`sibling`：定义编号规则，例如
+  - `parent=section`：基于 `section` 编号
   - `sibling=theorem`：共享 `theorem` 环境的编号
 
 
@@ -98,83 +98,55 @@
 ```latex
 %% define environments
 
-\declaretheorem[style=plain, name=Theorem, numbered=yes, numberwithin=section]{theorem}
-\declaretheorem[style=plain, name=Theorem, numbered=no]{theorem*}
+\newkeytheorem{theorem}[style=plain, name=Theorem, numbered=true, parent=section]
+\newkeytheorem{theorem*}[style=plain, name=Theorem, numbered=false]
 
-\declaretheorem[style=plain, name=Proposition, numbered=yes, sibling=theorem]{proposition}
-\declaretheorem[style=plain, name=Proposition, numbered=no]{proposition*}
+\newkeytheorem{proposition}[style=plain, name=Proposition, numbered=true, sibling=theorem]
+\newkeytheorem{proposition*}[style=plain, name=Proposition, numbered=false]
 
-\declaretheorem[style=plain, name=Corollary, numbered=yes, sibling=theorem]{corollary}
-\declaretheorem[style=plain, name=Corollary, numbered=no]{corollary*}
+\newkeytheorem{corollary}[style=plain, name=Corollary, numbered=true, sibling=theorem]
+\newkeytheorem{corollary*}[style=plain, name=Corollary, numbered=false]
 
-\declaretheorem[style=plain, name=Lemma, numbered=yes, sibling=theorem]{lemma}
-\declaretheorem[style=plain, name=Lemma, numbered=no]{lemma*}
+\newkeytheorem{lemma}[style=plain, name=Lemma, numbered=true, sibling=theorem]
+\newkeytheorem{lemma*}[style=plain, name=Lemma, numbered=false]
 
-\declaretheorem[style=plain, name=Claim, numbered=yes, sibling=theorem]{claim}
-\declaretheorem[style=plain, name=Claim, numbered=no]{claim*}
+\newkeytheorem{claim}[style=plain, name=Claim, numbered=true, sibling=theorem]
+\newkeytheorem{claim*}[style=plain, name=Claim, numbered=false]
 ```
 - 采用 `definition` 样式，定义 `definition` / `definition*`、`example` / `example*`、`problem` / `problem*` 环境
 ```latex
-\declaretheorem[style=definition, name=Definition, numbered=yes, numberwithin=section]{definition}
-\declaretheorem[style=definition, name=Definition, numbered=no]{definition*}
+\newkeytheorem{definition}[style=definition, name=Definition, numbered=true, parent=section]
+\newkeytheorem{definition*}[style=definition, name=Definition, numbered=false]
 
-\declaretheorem[style=definition, name=Example, numbered=yes, numberwithin=section]{example}
-\declaretheorem[style=definition, name=Example, numbered=no]{example*}
+\newkeytheorem{example}[style=definition, name=Example, numbered=true, parent=section]
+\newkeytheorem{example*}[style=definition, name=Example, numbered=false]
 
-\declaretheorem[style=definition, name=Problem, numbered=yes, numberwithin=section]{problem}
-\declaretheorem[style=definition, name=Problem, numbered=no]{problem*}
+\newkeytheorem{problem}[style=definition, name=Problem, numbered=true, parent=section]
+\newkeytheorem{problem*}[style=definition, name=Problem, numbered=false]
 ```
 - 采用 `remark` 样式，定义 `remark` / `remark*` 环境
 ```latex
-\declaretheorem[style=remark, name=Remark, numbered=yes, numberwithin=section]{remark}
-\declaretheorem[style=remark, name=Remark, numbered=no]{remark*}
+\newkeytheorem{remark}[style=remark, name=Remark, numbered=true, parent=section]
+\newkeytheorem{remark*}[style=remark, name=Remark, numbered=false]
 ```
-- 使用 `\declaretheoremstyle` 命令定义新的 `notestyle` 样式，类似 `remark` 环境，但引导词改为 `Note`，并带有颜色
+- 使用 `\newkeytheoremstyle` 命令定义新的 `notestyle` 样式，类似 `remark` 环境，但引导词改为 `Note`，并带有颜色
 ```latex
-\declaretheoremstyle[headfont=\color{orange!80}\bfseries, bodyfont=\normalfont, spaceabove=3pt, spacebelow=3pt]{notestyle}
+\newkeytheoremstyle{notestyle}{headfont=\color{orange!80}\bfseries, bodyfont=\normalfont, spaceabove=3pt, spacebelow=3pt}
 ```
 - 采用新定义的 `notestyle` 样式，定义 `note` / `note*` 环境
 ```latex
-\declaretheorem[style=notestyle, name=Note, numbered=yes, numberwithin=section]{note}
-\declaretheorem[style=notestyle, name=Note, numbered=no]{note*}
+\newkeytheorem{note}[style=notestyle, name=Note, numbered=true, parent=section]
+\newkeytheorem{note*}[style=notestyle, name=Note, numbered=false]
 ```
-- 使用 `\declaretheoremstyle` 命令定义新的 `solutionstyle` 样式，类似 `proof` 环境，但引导词改为 `Solution`
+- 使用 `\newkeytheoremstyle` 命令定义新的 `solutionstyle` 样式，类似 `proof` 环境，但引导词改为 `Solution`
 ```latex
-\declaretheoremstyle[headfont=\bfseries, bodyfont=\normalfont, spaceabove=3pt, spacebelow=3pt, qed=\ensuremath{\square}]{solutionstyle}
+\newkeytheoremstyle{solutionstyle}{headfont=\bfseries, bodyfont=\normalfont, spaceabove=3pt, spacebelow=3pt, qed=\ensuremath{\square}}
 ```
 - 采用新定义的 `solutionstyle` 样式，定义 `solution` / `solution*` 环境
 ```latex
-\declaretheorem[style=solutionstyle, name=Solution, numbered=yes, numberwithin=section]{solution}
-\declaretheorem[style=solutionstyle, name=Solution, numbered=no]{solution*}
+\newkeytheorem{solution}[style=solutionstyle, name=Solution, numbered=true, parent=section]
+\newkeytheorem{solution*}[style=solutionstyle, name=Solution, numbered=false]
 ```
-
-为了保证 `hyperref` 生成的锚点在不同章节中保持唯一，需要显式定义带编号定理环境的 PDF destination 名称：
-```latex
-% thmtools numberwithin=section does not always propagate the section prefix to
-% hyperref destinations. Include the section anchor explicitly to avoid duplicate
-% PDF destination names such as example.1 in different sections.
-\makeatletter
-\@ifpackageloaded{hyperref}{%
-    \newcommand{\fixTheoremHref}[1]{%
-        \@namedef{theH#1}{\theHsection.\arabic{#1}}%
-    }%
-    \fixTheoremHref{theorem}%
-    \fixTheoremHref{definition}%
-    \fixTheoremHref{example}%
-    \fixTheoremHref{problem}%
-    \fixTheoremHref{remark}%
-    \fixTheoremHref{note}%
-    \fixTheoremHref{solution}%
-    \@namedef{theHproposition}{\theHtheorem}%
-    \@namedef{theHcorollary}{\theHtheorem}%
-    \@namedef{theHlemma}{\theHtheorem}%
-    \@namedef{theHclaim}{\theHtheorem}%
-}{}
-\makeatother
-```
-
-这可以避免定理计数器在每个章节内重新开始编号时产生重复的 PDF destination 名称。使用 `numberwithin=section` 声明的环境会得到形如 `section-anchor.counter` 的锚点。使用 `sibling=theorem` 声明的环境共享 `theorem` 计数器，因此它们的锚点复用 `\theHtheorem`。
-
 
 ## 定理环境的美化
 
