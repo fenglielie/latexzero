@@ -1,0 +1,47 @@
+name: Build LaTeX template tests
+
+on:
+  workflow_dispatch:
+    inputs:
+      texlive_version:
+        description: TeX Live version (2020-2026 or latest)
+        required: true
+        default: "2026"
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: ${{ matrix.template }} / ${{ matrix.latex_engine }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        template:
+          - note
+          - beamer
+        latex_engine:
+          - pdflatex
+          - xelatex
+          - lualatex
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Build ${{ matrix.template }} templates
+        uses: xu-cheng/texlive-action@v3
+        with:
+          texlive_version: ${{ inputs.texlive_version }}
+          os: debian
+          run: bash .github/scripts/build-${{ matrix.template }}-tests.sh "${{ matrix.latex_engine }}"
+
+      - name: Upload ${{ matrix.template }} PDFs
+        uses: actions/upload-artifact@v5
+        with:
+          name: ${{ matrix.template }}-template-pdfs-${{ matrix.latex_engine }}-texlive-${{ inputs.texlive_version }}
+          path: artifacts/${{ matrix.template }}/
+          if-no-files-found: error
+          retention-days: 14
