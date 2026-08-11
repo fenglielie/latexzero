@@ -39,7 +39,7 @@ jobs:
           run: bash .github/scripts/build-${{ matrix.template }}-tests.sh "${{ matrix.latex_engine }}"
 
       - name: Upload ${{ matrix.template }} PDFs
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: ${{ matrix.template }}-template-pdfs-${{ matrix.latex_engine }}-texlive-${{ inputs.texlive_version }}
           path: artifacts/${{ matrix.template }}/
