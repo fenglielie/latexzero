@@ -4,6 +4,13 @@
 
 适用于数学笔记与 Beamer 的简洁 LaTeX 模板。
 
+> **Note 模板兼容性更新：** Note 模板已由 `thmtools` 迁移至 `keytheorems`，
+> 以规避 [thmtools issue #75](https://github.com/muzimuzhi/thmtools/issues/75)
+> 所述的 TeX Live 2026 共享计数器兼容性问题。基于 `thmtools` 的旧版 Note
+> 模板（包括 `mdframed` 样式）保留在
+> [`legacy/thmtools` 分支](https://github.com/fenglielie/latexzero/tree/legacy/thmtools)，
+> 可用于 TeX Live 2025 及更早版本。
+
 ## 概览
 
 - 提供数学笔记与 Beamer 模板
@@ -51,11 +58,6 @@
 本地编译时，纯英文 note 和 Beamer 文档可使用 `pdflatex`、`xelatex` 或 `lualatex`；包含中文或 CJK 混排时，推荐使用 `xelatex` 或 `lualatex`。
 
 ## Note
-
-> **兼容性更新：** Note 模板已由 `thmtools` 迁移至 `keytheorems`，以规避
-> TeX Live 2026 引入 alias counter 后出现的共享计数器兼容性问题。由于
-> `keytheorems` 不支持原有的 `mdframed` 集成，旧的 `mdframed` 样式也已移除。
-> 详见 [thmtools issue #75](https://github.com/muzimuzhi/thmtools/issues/75)。
 
 ### 可用样式
 

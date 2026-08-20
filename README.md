@@ -4,6 +4,15 @@ English | [简体中文](./README.zh-CN.md)
 
 Simple LaTeX templates for mathematical notes and Beamer slides.
 
+> **Note template compatibility:** The Note templates now use `keytheorems`
+> instead of `thmtools` to avoid the shared-counter incompatibility in TeX Live
+> 2026 described in
+> [thmtools issue #75](https://github.com/muzimuzhi/thmtools/issues/75). The
+> previous `thmtools`-based Note templates, including the `mdframed` style, are
+> retained on the
+> [`legacy/thmtools` branch](https://github.com/fenglielie/latexzero/tree/legacy/thmtools)
+> for TeX Live 2025 and earlier.
+
 ## Overview
 
 - Templates for mathematical notes and Beamer slides
@@ -42,13 +51,6 @@ Usage example:
 For local builds, English-only note and Beamer documents can be compiled with `pdflatex`, `xelatex`, or `lualatex`; for CJK or mixed-language documents, `xelatex` or `lualatex` is recommended.
 
 ## Note
-
-> **Compatibility update:** The note templates now use `keytheorems` instead
-> of `thmtools`. This avoids the shared-counter incompatibility caused by the
-> alias-counter changes in TeX Live 2026. The legacy `mdframed` setup has also
-> been removed because its `thmtools` integration is not supported by
-> `keytheorems`. See [thmtools issue #75](https://github.com/muzimuzhi/thmtools/issues/75)
-> for details.
 
 ### Available styles
 
