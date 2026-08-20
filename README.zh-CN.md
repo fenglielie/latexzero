@@ -4,7 +4,11 @@
 
 适用于数学笔记与 Beamer 的简洁 LaTeX 模板。
 
-> 当前支持的最新版本为 TeX Live 2025。TeX Live 2026 目前因 [thmtools issue #75](https://github.com/muzimuzhi/thmtools/issues/75) 暂不受支持。
+> **旧版 Note 模板：** 本分支保留基于 `thmtools` 的 Note 模板定理环境定义，
+> 包括旧的 `mdframed` 样式。由于
+> [thmtools issue #75](https://github.com/muzimuzhi/thmtools/issues/75)
+> 所述的共享计数器兼容性问题，这些 Note 模板最高支持 TeX Live 2025，
+> 不支持 TeX Live 2026。
 
 ## 概览
 

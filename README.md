@@ -4,7 +4,11 @@ English | [简体中文](./README.zh-CN.md)
 
 Simple LaTeX templates for mathematical notes and Beamer slides.
 
-> The latest supported release is TeX Live 2025. TeX Live 2026 is currently unsupported due to [thmtools issue #75](https://github.com/muzimuzhi/thmtools/issues/75).
+> **Legacy Note templates:** This branch retains the `thmtools`-based theorem
+> definitions for the Note templates, including the legacy `mdframed` style.
+> Because of the shared-counter incompatibility described in
+> [thmtools issue #75](https://github.com/muzimuzhi/thmtools/issues/75), these
+> Note templates support up to TeX Live 2025 and do not support TeX Live 2026.
 
 ## Overview
 
