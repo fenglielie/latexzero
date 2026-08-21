@@ -26,6 +26,8 @@ build_root="${repo_root}/.aux/note-template-tests"
 generated_dir="${build_root}/generated"
 aux_root="${build_root}/aux"
 artifact_dir="${repo_root}/artifacts/note"
+note_package="${repo_root}/note-sty/latexzero-note.sty"
+note_styles=(simple box leftsidebox borderless)
 
 rm -rf -- "${build_root}" "${artifact_dir}"
 mkdir -p "${generated_dir}" "${aux_root}" "${artifact_dir}"
@@ -39,6 +41,13 @@ if ((${#note_setups[@]} == 0)); then
   echo "No Note setup files found." >&2
   exit 1
 fi
+
+if [[ ! -f "${note_package}" ]]; then
+  echo "Note package not found: ${note_package}" >&2
+  exit 1
+fi
+
+export TEXINPUTS="${repo_root}/note-sty:${TEXINPUTS:-}"
 
 build_tex() {
   local source_file="$1"
@@ -65,18 +74,17 @@ build_tex() {
 }
 
 generate_note_test() {
-  local setup_file="$1"
-  local setup_name
+  local test_name="$1"
+  local preamble="$2"
   local test_file
 
-  setup_name="$(basename "${setup_file}" .tex)"
-  test_file="${generated_dir}/test-${setup_name}.tex"
+  test_file="${generated_dir}/${test_name}.tex"
 
   cat >"${test_file}" <<EOF
 \documentclass{article}
-\input{${setup_file}}
+${preamble}
 
-\title{Note Template Test: ${setup_name}}
+\title{Note Template Test: ${test_name}}
 \author{GitHub Actions}
 \date{\today}
 
@@ -151,7 +159,16 @@ EOF
 }
 
 for setup_file in "${note_setups[@]}"; do
-  generate_note_test "${setup_file}"
+  setup_name="$(basename "${setup_file}" .tex)"
+  generate_note_test \
+    "test-${setup_name}" \
+    "\\input{${setup_file}}"
+done
+
+for style in "${note_styles[@]}"; do
+  generate_note_test \
+    "test-latexzero-note-${style}" \
+    "\\usepackage[style=${style}]{latexzero-note}"
 done
 
 {
@@ -159,8 +176,12 @@ done
   echo
   echo "LaTeX engine: ${latex_engine}"
   echo
-  echo "Note: ${#note_setups[@]}"
+  echo "Standalone setups: ${#note_setups[@]}"
   printf '  - %s\n' "${note_setups[@]##*/}"
+  echo
+  echo "Package styles: ${#note_styles[@]}"
+  printf '  - %s\n' "${note_styles[@]}"
 } >"${artifact_dir}/manifest.txt"
 
-echo "Built ${#note_setups[@]} Note templates."
+total_tests=$((${#note_setups[@]} + ${#note_styles[@]}))
+echo "Built ${total_tests} Note template tests."
