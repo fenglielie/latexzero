@@ -10,7 +10,34 @@
 \providecolor{simplebeamercolor}{RGB}{57,89,199}
 \usecolortheme[named=simplebeamercolor]{structure}
 
-\setbeamertemplate{title page}[default][colsep=-4bp,rounded=true,shadow=true]
+\setbeamertemplate{title page}{
+    \vbox{}
+    \vfill
+    \noindent\hspace*{0.12\paperwidth}%
+    \begin{minipage}{0.74\paperwidth}
+        \raggedright
+        {\usebeamerfont{title}\bfseries\color{black}\inserttitle\par}
+        \ifx\insertsubtitle\empty\else
+            \vspace{0.8em}
+            {\usebeamerfont{subtitle}\color{black!70}\insertsubtitle\par}
+        \fi
+        \vspace{1.5em}
+        {\color{simplebeamercolor}\rule{\linewidth}{0.8pt}\par}
+        \vspace{2em}
+        \ifx\insertauthor\empty\else
+            {\usebeamerfont{author}\color{black}\insertauthor\par}
+        \fi
+        \ifx\insertinstitute\empty\else
+            \vspace{0.5em}
+            {\usebeamerfont{institute}\color{black!70}\insertinstitute\par}
+        \fi
+        \ifx\insertdate\empty\else
+            \vspace{0.9em}
+            {\usebeamerfont{date}\color{black}\insertdate\par}
+        \fi
+    \end{minipage}
+    \vfill
+}
 \setbeamertemplate{section in toc}[sections numbered]
 \setbeamertemplate{subsection in toc}[subsections numbered]
 \addtobeamertemplate{subsection in toc}{\hspace{2em}}{}

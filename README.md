@@ -125,26 +125,24 @@ To add a cover page, use `\makecover`.
 All Beamer styles share the same commands and structure, so you can switch between them directly by changing the setup file.
 
 - `beamer-setup`
-- `beamer-setup-plain`
-- `beamer-setup-simple` (derived from `beamer-setup-plain`, with a simpler title page)
+- `beamer-setup-plain` (without navigation bars, with a simpler title page)
 - `beamer-setup-console` (inspired by [kmbeamer](https://github.com/kmaed/kmbeamer))
 
 **beamer-setup**
+
+![beamer-setup-titlepage](assets/beamer-titlepage.png)
 
 ![beamer-setup-demo](assets/beamer-setup-demo.png)
 
 **beamer-setup-plain**
 
+![beamer-setup-plain-titlepage](assets/beamer-titlepage-plain.png)
+
 ![beamer-setup-plain-demo](assets/beamer-setup-plain-demo.png)
 
-**beamer-setup-simple**
-
-Derived from `beamer-setup-plain`, with a simpler left-aligned title page and a horizontal rule.
-
-![titlepage](assets/beamer-titlepage.png)
-![titlepage-simple](assets/beamer-titlepage-simple.png)
-
 **beamer-setup-console**
+
+![beamer-setup-console-titlepage](assets/beamer-titlepage-console.png)
 
 ![beamer-setup-console-demo](assets/beamer-setup-console-demo.png)
 

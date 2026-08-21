@@ -131,26 +131,24 @@
 这些 Beamer 样式共享同一套命令和结构，因此只需替换对应的 setup 文件即可直接切换。
 
 - `beamer-setup`
-- `beamer-setup-plain`
-- `beamer-setup-simple`（从 `beamer-setup-plain` 衍生，封面更简洁）
+- `beamer-setup-plain`（无导航栏，封面更简洁）
 - `beamer-setup-console`（灵感来自 [kmbeamer](https://github.com/kmaed/kmbeamer)）
 
 **beamer-setup**
+
+![beamer-setup-titlepage](assets/beamer-titlepage.png)
 
 ![beamer-setup-demo](assets/beamer-setup-demo.png)
 
 **beamer-setup-plain**
 
+![beamer-setup-plain-titlepage](assets/beamer-titlepage-plain.png)
+
 ![beamer-setup-plain-demo](assets/beamer-setup-plain-demo.png)
 
-**beamer-setup-simple**
-
-从 `beamer-setup-plain` 衍生，使用左对齐文字和横线的简洁封面。
-
-![titlepage](assets/beamer-titlepage.png)
-![titlepage-simple](assets/beamer-titlepage-simple.png)
-
 **beamer-setup-console**
+
+![beamer-setup-console-titlepage](assets/beamer-titlepage-console.png)
 
 ![beamer-setup-console-demo](assets/beamer-setup-console-demo.png)
 
