@@ -1,0 +1,348 @@
+\documentclass{article}
+\usepackage[style=leftsidebox]{latexzero-note}
+
+\title{\LaTeX{} Note Template}
+\author{Author}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Theorem, Proposition, Proof}
+
+\begin{theorem}
+    If $1<p<\infty$ and $m > n/p$, or $p=1$ and $m \ge n$, there exist a constant $C = C(m,n,\gamma,p)$, such that
+    \begin{equation*}
+        \Vert R^m u \Vert_{L^\infty(\Omega)} \le C d^{m-n/p} |u|_{W^m_p(\Omega)}
+    \end{equation*}
+    for all $u \in W^m_p(\Omega)$.
+\end{theorem}
+\begin{proof}
+    First, we assume that $u \in C^m(\Omega) \cap W^m_p(\Omega)$. We can use the pointwise representation of $R^mu(x)$.
+    \begin{align*}
+        |R^mu(x)| ={} & m \left| \sum_{|\alpha| = m} \int_{C_x} k_{\alpha}(x,z) D^\alpha u(z)\,dz \right| \notag \\
+        \le{}         & C \sum_{|\alpha|=m} \int_{\Omega} |x-z|^{-n+m} |D^\alpha u(z)|\,dz \notag                \\
+        \le{}         & C' d^{m-n/p} |u|_{W^m_p(\Omega)}.
+    \end{align*}
+    The proof can be completed via a density argument.
+\end{proof}
+
+\begin{theorem}[xxx]
+    If $1<p<\infty$ and $m > n/p$, or $p=1$ and $m \ge n$, there exist a constant $C = C(m,n,\gamma,p)$, such that
+    \begin{equation*}
+        \Vert R^m u \Vert_{L^\infty(\Omega)} \le C d^{m-n/p} |u|_{W^m_p(\Omega)}
+    \end{equation*}
+    for all $u \in W^m_p(\Omega)$.
+\end{theorem}
+\begin{proof}[\upshape\bfseries Proof of xxx]
+    First, we assume that $u \in C^m(\Omega) \cap W^m_p(\Omega)$. We can use the pointwise representation of $R^mu(x)$.
+    \begin{align*}
+        |R^mu(x)| ={} & m \left| \sum_{|\alpha| = m} \int_{C_x} k_{\alpha}(x,z) D^\alpha u(z)\,dz \right| \notag \\
+        \le{}         & C \sum_{|\alpha|=m} \int_{\Omega} |x-z|^{-n+m} |D^\alpha u(z)|\,dz \notag                \\
+        \le{}         & C' d^{m-n/p} |u|_{W^m_p(\Omega)}.
+    \end{align*}
+    The proof can be completed via a density argument.
+\end{proof}
+
+\begin{theorem*}
+    If $1<p<\infty$ and $m > n/p$, or $p=1$ and $m \ge n$, there exist a constant $C = C(m,n,\gamma,p)$, such that
+    \begin{equation*}
+        \Vert R^m u \Vert_{L^\infty(\Omega)} \le C d^{m-n/p} |u|_{W^m_p(\Omega)}
+    \end{equation*}
+    for all $u \in W^m_p(\Omega)$.
+\end{theorem*}
+\begin{proof}
+    First, we assume that $u \in C^m(\Omega) \cap W^m_p(\Omega)$. We can use the pointwise representation of $R^mu(x)$.
+    \begin{align*}
+        |R^mu(x)| ={} & m \left| \sum_{|\alpha| = m} \int_{C_x} k_{\alpha}(x,z) D^\alpha u(z)\,dz \right| \notag \\
+        \le{}         & C \sum_{|\alpha|=m} \int_{\Omega} |x-z|^{-n+m} |D^\alpha u(z)|\,dz \notag                \\
+        \le{}         & C' d^{m-n/p} |u|_{W^m_p(\Omega)}.
+    \end{align*}
+    The proof can be completed via a density argument.
+\end{proof}
+
+\begin{proposition}
+    \begin{equation*}
+        Q^m u(x) = \sum_{|\lambda| < m} \left( \int_B \psi_\lambda(y) u(y)\,dy \right) x^\lambda
+    \end{equation*}
+    where $\psi_\lambda \in C_0^\infty(\mathbb{R}^n)$ and $\mathrm{supp}(\phi_\lambda) \in \overline{B}$.
+\end{proposition}
+\begin{proof}
+    This follows from xxx if we define
+    \begin{equation*}
+        \psi_\lambda(y) = \sum_{\alpha \ge \lambda,|\alpha|<m}
+        \frac{(-1)^{|\alpha|}}{\alpha !} a_{[\lambda,\alpha-\lambda]} D^\alpha(y^{\alpha-\lambda} \phi(y)).
+    \end{equation*}
+\end{proof}
+
+\begin{proposition}[xxx]
+    \begin{equation*}
+        Q^m u(x) = \sum_{|\lambda| < m} \left( \int_B \psi_\lambda(y) u(y)\,dy \right) x^\lambda
+    \end{equation*}
+    where $\psi_\lambda \in C_0^\infty(\mathbb{R}^n)$ and $\mathrm{supp}(\phi_\lambda) \in \overline{B}$.
+\end{proposition}
+\begin{proof}[\upshape\bfseries Proof of xxx]
+    This follows from xxx if we define
+    \begin{equation*}
+        \psi_\lambda(y) = \sum_{\alpha \ge \lambda,|\alpha|<m}
+        \frac{(-1)^{|\alpha|}}{\alpha !} a_{[\lambda,\alpha-\lambda]} D^\alpha(y^{\alpha-\lambda} \phi(y)).
+    \end{equation*}
+\end{proof}
+
+\begin{proposition*}
+    \begin{equation*}
+        Q^m u(x) = \sum_{|\lambda| < m} \left( \int_B \psi_\lambda(y) u(y)\,dy \right) x^\lambda
+    \end{equation*}
+    where $\psi_\lambda \in C_0^\infty(\mathbb{R}^n)$ and $\mathrm{supp}(\phi_\lambda) \in \overline{B}$.
+\end{proposition*}
+\begin{proof}
+    This follows from xxx if we define
+    \begin{equation*}
+        \psi_\lambda(y) = \sum_{\alpha \ge \lambda,|\alpha|<m}
+        \frac{(-1)^{|\alpha|}}{\alpha !} a_{[\lambda,\alpha-\lambda]} D^\alpha(y^{\alpha-\lambda} \phi(y)).
+    \end{equation*}
+\end{proof}
+
+\section{Corollary, Lemma, Claim}
+
+\begin{corollary}
+    Under the assumption of xxx, the following inequality holds
+    \begin{equation*}
+        \inf_{v \in P^{m-1}} \Vert u - v \Vert_{W^k_p(\Omega)} \le C_{m,n,\gamma} d^{m-k} |u|_{W^k_p(\Omega)}, \,\, k = 0,1,\dots,m,
+    \end{equation*}
+\end{corollary}
+
+\begin{corollary}[xxx]
+    Under the assumption of xxx, the following inequality holds
+    \begin{equation*}
+        \inf_{v \in P^{m-1}} \Vert u - v \Vert_{W^k_p(\Omega)} \le C_{m,n,\gamma} d^{m-k} |u|_{W^k_p(\Omega)}, \,\, k = 0,1,\dots,m,
+    \end{equation*}
+\end{corollary}
+
+\begin{corollary*}
+    Under the assumption of xxx, the following inequality holds
+    \begin{equation*}
+        \inf_{v \in P^{m-1}} \Vert u - v \Vert_{W^k_p(\Omega)} \le C_{m,n,\gamma} d^{m-k} |u|_{W^k_p(\Omega)}, \,\, k = 0,1,\dots,m,
+    \end{equation*}
+\end{corollary*}
+
+\begin{lemma}
+    Let $f \in L^p(\Omega)$ for $p \ge 1$ and $m \ge 1$ and let
+    \[
+        g(x) = \int_\Omega |x-z|^{-n+m} |f(z)|\,dz
+    \]
+    Then
+    \begin{equation*}
+        \Vert g \Vert_{L^p(\Omega)} \le C_{m,n} d^m \Vert f\Vert_{L^p(\Omega)}.
+    \end{equation*}
+\end{lemma}
+
+\begin{lemma}[xxx]
+    Let $f \in L^p(\Omega)$ for $p \ge 1$ and $m \ge 1$ and let
+    \[
+        g(x) = \int_\Omega |x-z|^{-n+m} |f(z)|\,dz
+    \]
+    Then
+    \begin{equation*}
+        \Vert g \Vert_{L^p(\Omega)} \le C_{m,n} d^m \Vert f\Vert_{L^p(\Omega)}.
+    \end{equation*}
+\end{lemma}
+
+\begin{lemma*}
+    Let $f \in L^p(\Omega)$ for $p \ge 1$ and $m \ge 1$ and let
+    \[
+        g(x) = \int_\Omega |x-z|^{-n+m} |f(z)|\,dz
+    \]
+    Then
+    \begin{equation*}
+        \Vert g \Vert_{L^p(\Omega)} \le C_{m,n} d^m \Vert f\Vert_{L^p(\Omega)}.
+    \end{equation*}
+\end{lemma*}
+
+\begin{claim}
+    $Q^m u$ is a polynomial of degree less than $m$ in $x$.
+\end{claim}
+
+\begin{claim}[xxx]
+    $Q^m u$ is a polynomial of degree less than $m$ in $x$.
+\end{claim}
+
+\begin{claim*}
+    $Q^m u$ is a polynomial of degree less than $m$ in $x$.
+\end{claim*}
+
+\section{Definition}
+
+\begin{definition}
+    $\Omega$ is star-shaped with respect to the ball $B$ if , for all $x \in \Omega$, the closed convex hull of $\{x\} \cup B$ is a subset of $\Omega$.
+\end{definition}
+
+\begin{definition}[xxx]
+    $\Omega$ is star-shaped with respect to the ball $B$ if , for all $x \in \Omega$, the closed convex hull of $\{x\} \cup B$ is a subset of $\Omega$.
+\end{definition}
+
+\begin{definition*}
+    $\Omega$ is star-shaped with respect to the ball $B$ if , for all $x \in \Omega$, the closed convex hull of $\{x\} \cup B$ is a subset of $\Omega$.
+\end{definition*}
+
+\section{Example}
+
+\begin{example}
+    The integral form of the Taylor remainder for $f \in C^m([0,1])$ is given by
+    \begin{equation*}
+        f(s) = \sum_{k=0}^{m-1}\frac{1}{k!} f^{(k)}(0) + \int_0^s \frac{1}{(m-1)!} f^{(m)}(t)(s-t)^{m-1}\,dt.
+    \end{equation*}
+\end{example}
+
+\begin{example}[xxx]
+    The integral form of the Taylor remainder for $f \in C^m([0,1])$ is given by
+    \begin{equation*}
+        f(s) = \sum_{k=0}^{m-1}\frac{1}{k!} f^{(k)}(0) + \int_0^s \frac{1}{(m-1)!} f^{(m)}(t)(s-t)^{m-1}\,dt.
+    \end{equation*}
+\end{example}
+
+\begin{example*}
+    The integral form of the Taylor remainder for $f \in C^m([0,1])$ is given by
+    \begin{equation*}
+        f(s) = \sum_{k=0}^{m-1}\frac{1}{k!} f^{(k)}(0) + \int_0^s \frac{1}{(m-1)!} f^{(m)}(t)(s-t)^{m-1}\,dt.
+    \end{equation*}
+\end{example*}
+
+\section{Problem, Solution}
+
+\begin{problem}
+Calculate the integral of the function $g(x) = 3x^2$ with respect to $x$.
+\end{problem}
+
+\begin{solution}
+    To calculate the integral of $g(x) = 3x^2$, we use the power rule for integration:
+    \[
+        \int 3x^2 \, dx = x^3 + C
+    \]
+    where $C$ is the constant of integration.
+\end{solution}
+
+\begin{problem}[xxx]
+Calculate the integral of the function $g(x) = 3x^2$ with respect to $x$.
+\end{problem}
+\begin{solution}[xxx]
+    To calculate the integral of $g(x) = 3x^2$, we use the power rule for integration:
+    \[
+        \int 3x^2 \, dx = x^3 + C
+    \]
+    where $C$ is the constant of integration.
+\end{solution}
+
+\begin{problem*}
+    Calculate the integral of the function $g(x) = 3x^2$ with respect to $x$.
+\end{problem*}
+\begin{solution*}
+    To calculate the integral of $g(x) = 3x^2$, we use the power rule for integration:
+    \[
+        \int 3x^2 \, dx = x^3 + C
+    \]
+    where $C$ is the constant of integration.
+\end{solution*}
+
+\section{Remark}
+
+\begin{remark}
+    Such a polynomial is not unique, due to the choice od cut-off function $\phi$.
+\end{remark}
+
+\begin{remark}[xxx]
+    Such a polynomial is not unique, due to the choice od cut-off function $\phi$.
+\end{remark}
+
+\begin{remark*}
+    Such a polynomial is not unique, due to the choice od cut-off function $\phi$.
+\end{remark*}
+
+\section{Note}
+
+\begin{note}
+    The degree of $Q^m u$ is at most $m-1$.
+\end{note}
+
+\begin{note}[xxx]
+    The degree of $Q^m u$ is at most $m-1$.
+\end{note}
+
+\begin{note*}
+    The degree of $Q^m u$ is at most $m-1$.
+\end{note*}
+
+
+\section{lstlisting}
+
+\begin{lstlisting}[language=Python,caption={hello world}]
+def hello():
+    print("Hello, world!")
+
+hello()
+\end{lstlisting}
+
+\begin{lstlisting}[language=Python,caption={hanoi.py}]
+step = 1
+
+
+def hanoi(n, a, b, c, depth=0):
+    def move(n, a, c):
+        global step
+        print("    " * depth, end="")
+        print(f"{step=}: move [{n}] from {a} to {c}")
+        step += 1
+
+    if n == 1:
+        move(n, a, c)
+    else:
+        hanoi(n - 1, a, c, b, depth=depth + 1)
+        move(n, a, c)
+        hanoi(n - 1, b, a, c, depth=depth + 1)
+
+
+if __name__ == "__main__":
+    n = int(input("Hanoi Problem, N = "))
+    hanoi(n, "A", "B", "C")
+\end{lstlisting}
+
+\section{algorithm}
+
+
+\begin{algorithm}[H]
+    \KwIn{This is some input}
+    \KwOut{This is some output}
+    \SetAlgoLined
+    \SetNoFillComment
+    \tcc{This is a comment}
+    \vspace{3mm}
+    some code here\;
+    $x \leftarrow 0$\;
+    $y \leftarrow 0$\;
+    \uIf{$ x > 5$} {
+        x is greater than 5 \tcp*{This is also a comment}
+    }
+    \Else {
+        x is less than or equal to 5\;
+    }
+    \ForEach{y in 0..5} {
+        $y \leftarrow y + 1$\;
+    }
+    \For{$y$ in $0..5$} {
+        $y \leftarrow y - 1$\;
+    }
+    \While{$x > 5$} {
+        $x \leftarrow x - 1$\;
+    }
+    \Return Return something here\;
+    \caption{what}
+\end{algorithm}
+
+\section{cbox}
+
+\begin{cbox}
+    Whenever you feel like criticizing any one, just remember that all the people in this world haven't had the advantages that you've had. (The Great Gatsby)
+\end{cbox}
+
+\end{document}

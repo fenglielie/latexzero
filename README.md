@@ -50,6 +50,9 @@ Usage example:
 
 For local builds, English-only note and Beamer documents can be compiled with `pdflatex`, `xelatex`, or `lualatex`; for CJK or mixed-language documents, `xelatex` or `lualatex` is recommended.
 
+> **New:** The Note templates can be used either by inputting an individual
+> setup file or through the unified [sty package](./note-sty/README.md), which supports switching styles via package options.
+
 ## Note
 
 ### Available styles

@@ -57,6 +57,8 @@
 
 本地编译时，纯英文 note 和 Beamer 文档可使用 `pdflatex`、`xelatex` 或 `lualatex`；包含中文或 CJK 混排时，推荐使用 `xelatex` 或 `lualatex`。
 
+> **新功能：** Note 模板既可通过各个独立的 setup 文件直接使用，也提供了统一的 [sty 宏包版本](./note-sty/README.md)，便于通过选项切换样式。
+
 ## Note
 
 ### 可用样式
