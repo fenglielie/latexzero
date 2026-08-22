@@ -65,6 +65,7 @@ All note styles share the same commands and environments, so you can switch betw
 - `note-setup-leftsidebox` (tcolorbox)
 - `note-setup-borderless` (tcolorbox)
 - `note-setup-dark` (tcolorbox, experimental; may have issues in practical use)
+- `note-setup-box-attach` (derived from `note-setup-box`, with attached titles)
 
 **note-setup-simple**
 
@@ -85,6 +86,10 @@ All note styles share the same commands and environments, so you can switch betw
 **note-setup-dark**
 
 ![note-setup-dark-demo](assets/note-setup-dark-demo.png)
+
+**note-setup-box-attach**
+
+![note-setup-box-attach-demo](assets/note-setup-box-attach-demo.png)
 
 ### Supported environments
 

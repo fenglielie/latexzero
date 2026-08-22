@@ -71,6 +71,7 @@
 - `note-setup-leftsidebox` (tcolorbox)
 - `note-setup-borderless` (tcolorbox)
 - `note-setup-dark` (tcolorbox，实验性样式，实际使用时可能存在一些问题)
+- `note-setup-box-attach`（由 `note-setup-box` 派生，采用附着式标题）
 
 **note-setup-simple**
 
@@ -91,6 +92,10 @@
 **note-setup-dark**
 
 ![note-setup-dark-demo](assets/note-setup-dark-demo.png)
+
+**note-setup-box-attach**
+
+![note-setup-box-attach-demo](assets/note-setup-box-attach-demo.png)
 
 ### 支持的环境
 
