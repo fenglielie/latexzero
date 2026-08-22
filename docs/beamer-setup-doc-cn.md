@@ -73,16 +73,14 @@
 % fonts
 \usepackage[T1]{fontenc}
 \usepackage{mathrsfs}
-\usepackage{calligra}
 \usepackage{bm}
 
 % math
-\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{amsmath,amsthm,amssymb}
 
 \usepackage{extarrows}
 \usepackage{booktabs}
 \usepackage{multirow}
-\usepackage{multicol}
 ```
 
 导入盒子宏包，并为 `\tcbhighmath` 命令设置预设样式

@@ -73,16 +73,14 @@ Import commonly used base packages.
 % fonts
 \usepackage[T1]{fontenc}
 \usepackage{mathrsfs}
-\usepackage{calligra}
 \usepackage{bm}
 
 % math
-\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{amsmath,amsthm,amssymb}
 
 \usepackage{extarrows}
 \usepackage{booktabs}
 \usepackage{multirow}
-\usepackage{multicol}
 ```
 
 Import the box package and define a preset style for `\tcbhighmath`.

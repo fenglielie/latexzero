@@ -4,7 +4,7 @@
 
 导入常用基础宏包
 ```latex
-\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{amsmath,amsthm,amssymb}
 \usepackage{mathtools}
 \usepackage{mathrsfs}
 \usepackage{bm}
@@ -12,8 +12,7 @@
 \usepackage[a4paper, margin=1in]{geometry}
 \usepackage{float}
 \usepackage{indentfirst}
-\usepackage{anyfontsize}
-\usepackage{booktabs,multirow,multicol}
+\usepackage{booktabs,multirow}
 \usepackage[shortlabels,inline]{enumitem}
 \usepackage{appendix}
 ```
