@@ -47,6 +47,11 @@
 \setbeamertemplate{footline}[frame number]{}
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{frametitle}{\vspace*{0.5em}\insertframetitle\par\vskip-6pt\noindent\rule{\linewidth}{0.6pt}\vspace{-0.1em}}
+\renewcommand{\footnoterule}{%
+    \kern -3pt
+    {\usebeamercolor[fg]{structure}\hrule width 0.4\columnwidth}
+    \kern 2.6pt
+}
 
 \setbeamercolor{title}{use=structure,fg=white,bg=structure.fg}
 \setbeamercolor{section in head/foot}{fg=white,bg=structure.fg}

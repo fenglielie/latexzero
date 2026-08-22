@@ -48,6 +48,15 @@
 \setbeamertemplate{frametitle}{\vspace*{0.5em}\insertframetitle\par\vskip-6pt\noindent\rule{\linewidth}{0.6pt}\vspace{-0.1em}}
 ```
 
+设置脚注分隔线：保留 Beamer 默认的宽度和间距，并使其使用主题色
+```latex
+\renewcommand{\footnoterule}{%
+    \kern -3pt
+    {\usebeamercolor[fg]{structure}\hrule width 0.4\columnwidth}
+    \kern 2.6pt
+}
+```
+
 设置标题样式
 ```latex
 \setbeamercolor{title}{use=structure,fg=white,bg=structure.fg}

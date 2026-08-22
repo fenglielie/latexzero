@@ -48,6 +48,15 @@ Set the frame title style by adding a 0.6pt horizontal rule below the frame titl
 \setbeamertemplate{frametitle}{\vspace*{0.5em}\insertframetitle\par\vskip-6pt\noindent\rule{\linewidth}{0.6pt}\vspace{-0.1em}}
 ```
 
+Set the footnote rule to use the theme color while preserving Beamer's default width and spacing.
+```latex
+\renewcommand{\footnoterule}{%
+    \kern -3pt
+    {\usebeamercolor[fg]{structure}\hrule width 0.4\columnwidth}
+    \kern 2.6pt
+}
+```
+
 Set the title style.
 ```latex
 \setbeamercolor{title}{use=structure,fg=white,bg=structure.fg}
