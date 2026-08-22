@@ -36,7 +36,7 @@ Simple LaTeX templates for mathematical notes and Beamer slides.
 
 ## 🚀 How to use it?
 
-1. Clone or download this repository, or simply download the file(s) you need, such as [note-setup.tex](./note/note-setup.tex).
+1. Clone or download this repository, or download the file(s) you need, such as [note-setup.tex](./note/note-setup.tex).
 
 2. Input the setup file in the preamble of your document.
 
@@ -138,7 +138,7 @@ All Beamer styles share the same commands and structure, so you can switch betwe
 
 - [`beamer-setup`](./beamer/beamer-setup.tex): the default style, with a top navigation bar and rounded title page.
 - [`beamer-setup-minimal`](./beamer/beamer-setup-minimal.tex): removes the navigation bar and uses a cleaner title page.
-- [`beamer-setup-console`](./beamer/beamer-setup-console.tex): a dark, terminal-inspired style based on [kmbeamer](https://github.com/kmaed/kmbeamer).
+- [`beamer-setup-console`](./beamer/beamer-setup-console.tex): a dark, terminal style inspired by [kmbeamer](https://github.com/kmaed/kmbeamer).
 
 **beamer-setup**
 
