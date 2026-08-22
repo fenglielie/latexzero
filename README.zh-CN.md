@@ -31,7 +31,6 @@
   - [📊 Beamer](#-beamer)
     - [🎨 可用样式](#-可用样式-1)
     - [🔧 用法](#-用法-1)
-  - [📎 补充](#-补充)
 
 ## 🚀 如何使用？
 
@@ -164,8 +163,3 @@
 
 ...
 ```
-
-## 📎 补充
-
-- 仓库中还提供了一个位于 [`lab-report/`](./lab-report/) 下的 `lab-report` 模板。
-- 仓库中还附带了一份可用的 VS Code LaTeX Workshop 配置，见 [`.vscode/settings.json`](./.vscode/settings.json)。

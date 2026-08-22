@@ -33,7 +33,6 @@ Simple LaTeX templates for mathematical notes and Beamer slides.
   - [📊 Beamer](#-beamer)
     - [🎨 Available styles](#-available-styles-1)
     - [🔧 Usage](#-usage-1)
-  - [📎 More](#-more)
 
 ## 🚀 How to use it?
 
@@ -167,8 +166,3 @@ All Beamer styles share the same commands and structure, so you can switch betwe
 
 ...
 ```
-
-## 📎 More
-
-- The repository also includes a `lab-report` template under [`lab-report/`](./lab-report/).
-- The repository also includes a usable VS Code LaTeX Workshop configuration in [`.vscode/settings.json`](./.vscode/settings.json).
