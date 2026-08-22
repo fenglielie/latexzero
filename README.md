@@ -4,7 +4,7 @@ English | [简体中文](./README.zh-CN.md)
 
 Simple LaTeX templates for mathematical notes and Beamer slides.
 
-> **Note template compatibility:** The Note templates now use `keytheorems`
+> ⚠️ **Note template compatibility:** The Note templates now use `keytheorems`
 > instead of `thmtools` to avoid the shared-counter incompatibility in TeX Live
 > 2026 described in
 > [thmtools issue #75](https://github.com/muzimuzhi/thmtools/issues/75). The
@@ -13,20 +13,29 @@ Simple LaTeX templates for mathematical notes and Beamer slides.
 > [`legacy/thmtools` branch](https://github.com/fenglielie/latexzero/tree/legacy/thmtools)
 > for TeX Live 2025 and earlier.
 
-## Overview
+## ✨ Overview
 
 - Templates for mathematical notes and Beamer slides
 - Multiple note and presentation styles with preview images
 - Suitable for Overleaf and local TeX Live workflows
 
-## Table of Contents
+## 📚 Table of Contents
 
-- [How to use it?](#how-to-use-it)
-- [Note](#note)
-- [Beamer](#beamer)
-- [More](#more)
+- [LaTeX Templates for Mathematical Notes](#latex-templates-for-mathematical-notes)
+  - [✨ Overview](#-overview)
+  - [📚 Table of Contents](#-table-of-contents)
+  - [🚀 How to use it?](#-how-to-use-it)
+  - [📝 Note](#-note)
+    - [🎨 Available styles](#-available-styles)
+    - [🧩 Supported environments](#-supported-environments)
+    - [🔧 Usage](#-usage)
+    - [🌄 Cover page](#-cover-page)
+  - [📊 Beamer](#-beamer)
+    - [🎨 Available styles](#-available-styles-1)
+    - [🔧 Usage](#-usage-1)
+  - [📎 More](#-more)
 
-## How to use it?
+## 🚀 How to use it?
 
 1. Clone or download this repository, or simply download the file(s) you need, such as [note-setup.tex](./note/note-setup.tex).
 
@@ -50,21 +59,21 @@ Usage example:
 
 For local builds, English-only note and Beamer documents can be compiled with `pdflatex`, `xelatex`, or `lualatex`; for CJK or mixed-language documents, `xelatex` or `lualatex` is recommended.
 
-> **New:** The Note templates can be used either by inputting an individual
+> ✨ **New:** The Note templates can be used either by inputting an individual
 > setup file or through the unified [sty package](./note-sty/README.md), which supports switching styles via package options.
 
-## Note
+## 📝 Note
 
-### Available styles
+### 🎨 Available styles
 
 All note styles share the same commands and environments, so you can switch between them directly by changing the setup file.
 
-- `note-setup`: the default style, with colored borders and lightly tinted backgrounds.
-- `note-setup-attached`: derived from `note-setup`, with attached title labels.
-- `note-setup-leftbar`: uses colored left bars and lightly tinted backgrounds.
-- `note-setup-shaded`: uses borderless boxes with lightly tinted backgrounds.
-- `note-setup-plain`: uses the standard theorem layout without depending on tcolorbox.
-- `note-setup-dark`: uses a dark page and dark theorem boxes; experimental.
+- [`note-setup`](./note/note-setup.tex): the default style, with colored borders and lightly tinted backgrounds.
+- [`note-setup-attached`](./note/note-setup-attached.tex): derived from `note-setup`, with attached title labels.
+- [`note-setup-leftbar`](./note/note-setup-leftbar.tex): uses colored left bars and lightly tinted backgrounds.
+- [`note-setup-shaded`](./note/note-setup-shaded.tex): uses borderless boxes with lightly tinted backgrounds.
+- [`note-setup-plain`](./note/note-setup-plain.tex): uses the standard theorem layout without depending on tcolorbox.
+- [`note-setup-dark`](./note/note-setup-dark.tex): uses a dark page and dark theorem boxes; experimental.
 
 **note-setup**
 
@@ -90,7 +99,7 @@ All note styles share the same commands and environments, so you can switch betw
 
 ![note-setup-dark-demo](assets/note-setup-dark-demo.png)
 
-### Supported environments
+### 🧩 Supported environments
 
 | Environment                   | Style           | Numbering Rule              |
 | ----------------------------- | --------------- | --------------------------- |
@@ -107,7 +116,7 @@ All note styles share the same commands and environments, so you can switch betw
 | `solution`, `solution*`       | (solutionstyle) | within section              |
 
 
-### Usage
+### 🔧 Usage
 ```latex
 \documentclass{article}
 \input{/path/to/note-setup}
@@ -115,22 +124,22 @@ All note styles share the same commands and environments, so you can switch betw
 ...
 ```
 
-### Cover page
+### 🌄 Cover page
 
 To add a cover page, use `\makecover`.
 
 ![note-cover-demo](assets/note-cover-demo.png)
 
 
-## Beamer
+## 📊 Beamer
 
-### Available styles
+### 🎨 Available styles
 
 All Beamer styles share the same commands and structure, so you can switch between them directly by changing the setup file.
 
-- `beamer-setup`: the default style, with a top navigation bar and rounded title page.
-- `beamer-setup-minimal`: removes the navigation bar and uses a cleaner title page.
-- `beamer-setup-console`: a dark, terminal-inspired style based on [kmbeamer](https://github.com/kmaed/kmbeamer).
+- [`beamer-setup`](./beamer/beamer-setup.tex): the default style, with a top navigation bar and rounded title page.
+- [`beamer-setup-minimal`](./beamer/beamer-setup-minimal.tex): removes the navigation bar and uses a cleaner title page.
+- [`beamer-setup-console`](./beamer/beamer-setup-console.tex): a dark, terminal-inspired style based on [kmbeamer](https://github.com/kmaed/kmbeamer).
 
 **beamer-setup**
 
@@ -150,7 +159,7 @@ All Beamer styles share the same commands and structure, so you can switch betwe
 
 ![beamer-setup-console-demo](assets/beamer-setup-console-demo.png)
 
-### Usage
+### 🔧 Usage
 ```latex
 \documentclass[compress,aspectratio=169]{beamer}
 % \definecolor{simplebeamercolor}{RGB}{200,50,50}% define before \input to customize theme color
@@ -159,7 +168,7 @@ All Beamer styles share the same commands and structure, so you can switch betwe
 ...
 ```
 
-## More
+## 📎 More
 
 - The repository also includes a `lab-report` template under [`lab-report/`](./lab-report/).
 - The repository also includes a usable VS Code LaTeX Workshop configuration in [`.vscode/settings.json`](./.vscode/settings.json).
