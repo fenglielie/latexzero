@@ -1,0 +1,132 @@
+%================================
+% note-setup-plain.tex
+% fenglielie@qq.com 2026-08-21
+%================================
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage{extarrows}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{float}
+\usepackage{indentfirst}
+\usepackage{anyfontsize}
+\usepackage{booktabs,multirow,multicol}
+\usepackage[shortlabels,inline]{enumitem}
+\usepackage{appendix}
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage{graphicx}
+\graphicspath{
+    {./figure/}{./figures/}{./image/}{./images/}{./graphic/}{./graphics/}{./picture/}{./pictures/}
+}
+\usepackage{subcaption}
+
+\usepackage[ruled,linesnumbered,noline]{algorithm2e}
+\usepackage{listings}
+\lstdefinestyle{simpleStyle}{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    keywordstyle=\color{blue},
+    identifierstyle=\color{black},
+    stringstyle=\color{violet},
+    commentstyle=\color[RGB]{34,139,34},
+    showstringspaces=false,
+    numbers=left,
+    numbersep=2em,
+    numberstyle=\footnotesize,
+    frame=single,
+    framesep=1em,
+}
+\lstset{style=simpleStyle}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,linkcolor=,urlcolor=cyan
+}
+
+\renewcommand*{\proofname}{\normalfont\bfseries Proof}
+
+\usepackage{keytheorems}
+
+%% define environments
+
+\newkeytheorem{theorem}[style=plain, name=Theorem, numbered=true, parent=section]
+\newkeytheorem{theorem*}[style=plain, name=Theorem, numbered=false]
+
+\newkeytheorem{proposition}[style=plain, name=Proposition, numbered=true, sibling=theorem]
+\newkeytheorem{proposition*}[style=plain, name=Proposition, numbered=false]
+
+\newkeytheorem{corollary}[style=plain, name=Corollary, numbered=true, sibling=theorem]
+\newkeytheorem{corollary*}[style=plain, name=Corollary, numbered=false]
+
+\newkeytheorem{lemma}[style=plain, name=Lemma, numbered=true, sibling=theorem]
+\newkeytheorem{lemma*}[style=plain, name=Lemma, numbered=false]
+
+\newkeytheorem{claim}[style=plain, name=Claim, numbered=true, sibling=theorem]
+\newkeytheorem{claim*}[style=plain, name=Claim, numbered=false]
+
+\newkeytheorem{definition}[style=definition, name=Definition, numbered=true, parent=section]
+\newkeytheorem{definition*}[style=definition, name=Definition, numbered=false]
+
+\newkeytheorem{example}[style=definition, name=Example, numbered=true, parent=section]
+\newkeytheorem{example*}[style=definition, name=Example, numbered=false]
+
+\newkeytheorem{problem}[style=definition, name=Problem, numbered=true, parent=section]
+\newkeytheorem{problem*}[style=definition, name=Problem, numbered=false]
+
+\newkeytheorem{remark}[style=remark, name=Remark, numbered=true, parent=section]
+\newkeytheorem{remark*}[style=remark, name=Remark, numbered=false]
+
+\newkeytheoremstyle{notestyle}{headfont=\color{orange!80}\bfseries, bodyfont=\normalfont, spaceabove=3pt, spacebelow=3pt}
+
+\newkeytheorem{note}[style=notestyle, name=Note, numbered=true, parent=section]
+\newkeytheorem{note*}[style=notestyle, name=Note, numbered=false]
+
+\newkeytheoremstyle{solutionstyle}{headfont=\bfseries, bodyfont=\normalfont, spaceabove=3pt, spacebelow=3pt, qed=\ensuremath{\square}}
+
+\newkeytheorem{solution}[style=solutionstyle, name=Solution, numbered=true, parent=section]
+\newkeytheorem{solution*}[style=solutionstyle, name=Solution, numbered=false]
+
+\newenvironment{cbox}{\begin{quote}}{\end{quote}}
+
+%% cover
+\usepackage{titling}
+\newcommand{\extrainfo}{}
+\renewcommand{\extrainfo}[1]{\renewcommand{\extrainfocontent}{#1}}
+\newcommand{\extrainfocontent}{}
+\newcommand{\makecover}[1]{%
+    \begin{titlepage}
+        \newgeometry{margin=0in}
+        \parindent=0pt
+        \includegraphics[width=\linewidth]{#1} % size = 1280*1024
+        \vfill
+        \begin{center}
+            \parbox{0.618\textwidth}{%
+                \raggedleft{\bfseries \Huge \thetitle} \\[0.6pt]
+                \rule{0.618\textwidth}{4pt} \\
+            }
+        \end{center}
+        \vfill
+        \begin{center}
+            \parbox{0.618\textwidth}{%
+                \raggedleft\Large
+                \begin{tabular}{r}
+                    \theauthor \\
+                    \thedate   \\
+                \end{tabular}%
+            }
+        \end{center}
+        \vfill
+        \begin{center}
+            \parbox[t]{0.7\textwidth}{\centering \itshape \extrainfocontent}
+        \end{center}
+        \vfill
+    \end{titlepage}
+    \restoregeometry
+    \thispagestyle{empty}
+}
+% USAGE
+% \extrainfo{xxx}
+% \makecover{/path/to/cover.png}

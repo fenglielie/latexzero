@@ -1,6 +1,6 @@
 %================================
-% note-setup-simple.tex
-% fenglielie@qq.com 2026-08-11
+% note-setup-shaded.tex
+% fenglielie@qq.com 2026-08-21
 %================================
 
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
@@ -48,33 +48,64 @@
 
 \renewcommand*{\proofname}{\normalfont\bfseries Proof}
 
+\usepackage[most]{tcolorbox}
 \usepackage{keytheorems}
+
+\tcbset{
+    theorem box/.style={
+            enhanced,
+            breakable,
+            sharp corners,
+            boxrule=0pt,
+            colframe=white,
+        },
+    theorem box rounded/.style={
+            theorem box,
+            rounded corners,
+        }
+}
 
 %% define environments
 
-\newkeytheorem{theorem}[style=plain, name=Theorem, numbered=true, parent=section]
-\newkeytheorem{theorem*}[style=plain, name=Theorem, numbered=false]
+\newkeytheorem{theorem}[style=plain, name=Theorem, numbered=true, parent=section,
+    tcolorbox-no-titlebar={theorem box, colback=RoyalPurple!8}]
+\newkeytheorem{theorem*}[style=plain, name=Theorem, numbered=false,
+    tcolorbox-no-titlebar={theorem box rounded, colback=RoyalPurple!8}]
 
-\newkeytheorem{proposition}[style=plain, name=Proposition, numbered=true, sibling=theorem]
-\newkeytheorem{proposition*}[style=plain, name=Proposition, numbered=false]
+\newkeytheorem{proposition}[style=plain, name=Proposition, numbered=true, sibling=theorem,
+    tcolorbox-no-titlebar={theorem box, colback=RoyalPurple!8}]
+\newkeytheorem{proposition*}[style=plain, name=Proposition, numbered=false,
+    tcolorbox-no-titlebar={theorem box rounded, colback=RoyalPurple!8}]
 
-\newkeytheorem{corollary}[style=plain, name=Corollary, numbered=true, sibling=theorem]
-\newkeytheorem{corollary*}[style=plain, name=Corollary, numbered=false]
+\newkeytheorem{corollary}[style=plain, name=Corollary, numbered=true, sibling=theorem,
+    tcolorbox-no-titlebar={theorem box, colback=SkyBlue!8}]
+\newkeytheorem{corollary*}[style=plain, name=Corollary, numbered=false,
+    tcolorbox-no-titlebar={theorem box rounded, colback=SkyBlue!8}]
 
-\newkeytheorem{lemma}[style=plain, name=Lemma, numbered=true, sibling=theorem]
-\newkeytheorem{lemma*}[style=plain, name=Lemma, numbered=false]
+\newkeytheorem{lemma}[style=plain, name=Lemma, numbered=true, sibling=theorem,
+    tcolorbox-no-titlebar={theorem box, colback=SkyBlue!8}]
+\newkeytheorem{lemma*}[style=plain, name=Lemma, numbered=false,
+    tcolorbox-no-titlebar={theorem box rounded, colback=SkyBlue!8}]
 
-\newkeytheorem{claim}[style=plain, name=Claim, numbered=true, sibling=theorem]
-\newkeytheorem{claim*}[style=plain, name=Claim, numbered=false]
+\newkeytheorem{claim}[style=plain, name=Claim, numbered=true, sibling=theorem,
+    tcolorbox-no-titlebar={theorem box, colback=SkyBlue!8}]
+\newkeytheorem{claim*}[style=plain, name=Claim, numbered=false,
+    tcolorbox-no-titlebar={theorem box rounded, colback=SkyBlue!8}]
 
-\newkeytheorem{definition}[style=definition, name=Definition, numbered=true, parent=section]
-\newkeytheorem{definition*}[style=definition, name=Definition, numbered=false]
+\newkeytheorem{definition}[style=definition, name=Definition, numbered=true, parent=section,
+    tcolorbox-no-titlebar={theorem box, colback=ForestGreen!5}]
+\newkeytheorem{definition*}[style=definition, name=Definition, numbered=false,
+    tcolorbox-no-titlebar={theorem box rounded, colback=ForestGreen!5}]
 
-\newkeytheorem{example}[style=definition, name=Example, numbered=true, parent=section]
-\newkeytheorem{example*}[style=definition, name=Example, numbered=false]
+\newkeytheorem{example}[style=definition, name=Example, numbered=true, parent=section,
+    tcolorbox-no-titlebar={theorem box, colback=RawSienna!5}]
+\newkeytheorem{example*}[style=definition, name=Example, numbered=false,
+    tcolorbox-no-titlebar={theorem box rounded, colback=RawSienna!5}]
 
-\newkeytheorem{problem}[style=definition, name=Problem, numbered=true, parent=section]
-\newkeytheorem{problem*}[style=definition, name=Problem, numbered=false]
+\newkeytheorem{problem}[style=definition, name=Problem, numbered=true, parent=section,
+    tcolorbox-no-titlebar={theorem box, colback=WildStrawberry!5}]
+\newkeytheorem{problem*}[style=definition, name=Problem, numbered=false,
+    tcolorbox-no-titlebar={theorem box rounded, colback=WildStrawberry!5}]
 
 \newkeytheorem{remark}[style=remark, name=Remark, numbered=true, parent=section]
 \newkeytheorem{remark*}[style=remark, name=Remark, numbered=false]
@@ -89,7 +120,16 @@
 \newkeytheorem{solution}[style=solutionstyle, name=Solution, numbered=true, parent=section]
 \newkeytheorem{solution*}[style=solutionstyle, name=Solution, numbered=false]
 
-\newenvironment{cbox}{\begin{quote}}{\end{quote}}
+%% cbox
+\newtcolorbox{cbox}[1][]{%
+    enhanced,
+    breakable,
+    sharp corners,
+    leftrule=2pt, rightrule=0pt, toprule=0pt, bottomrule=0pt,
+    colframe=SkyBlue,
+    colback=SkyBlue!8,
+    #1
+}
 
 %% cover
 \usepackage{titling}

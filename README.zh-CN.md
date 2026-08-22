@@ -65,37 +65,36 @@
 
 这些 note 样式共享同一套命令和环境定义，因此只需替换对应的 setup 文件即可直接切换。
 
-- `note-setup` = `note-setup-box`
-- `note-setup-simple`
-- `note-setup-box` (tcolorbox)
-- `note-setup-leftsidebox` (tcolorbox)
-- `note-setup-borderless` (tcolorbox)
-- `note-setup-dark` (tcolorbox，实验性样式，实际使用时可能存在一些问题)
-- `note-setup-box-attach`（由 `note-setup-box` 派生，采用附着式标题）
+- `note-setup`：默认样式，采用彩色边框和浅色背景。
+- `note-setup-attached`：由 `note-setup` 派生，采用附着式标题。
+- `note-setup-leftbar`：采用彩色左边线和浅色背景。
+- `note-setup-shaded`：采用无边框的浅色背景。
+- `note-setup-plain`：采用标准定理样式，不依赖 tcolorbox。
+- `note-setup-dark`：采用深色页面和定理框，属于实验性样式。
 
-**note-setup-simple**
+**note-setup**
 
-![note-setup-simple-demo](assets/note-setup-simple-demo.png)
+![note-setup-demo](assets/note-setup-demo.png)
 
-**note-setup-box**
+**note-setup-attached**
 
-![note-setup-box-demo](assets/note-setup-box-demo.png)
+![note-setup-attached-demo](assets/note-setup-attached-demo.png)
 
-**note-setup-leftsidebox**
+**note-setup-leftbar**
 
-![note-setup-leftsidebox-demo](assets/note-setup-leftsidebox-demo.png)
+![note-setup-leftbar-demo](assets/note-setup-leftbar-demo.png)
 
-**note-setup-borderless**
+**note-setup-shaded**
 
-![note-setup-borderless-demo](assets/note-setup-borderless-demo.png)
+![note-setup-shaded-demo](assets/note-setup-shaded-demo.png)
+
+**note-setup-plain**
+
+![note-setup-plain-demo](assets/note-setup-plain-demo.png)
 
 **note-setup-dark**
 
 ![note-setup-dark-demo](assets/note-setup-dark-demo.png)
-
-**note-setup-box-attach**
-
-![note-setup-box-attach-demo](assets/note-setup-box-attach-demo.png)
 
 ### 支持的环境
 
@@ -135,9 +134,9 @@
 
 这些 Beamer 样式共享同一套命令和结构，因此只需替换对应的 setup 文件即可直接切换。
 
-- `beamer-setup`
-- `beamer-setup-plain`（无导航栏，封面更简洁）
-- `beamer-setup-console`（灵感来自 [kmbeamer](https://github.com/kmaed/kmbeamer)）
+- `beamer-setup`：默认样式，采用顶部导航栏和圆角标题页。
+- `beamer-setup-minimal`：移除导航栏，并采用更加简洁的标题页。
+- `beamer-setup-console`：采用深色终端风格，灵感来自 [kmbeamer](https://github.com/kmaed/kmbeamer)。
 
 **beamer-setup**
 
@@ -145,11 +144,11 @@
 
 ![beamer-setup-demo](assets/beamer-setup-demo.png)
 
-**beamer-setup-plain**
+**beamer-setup-minimal**
 
-![beamer-setup-plain-titlepage](assets/beamer-titlepage-plain.png)
+![beamer-setup-minimal-titlepage](assets/beamer-titlepage-minimal.png)
 
-![beamer-setup-plain-demo](assets/beamer-setup-plain-demo.png)
+![beamer-setup-minimal-demo](assets/beamer-setup-minimal-demo.png)
 
 **beamer-setup-console**
 

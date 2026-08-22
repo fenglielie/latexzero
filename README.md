@@ -59,37 +59,36 @@ For local builds, English-only note and Beamer documents can be compiled with `p
 
 All note styles share the same commands and environments, so you can switch between them directly by changing the setup file.
 
-- `note-setup` = `note-setup-box`
-- `note-setup-simple`
-- `note-setup-box` (tcolorbox)
-- `note-setup-leftsidebox` (tcolorbox)
-- `note-setup-borderless` (tcolorbox)
-- `note-setup-dark` (tcolorbox, experimental; may have issues in practical use)
-- `note-setup-box-attach` (derived from `note-setup-box`, with attached titles)
+- `note-setup`: the default style, with colored borders and lightly tinted backgrounds.
+- `note-setup-attached`: derived from `note-setup`, with attached title labels.
+- `note-setup-leftbar`: uses colored left bars and lightly tinted backgrounds.
+- `note-setup-shaded`: uses borderless boxes with lightly tinted backgrounds.
+- `note-setup-plain`: uses the standard theorem layout without depending on tcolorbox.
+- `note-setup-dark`: uses a dark page and dark theorem boxes; experimental.
 
-**note-setup-simple**
+**note-setup**
 
-![note-setup-simple-demo](assets/note-setup-simple-demo.png)
+![note-setup-demo](assets/note-setup-demo.png)
 
-**note-setup-box**
+**note-setup-attached**
 
-![note-setup-box-demo](assets/note-setup-box-demo.png)
+![note-setup-attached-demo](assets/note-setup-attached-demo.png)
 
-**note-setup-leftsidebox**
+**note-setup-leftbar**
 
-![note-setup-leftsidebox-demo](assets/note-setup-leftsidebox-demo.png)
+![note-setup-leftbar-demo](assets/note-setup-leftbar-demo.png)
 
-**note-setup-borderless**
+**note-setup-shaded**
 
-![note-setup-borderless-demo](assets/note-setup-borderless-demo.png)
+![note-setup-shaded-demo](assets/note-setup-shaded-demo.png)
+
+**note-setup-plain**
+
+![note-setup-plain-demo](assets/note-setup-plain-demo.png)
 
 **note-setup-dark**
 
 ![note-setup-dark-demo](assets/note-setup-dark-demo.png)
-
-**note-setup-box-attach**
-
-![note-setup-box-attach-demo](assets/note-setup-box-attach-demo.png)
 
 ### Supported environments
 
@@ -129,9 +128,9 @@ To add a cover page, use `\makecover`.
 
 All Beamer styles share the same commands and structure, so you can switch between them directly by changing the setup file.
 
-- `beamer-setup`
-- `beamer-setup-plain` (without navigation bars, with a simpler title page)
-- `beamer-setup-console` (inspired by [kmbeamer](https://github.com/kmaed/kmbeamer))
+- `beamer-setup`: the default style, with a top navigation bar and rounded title page.
+- `beamer-setup-minimal`: removes the navigation bar and uses a cleaner title page.
+- `beamer-setup-console`: a dark, terminal-inspired style based on [kmbeamer](https://github.com/kmaed/kmbeamer).
 
 **beamer-setup**
 
@@ -139,11 +138,11 @@ All Beamer styles share the same commands and structure, so you can switch betwe
 
 ![beamer-setup-demo](assets/beamer-setup-demo.png)
 
-**beamer-setup-plain**
+**beamer-setup-minimal**
 
-![beamer-setup-plain-titlepage](assets/beamer-titlepage-plain.png)
+![beamer-setup-minimal-titlepage](assets/beamer-titlepage-minimal.png)
 
-![beamer-setup-plain-demo](assets/beamer-setup-plain-demo.png)
+![beamer-setup-minimal-demo](assets/beamer-setup-minimal-demo.png)
 
 **beamer-setup-console**
 
