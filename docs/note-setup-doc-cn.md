@@ -1,5 +1,7 @@
 # note-setup 配置说明
 
+本文说明默认的 [`note-setup.tex`](../note/note-setup.tex)。其他 setup 文件保留相同的宏包、命令和定理环境，只改变呈现方式：`attached` 使用附着式定理标题，`leftbar` 使用彩色左边线，`shaded` 隐藏边框，`plain` 不依赖tcolorbox；实验性的 `dark` setup 则采用深色配色。
+
 ## 基本配置
 
 导入常用基础宏包
@@ -73,8 +75,10 @@
 \renewcommand*{\proofname}{\normalfont\bfseries Proof}
 ```
 
-导入 `keytheorems` 宏包，并使用 `\newkeytheorem` 命令通过键值接口定义各类定理环境
+先导入 `tcolorbox`，再导入 `keytheorems`。默认 setup 使用 keytheorems
+原生的 tcolorbox 接口，而不是在定理环境定义完成后再从外部包装盒子。
 ```latex
+\usepackage[most]{tcolorbox}
 \usepackage{keytheorems}
 ```
 
@@ -89,6 +93,24 @@
 - `parent`、`sibling`：定义编号规则，例如
   - `parent=section`：基于 `section` 编号
   - `sibling=theorem`：共享 `theorem` 环境的编号
+- `tcolorbox-no-titlebar`：应用 tcolorbox 参数，同时将定理标题保留在
+  盒子正文中
+
+公共盒子几何样式只定义一次。有编号环境使用直角，无编号环境使用圆角变体。
+```latex
+\tcbset{
+    theorem box/.style={
+            enhanced,
+            breakable,
+            sharp corners,
+            boxrule=1pt,
+        },
+    theorem box rounded/.style={
+            theorem box,
+            rounded corners,
+        }
+}
+```
 
 
 具体包括：
@@ -97,31 +119,47 @@
 ```latex
 %% define environments
 
-\newkeytheorem{theorem}[style=plain, name=Theorem, numbered=true, parent=section]
-\newkeytheorem{theorem*}[style=plain, name=Theorem, numbered=false]
+\newkeytheorem{theorem}[style=plain, name=Theorem, numbered=true, parent=section,
+    tcolorbox-no-titlebar={theorem box, colframe=RoyalPurple, colback=RoyalPurple!8}]
+\newkeytheorem{theorem*}[style=plain, name=Theorem, numbered=false,
+    tcolorbox-no-titlebar={theorem box rounded, colframe=RoyalPurple, colback=RoyalPurple!8}]
 
-\newkeytheorem{proposition}[style=plain, name=Proposition, numbered=true, sibling=theorem]
-\newkeytheorem{proposition*}[style=plain, name=Proposition, numbered=false]
+\newkeytheorem{proposition}[style=plain, name=Proposition, numbered=true, sibling=theorem,
+    tcolorbox-no-titlebar={theorem box, colframe=RoyalPurple, colback=RoyalPurple!8}]
+\newkeytheorem{proposition*}[style=plain, name=Proposition, numbered=false,
+    tcolorbox-no-titlebar={theorem box rounded, colframe=RoyalPurple, colback=RoyalPurple!8}]
 
-\newkeytheorem{corollary}[style=plain, name=Corollary, numbered=true, sibling=theorem]
-\newkeytheorem{corollary*}[style=plain, name=Corollary, numbered=false]
+\newkeytheorem{corollary}[style=plain, name=Corollary, numbered=true, sibling=theorem,
+    tcolorbox-no-titlebar={theorem box, colframe=NavyBlue, colback=SkyBlue!8}]
+\newkeytheorem{corollary*}[style=plain, name=Corollary, numbered=false,
+    tcolorbox-no-titlebar={theorem box rounded, colframe=NavyBlue, colback=SkyBlue!8}]
 
-\newkeytheorem{lemma}[style=plain, name=Lemma, numbered=true, sibling=theorem]
-\newkeytheorem{lemma*}[style=plain, name=Lemma, numbered=false]
+\newkeytheorem{lemma}[style=plain, name=Lemma, numbered=true, sibling=theorem,
+    tcolorbox-no-titlebar={theorem box, colframe=NavyBlue, colback=SkyBlue!8}]
+\newkeytheorem{lemma*}[style=plain, name=Lemma, numbered=false,
+    tcolorbox-no-titlebar={theorem box rounded, colframe=NavyBlue, colback=SkyBlue!8}]
 
-\newkeytheorem{claim}[style=plain, name=Claim, numbered=true, sibling=theorem]
-\newkeytheorem{claim*}[style=plain, name=Claim, numbered=false]
+\newkeytheorem{claim}[style=plain, name=Claim, numbered=true, sibling=theorem,
+    tcolorbox-no-titlebar={theorem box, colframe=NavyBlue, colback=SkyBlue!8}]
+\newkeytheorem{claim*}[style=plain, name=Claim, numbered=false,
+    tcolorbox-no-titlebar={theorem box rounded, colframe=NavyBlue, colback=SkyBlue!8}]
 ```
 - 采用 `definition` 样式，定义 `definition` / `definition*`、`example` / `example*`、`problem` / `problem*` 环境
 ```latex
-\newkeytheorem{definition}[style=definition, name=Definition, numbered=true, parent=section]
-\newkeytheorem{definition*}[style=definition, name=Definition, numbered=false]
+\newkeytheorem{definition}[style=definition, name=Definition, numbered=true, parent=section,
+    tcolorbox-no-titlebar={theorem box, colframe=ForestGreen, colback=ForestGreen!5}]
+\newkeytheorem{definition*}[style=definition, name=Definition, numbered=false,
+    tcolorbox-no-titlebar={theorem box rounded, colframe=ForestGreen, colback=ForestGreen!5}]
 
-\newkeytheorem{example}[style=definition, name=Example, numbered=true, parent=section]
-\newkeytheorem{example*}[style=definition, name=Example, numbered=false]
+\newkeytheorem{example}[style=definition, name=Example, numbered=true, parent=section,
+    tcolorbox-no-titlebar={theorem box, colframe=RawSienna, colback=RawSienna!5}]
+\newkeytheorem{example*}[style=definition, name=Example, numbered=false,
+    tcolorbox-no-titlebar={theorem box rounded, colframe=RawSienna, colback=RawSienna!5}]
 
-\newkeytheorem{problem}[style=definition, name=Problem, numbered=true, parent=section]
-\newkeytheorem{problem*}[style=definition, name=Problem, numbered=false]
+\newkeytheorem{problem}[style=definition, name=Problem, numbered=true, parent=section,
+    tcolorbox-no-titlebar={theorem box, colframe=WildStrawberry!30, colback=WildStrawberry!5}]
+\newkeytheorem{problem*}[style=definition, name=Problem, numbered=false,
+    tcolorbox-no-titlebar={theorem box rounded, colframe=WildStrawberry!30, colback=WildStrawberry!5}]
 ```
 - 采用 `remark` 样式，定义 `remark` / `remark*` 环境
 ```latex
@@ -149,49 +187,14 @@
 
 ## 定理环境的美化
 
-导入 `tcolorbox` 宏包，用盒子样式美化现有的定理环境
-```latex
-\usepackage[most]{tcolorbox}
-```
+盒子配置直接写在各个 `\newkeytheorem` 声明中，使环境定义、编号规则和
+视觉样式集中在同一处。主要参数是边框颜色 `colframe` 和背景颜色
+`colback`；`enhanced` 开启增强功能，`breakable` 允许跨页，
+`boxrule=1pt` 将边框宽度设为 1pt。
 
-`tcolorbox` 宏包功能非常丰富，这里只用到 `\tcolorboxenvironment` 命令。
-
-首先封装一个 `\newtcbenvironment` 命令：
-```latex
-\newcommand{\newtcbenvironment}[2]{
-    \tcolorboxenvironment{#1}{#2, enhanced, breakable, sharp corners, boxrule=1pt}
-    \tcolorboxenvironment{#1*}{#2, enhanced, breakable, rounded corners, boxrule=1pt}
-}
-```
-
-它可以同时为 `#1` 和 `#1*` 这两个环境加上盒子，其中公共参数包括：
-
-- `#2`：定义时传入的参数，这里主要是边框颜色和背景色
-- `enhanced`：样式增强
-- `breakable`：允许跨页
-- `boxrule=1pt`：边框宽度为 1pt
-
-此外还有以下区别：
-
-- `#1` 盒子使用直角边框（`sharp corners`）
-- `#1*` 盒子使用圆角边框（`rounded corners`）
-
-> 调整 `\newtcbenvironment` 内部的公共参数后，可以进一步实现仅保留左侧边框、或四周无边框等不同效果。
-
-下面为前面的各类定理环境加上盒子，主要参数是盒子的边框颜色 `colframe` 和背景色 `colback`。
-```latex
-%% define styles
-
-\newtcbenvironment{theorem}{colframe=RoyalPurple, colback=RoyalPurple!8}
-\newtcbenvironment{proposition}{colframe=RoyalPurple, colback=RoyalPurple!8}
-\newtcbenvironment{corollary}{colframe=NavyBlue, colback=SkyBlue!8}
-\newtcbenvironment{lemma}{colframe=NavyBlue, colback=SkyBlue!8}
-\newtcbenvironment{claim}{colframe=NavyBlue, colback=SkyBlue!8}
-
-\newtcbenvironment{definition}{colframe=ForestGreen, colback=ForestGreen!5}
-\newtcbenvironment{example}{colframe=RawSienna, colback=RawSienna!5}
-\newtcbenvironment{problem}{colframe=WildStrawberry!30, colback=WildStrawberry!5}
-```
+`leftbar` 和 `shaded` setup 保留相同的环境声明，只替换公共盒子几何
+样式；`attached` setup 则使用 keytheorems 的 `tcolorbox` 键，将定理
+标题作为盒子标题。
 
 具体颜色如下表：
 
@@ -270,4 +273,5 @@
 
 这里没有选择覆盖 `\maketitle`，而是定义了一个新的 `\makecover` 命令，并将封面图路径作为其必需参数。
 
-封面图建议使用 `1280 × 1024` 的尺寸；尤其对于 `jpg` 格式的图片，尺寸不同会导致编译报错。
+原始封面图采用 `1280 × 1024` 的宽高比。其他尺寸也可以编译，但图片的
+宽高比会改变其占用的垂直空间，可能需要相应调整版面。

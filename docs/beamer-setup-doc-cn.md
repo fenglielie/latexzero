@@ -1,5 +1,7 @@
 # beamer-setup 配置说明
 
+本文说明默认的 [`beamer-setup.tex`](../beamer/beamer-setup.tex)，该样式采用顶部 miniframe 导航栏。`beamer-setup-minimal.tex` 移除导航栏并使用更加简洁的标题页，`beamer-setup-console.tex` 则提供深色终端风格。三个文件共用相同的通用宏包配置。
+
 ## Beamer 样式配置
 
 设置主题，包括导航栏样式、数学字体和主题颜色

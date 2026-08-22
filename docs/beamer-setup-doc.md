@@ -1,5 +1,7 @@
 # beamer-setup Documentation
 
+This document explains the default [`beamer-setup.tex`](../beamer/beamer-setup.tex), which uses a top miniframe navigation bar. `beamer-setup-minimal.tex` removes the navigation bar and uses a cleaner title page, while `beamer-setup-console.tex` provides the dark terminal-inspired variant. All three files share the same general-purpose package configuration.
+
 ## Beamer Style Configuration
 
 Set the theme, including the navigation bar style, math font, and theme color.

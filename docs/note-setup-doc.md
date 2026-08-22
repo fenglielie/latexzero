@@ -1,5 +1,7 @@
 # note-setup Documentation
 
+This document explains the default [`note-setup.tex`](../note/note-setup.tex). The other setup files keep the same packages, commands, and theorem environments, but change their presentation: `attached` uses attached theorem titles, `leftbar` uses a colored left border, `shaded` removes visible borders, and `plain` does not depend on tcolorbox. The experimental `dark` setup uses a dark color scheme.
+
 ## Basic Configuration
 
 Import commonly used base packages.
@@ -73,8 +75,11 @@ Change the title of the `proof` environment to `Proof` and set it in bold uprigh
 \renewcommand*{\proofname}{\normalfont\bfseries Proof}
 ```
 
-Import `keytheorems` and use `\newkeytheorem` to define theorem-like environments with a key-value interface.
+Import `tcolorbox` before `keytheorems`. The default setup uses the native
+keytheorems–tcolorbox integration instead of wrapping theorem environments after
+they are defined.
 ```latex
+\usepackage[most]{tcolorbox}
 \usepackage{keytheorems}
 ```
 
@@ -89,6 +94,25 @@ The `\newkeytheorem` options used here include:
 - `parent`, `sibling`: numbering rules, for example
   - `parent=section`: number within `section`
   - `sibling=theorem`: share the counter with `theorem`
+- `tcolorbox-no-titlebar`: apply tcolorbox options while keeping the theorem
+  heading in the box body
+
+The shared box geometry is defined once. Numbered environments use sharp
+corners, while unnumbered environments use the rounded variant.
+```latex
+\tcbset{
+    theorem box/.style={
+            enhanced,
+            breakable,
+            sharp corners,
+            boxrule=1pt,
+        },
+    theorem box rounded/.style={
+            theorem box,
+            rounded corners,
+        }
+}
+```
 
 
 Specifically:
@@ -97,31 +121,47 @@ Specifically:
 ```latex
 %% define environments
 
-\newkeytheorem{theorem}[style=plain, name=Theorem, numbered=true, parent=section]
-\newkeytheorem{theorem*}[style=plain, name=Theorem, numbered=false]
+\newkeytheorem{theorem}[style=plain, name=Theorem, numbered=true, parent=section,
+    tcolorbox-no-titlebar={theorem box, colframe=RoyalPurple, colback=RoyalPurple!8}]
+\newkeytheorem{theorem*}[style=plain, name=Theorem, numbered=false,
+    tcolorbox-no-titlebar={theorem box rounded, colframe=RoyalPurple, colback=RoyalPurple!8}]
 
-\newkeytheorem{proposition}[style=plain, name=Proposition, numbered=true, sibling=theorem]
-\newkeytheorem{proposition*}[style=plain, name=Proposition, numbered=false]
+\newkeytheorem{proposition}[style=plain, name=Proposition, numbered=true, sibling=theorem,
+    tcolorbox-no-titlebar={theorem box, colframe=RoyalPurple, colback=RoyalPurple!8}]
+\newkeytheorem{proposition*}[style=plain, name=Proposition, numbered=false,
+    tcolorbox-no-titlebar={theorem box rounded, colframe=RoyalPurple, colback=RoyalPurple!8}]
 
-\newkeytheorem{corollary}[style=plain, name=Corollary, numbered=true, sibling=theorem]
-\newkeytheorem{corollary*}[style=plain, name=Corollary, numbered=false]
+\newkeytheorem{corollary}[style=plain, name=Corollary, numbered=true, sibling=theorem,
+    tcolorbox-no-titlebar={theorem box, colframe=NavyBlue, colback=SkyBlue!8}]
+\newkeytheorem{corollary*}[style=plain, name=Corollary, numbered=false,
+    tcolorbox-no-titlebar={theorem box rounded, colframe=NavyBlue, colback=SkyBlue!8}]
 
-\newkeytheorem{lemma}[style=plain, name=Lemma, numbered=true, sibling=theorem]
-\newkeytheorem{lemma*}[style=plain, name=Lemma, numbered=false]
+\newkeytheorem{lemma}[style=plain, name=Lemma, numbered=true, sibling=theorem,
+    tcolorbox-no-titlebar={theorem box, colframe=NavyBlue, colback=SkyBlue!8}]
+\newkeytheorem{lemma*}[style=plain, name=Lemma, numbered=false,
+    tcolorbox-no-titlebar={theorem box rounded, colframe=NavyBlue, colback=SkyBlue!8}]
 
-\newkeytheorem{claim}[style=plain, name=Claim, numbered=true, sibling=theorem]
-\newkeytheorem{claim*}[style=plain, name=Claim, numbered=false]
+\newkeytheorem{claim}[style=plain, name=Claim, numbered=true, sibling=theorem,
+    tcolorbox-no-titlebar={theorem box, colframe=NavyBlue, colback=SkyBlue!8}]
+\newkeytheorem{claim*}[style=plain, name=Claim, numbered=false,
+    tcolorbox-no-titlebar={theorem box rounded, colframe=NavyBlue, colback=SkyBlue!8}]
 ```
 - Use the `definition` style to define `definition` / `definition*`, `example` / `example*`, and `problem` / `problem*`
 ```latex
-\newkeytheorem{definition}[style=definition, name=Definition, numbered=true, parent=section]
-\newkeytheorem{definition*}[style=definition, name=Definition, numbered=false]
+\newkeytheorem{definition}[style=definition, name=Definition, numbered=true, parent=section,
+    tcolorbox-no-titlebar={theorem box, colframe=ForestGreen, colback=ForestGreen!5}]
+\newkeytheorem{definition*}[style=definition, name=Definition, numbered=false,
+    tcolorbox-no-titlebar={theorem box rounded, colframe=ForestGreen, colback=ForestGreen!5}]
 
-\newkeytheorem{example}[style=definition, name=Example, numbered=true, parent=section]
-\newkeytheorem{example*}[style=definition, name=Example, numbered=false]
+\newkeytheorem{example}[style=definition, name=Example, numbered=true, parent=section,
+    tcolorbox-no-titlebar={theorem box, colframe=RawSienna, colback=RawSienna!5}]
+\newkeytheorem{example*}[style=definition, name=Example, numbered=false,
+    tcolorbox-no-titlebar={theorem box rounded, colframe=RawSienna, colback=RawSienna!5}]
 
-\newkeytheorem{problem}[style=definition, name=Problem, numbered=true, parent=section]
-\newkeytheorem{problem*}[style=definition, name=Problem, numbered=false]
+\newkeytheorem{problem}[style=definition, name=Problem, numbered=true, parent=section,
+    tcolorbox-no-titlebar={theorem box, colframe=WildStrawberry!30, colback=WildStrawberry!5}]
+\newkeytheorem{problem*}[style=definition, name=Problem, numbered=false,
+    tcolorbox-no-titlebar={theorem box rounded, colframe=WildStrawberry!30, colback=WildStrawberry!5}]
 ```
 - Use the `remark` style to define `remark` / `remark*`
 ```latex
@@ -149,49 +189,15 @@ Specifically:
 
 ## Theorem Styling
 
-Import `tcolorbox` to style existing theorem environments with boxes.
-```latex
-\usepackage[most]{tcolorbox}
-```
+The box configuration is attached directly to each `\newkeytheorem`
+declaration. This keeps the theorem definition, numbering, and visual style in
+one place. The main tcolorbox parameters are `colframe` for the frame color and
+`colback` for the background color. `enhanced` enables advanced box features,
+`breakable` permits page breaks, and `boxrule=1pt` sets the frame width.
 
-`tcolorbox` is very feature-rich, but only `\tcolorboxenvironment` is needed here.
-
-First, wrap it into a `\newtcbenvironment` command:
-```latex
-\newcommand{\newtcbenvironment}[2]{
-    \tcolorboxenvironment{#1}{#2, enhanced, breakable, sharp corners, boxrule=1pt}
-    \tcolorboxenvironment{#1*}{#2, enhanced, breakable, rounded corners, boxrule=1pt}
-}
-```
-
-This adds boxes to both `#1` and `#1*`. The shared options are:
-
-- `#2`: options passed in during definition, mainly frame and background colors
-- `enhanced`: enhanced styling
-- `breakable`: allow page breaks
-- `boxrule=1pt`: set frame width to 1pt
-
-The differences are:
-
-- `#1` uses sharp corners
-- `#1*` uses rounded corners
-
-> By adjusting the shared options inside `\newtcbenvironment`, you can also achieve other effects, such as left-border-only boxes or borderless boxes.
-
-Next, apply boxes to the theorem environments above. The main parameters are the frame color `colframe` and background color `colback`.
-```latex
-%% define styles
-
-\newtcbenvironment{theorem}{colframe=RoyalPurple, colback=RoyalPurple!8}
-\newtcbenvironment{proposition}{colframe=RoyalPurple, colback=RoyalPurple!8}
-\newtcbenvironment{corollary}{colframe=NavyBlue, colback=SkyBlue!8}
-\newtcbenvironment{lemma}{colframe=NavyBlue, colback=SkyBlue!8}
-\newtcbenvironment{claim}{colframe=NavyBlue, colback=SkyBlue!8}
-
-\newtcbenvironment{definition}{colframe=ForestGreen, colback=ForestGreen!5}
-\newtcbenvironment{example}{colframe=RawSienna, colback=RawSienna!5}
-\newtcbenvironment{problem}{colframe=WildStrawberry!30, colback=WildStrawberry!5}
-```
+The `leftbar` and `shaded` setup files reuse the same environment declarations
+with different shared box geometry. The `attached` setup instead uses the
+keytheorems `tcolorbox` key so the theorem heading becomes the box title.
 
 The colors are as follows:
 
@@ -270,4 +276,6 @@ Define a custom cover page, inspired by [ElegantBook](https://github.com/Elegant
 
 Instead of overriding `\maketitle`, this defines a new `\makecover` command that takes the cover image path as a required argument.
 
-The recommended cover image size is `1280 × 1024`; especially for `jpg` images, using a different size will cause compilation errors.
+The original cover image uses a `1280 × 1024` aspect ratio. Other image sizes
+also compile, but their aspect ratio changes the vertical space occupied by the
+image and may require layout adjustments.
