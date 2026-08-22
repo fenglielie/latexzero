@@ -4,23 +4,25 @@
 %================================
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{latexzero-note}[2026/08/21 v0.1.0 LaTeXzero note styles]
+\ProvidesPackage{latexzero-note}[2026/08/21 v0.2.0 LaTeXzero note styles]
 
-\def\latexzeronote@style{box}
-\DeclareOption{style=simple}{\def\latexzeronote@style{simple}}
-\DeclareOption{style=box}{\def\latexzeronote@style{box}}
-\DeclareOption{style=leftsidebox}{\def\latexzeronote@style{leftsidebox}}
-\DeclareOption{style=borderless}{\def\latexzeronote@style{borderless}}
+\def\latexzeronote@style{default}
+\DeclareOption{style=default}{\def\latexzeronote@style{default}}
+\DeclareOption{style=attached}{\def\latexzeronote@style{attached}}
+\DeclareOption{style=leftbar}{\def\latexzeronote@style{leftbar}}
+\DeclareOption{style=shaded}{\def\latexzeronote@style{shaded}}
+\DeclareOption{style=plain}{\def\latexzeronote@style{plain}}
 \DeclareOption*{%
     \PackageError{latexzero-note}{Unknown option `\CurrentOption'}%
-    {Available styles are simple, box, leftsidebox, and borderless.}%
+    {Available styles are default, attached, leftbar, shaded, and plain.}%
 }
 \ProcessOptions\relax
 
-\def\latexzeronote@style@simple{simple}
-\def\latexzeronote@style@box{box}
-\def\latexzeronote@style@leftsidebox{leftsidebox}
-\def\latexzeronote@style@borderless{borderless}
+\def\latexzeronote@style@default{default}
+\def\latexzeronote@style@attached{attached}
+\def\latexzeronote@style@leftbar{leftbar}
+\def\latexzeronote@style@shaded{shaded}
+\def\latexzeronote@style@plain{plain}
 
 \RequirePackage{amsmath,amsthm,amsfonts,amssymb}
 \RequirePackage{mathtools}
@@ -67,33 +69,201 @@
 
 \renewcommand*{\proofname}{\normalfont\bfseries Proof}
 
-\RequirePackage{keytheorems}
+\ifx\latexzeronote@style\latexzeronote@style@plain
+    \RequirePackage{keytheorems}
+\else
+    \RequirePackage[most]{tcolorbox}
+    \RequirePackage{keytheorems}
+\fi
 
 %% define environments
 
-\newkeytheorem{theorem}[style=plain, name=Theorem, numbered=true, parent=section]
-\newkeytheorem{theorem*}[style=plain, name=Theorem, numbered=false]
+\ifx\latexzeronote@style\latexzeronote@style@attached
+    \tcbset{
+        attached theorem box/.style={
+                enhanced,
+                breakable,
+                sharp corners,
+                boxrule=1pt,
+                coltitle=white,
+                fonttitle=\bfseries,
+                attach boxed title to top left={xshift=3mm,yshift=-2.5mm},
+                boxed title style={
+                        sharp corners,
+                        boxrule=0pt,
+                        left=1mm,
+                        right=1mm,
+                        top=0.4mm,
+                        bottom=0.4mm,
+                    },
+                top=3mm,
+            },
+        attached theorem box rounded/.style={
+                attached theorem box,
+                rounded corners,
+                boxed title style={rounded corners},
+            }
+    }
 
-\newkeytheorem{proposition}[style=plain, name=Proposition, numbered=true, sibling=theorem]
-\newkeytheorem{proposition*}[style=plain, name=Proposition, numbered=false]
+    \newkeytheoremstyle{attachedplain}{
+        inherit-style=plain,
+        headpunct={},
+        noteseparator={:~},
+        notebraces={{}{}}
+    }
+    \newkeytheoremstyle{attacheddefinition}{
+        inherit-style=definition,
+        headpunct={},
+        noteseparator={:~},
+        notebraces={{}{}}
+    }
 
-\newkeytheorem{corollary}[style=plain, name=Corollary, numbered=true, sibling=theorem]
-\newkeytheorem{corollary*}[style=plain, name=Corollary, numbered=false]
+    \newkeytheorem{theorem}[style=attachedplain, name=Theorem, numbered=true, parent=section,
+        tcolorbox={attached theorem box, colframe=RoyalPurple, colback=RoyalPurple!8, colbacktitle=RoyalPurple}]
+    \newkeytheorem{theorem*}[style=attachedplain, name=Theorem, numbered=false,
+        tcolorbox={attached theorem box rounded, colframe=RoyalPurple, colback=RoyalPurple!8, colbacktitle=RoyalPurple}]
 
-\newkeytheorem{lemma}[style=plain, name=Lemma, numbered=true, sibling=theorem]
-\newkeytheorem{lemma*}[style=plain, name=Lemma, numbered=false]
+    \newkeytheorem{proposition}[style=attachedplain, name=Proposition, numbered=true, sibling=theorem,
+        tcolorbox={attached theorem box, colframe=RoyalPurple, colback=RoyalPurple!8, colbacktitle=RoyalPurple}]
+    \newkeytheorem{proposition*}[style=attachedplain, name=Proposition, numbered=false,
+        tcolorbox={attached theorem box rounded, colframe=RoyalPurple, colback=RoyalPurple!8, colbacktitle=RoyalPurple}]
 
-\newkeytheorem{claim}[style=plain, name=Claim, numbered=true, sibling=theorem]
-\newkeytheorem{claim*}[style=plain, name=Claim, numbered=false]
+    \newkeytheorem{corollary}[style=attachedplain, name=Corollary, numbered=true, sibling=theorem,
+        tcolorbox={attached theorem box, colframe=NavyBlue, colback=SkyBlue!8, colbacktitle=NavyBlue}]
+    \newkeytheorem{corollary*}[style=attachedplain, name=Corollary, numbered=false,
+        tcolorbox={attached theorem box rounded, colframe=NavyBlue, colback=SkyBlue!8, colbacktitle=NavyBlue}]
 
-\newkeytheorem{definition}[style=definition, name=Definition, numbered=true, parent=section]
-\newkeytheorem{definition*}[style=definition, name=Definition, numbered=false]
+    \newkeytheorem{lemma}[style=attachedplain, name=Lemma, numbered=true, sibling=theorem,
+        tcolorbox={attached theorem box, colframe=NavyBlue, colback=SkyBlue!8, colbacktitle=NavyBlue}]
+    \newkeytheorem{lemma*}[style=attachedplain, name=Lemma, numbered=false,
+        tcolorbox={attached theorem box rounded, colframe=NavyBlue, colback=SkyBlue!8, colbacktitle=NavyBlue}]
 
-\newkeytheorem{example}[style=definition, name=Example, numbered=true, parent=section]
-\newkeytheorem{example*}[style=definition, name=Example, numbered=false]
+    \newkeytheorem{claim}[style=attachedplain, name=Claim, numbered=true, sibling=theorem,
+        tcolorbox={attached theorem box, colframe=NavyBlue, colback=SkyBlue!8, colbacktitle=NavyBlue}]
+    \newkeytheorem{claim*}[style=attachedplain, name=Claim, numbered=false,
+        tcolorbox={attached theorem box rounded, colframe=NavyBlue, colback=SkyBlue!8, colbacktitle=NavyBlue}]
 
-\newkeytheorem{problem}[style=definition, name=Problem, numbered=true, parent=section]
-\newkeytheorem{problem*}[style=definition, name=Problem, numbered=false]
+    \newkeytheorem{definition}[style=attacheddefinition, name=Definition, numbered=true, parent=section,
+        tcolorbox={attached theorem box, colframe=ForestGreen, colback=ForestGreen!5, colbacktitle=ForestGreen}]
+    \newkeytheorem{definition*}[style=attacheddefinition, name=Definition, numbered=false,
+        tcolorbox={attached theorem box rounded, colframe=ForestGreen, colback=ForestGreen!5, colbacktitle=ForestGreen}]
+
+    \newkeytheorem{example}[style=attacheddefinition, name=Example, numbered=true, parent=section,
+        tcolorbox={attached theorem box, colframe=RawSienna, colback=RawSienna!5, colbacktitle=RawSienna}]
+    \newkeytheorem{example*}[style=attacheddefinition, name=Example, numbered=false,
+        tcolorbox={attached theorem box rounded, colframe=RawSienna, colback=RawSienna!5, colbacktitle=RawSienna}]
+
+    \newkeytheorem{problem}[style=attacheddefinition, name=Problem, numbered=true, parent=section,
+        tcolorbox={attached theorem box, colframe=WildStrawberry!30, colback=WildStrawberry!5, colbacktitle=WildStrawberry}]
+    \newkeytheorem{problem*}[style=attacheddefinition, name=Problem, numbered=false,
+        tcolorbox={attached theorem box rounded, colframe=WildStrawberry!30, colback=WildStrawberry!5, colbacktitle=WildStrawberry}]
+\else
+    \ifx\latexzeronote@style\latexzeronote@style@plain
+        \newkeytheorem{theorem}[style=plain, name=Theorem, numbered=true, parent=section]
+        \newkeytheorem{theorem*}[style=plain, name=Theorem, numbered=false]
+
+        \newkeytheorem{proposition}[style=plain, name=Proposition, numbered=true, sibling=theorem]
+        \newkeytheorem{proposition*}[style=plain, name=Proposition, numbered=false]
+
+        \newkeytheorem{corollary}[style=plain, name=Corollary, numbered=true, sibling=theorem]
+        \newkeytheorem{corollary*}[style=plain, name=Corollary, numbered=false]
+
+        \newkeytheorem{lemma}[style=plain, name=Lemma, numbered=true, sibling=theorem]
+        \newkeytheorem{lemma*}[style=plain, name=Lemma, numbered=false]
+
+        \newkeytheorem{claim}[style=plain, name=Claim, numbered=true, sibling=theorem]
+        \newkeytheorem{claim*}[style=plain, name=Claim, numbered=false]
+
+        \newkeytheorem{definition}[style=definition, name=Definition, numbered=true, parent=section]
+        \newkeytheorem{definition*}[style=definition, name=Definition, numbered=false]
+
+        \newkeytheorem{example}[style=definition, name=Example, numbered=true, parent=section]
+        \newkeytheorem{example*}[style=definition, name=Example, numbered=false]
+
+        \newkeytheorem{problem}[style=definition, name=Problem, numbered=true, parent=section]
+        \newkeytheorem{problem*}[style=definition, name=Problem, numbered=false]
+    \else
+        \ifx\latexzeronote@style\latexzeronote@style@default
+            \tcbset{
+                theorem box/.style={enhanced, breakable, sharp corners, boxrule=1pt},
+                theorem box rounded/.style={theorem box, rounded corners},
+                theorem purple/.style={colframe=RoyalPurple, colback=RoyalPurple!8},
+                theorem blue/.style={colframe=NavyBlue, colback=SkyBlue!8},
+                theorem green/.style={colframe=ForestGreen, colback=ForestGreen!5},
+                theorem brown/.style={colframe=RawSienna, colback=RawSienna!5},
+                theorem red/.style={colframe=WildStrawberry!30, colback=WildStrawberry!5},
+            }
+        \else\ifx\latexzeronote@style\latexzeronote@style@leftbar
+                \tcbset{
+                    theorem box/.style={
+                            enhanced, breakable, sharp corners,
+                            leftrule=2pt, rightrule=0pt, toprule=0pt, bottomrule=0pt,
+                        },
+                    theorem box rounded/.style={theorem box, rounded corners},
+                    theorem purple/.style={colframe=RoyalPurple, colback=RoyalPurple!8},
+                    theorem blue/.style={colframe=NavyBlue, colback=SkyBlue!8},
+                    theorem green/.style={colframe=ForestGreen, colback=ForestGreen!5},
+                    theorem brown/.style={colframe=RawSienna, colback=RawSienna!5},
+                    theorem red/.style={colframe=WildStrawberry!30, colback=WildStrawberry!5},
+                }
+            \else\ifx\latexzeronote@style\latexzeronote@style@shaded
+                    \tcbset{
+                        theorem box/.style={
+                                enhanced, breakable, sharp corners,
+                                boxrule=0pt, colframe=white,
+                            },
+                        theorem box rounded/.style={theorem box, rounded corners},
+                        theorem purple/.style={colback=RoyalPurple!8},
+                        theorem blue/.style={colback=SkyBlue!8},
+                        theorem green/.style={colback=ForestGreen!5},
+                        theorem brown/.style={colback=RawSienna!5},
+                        theorem red/.style={colback=WildStrawberry!5},
+                    }
+                \fi
+            \fi
+        \fi
+
+        \newkeytheorem{theorem}[style=plain, name=Theorem, numbered=true, parent=section,
+            tcolorbox-no-titlebar={theorem box, theorem purple}]
+        \newkeytheorem{theorem*}[style=plain, name=Theorem, numbered=false,
+            tcolorbox-no-titlebar={theorem box rounded, theorem purple}]
+
+        \newkeytheorem{proposition}[style=plain, name=Proposition, numbered=true, sibling=theorem,
+            tcolorbox-no-titlebar={theorem box, theorem purple}]
+        \newkeytheorem{proposition*}[style=plain, name=Proposition, numbered=false,
+            tcolorbox-no-titlebar={theorem box rounded, theorem purple}]
+
+        \newkeytheorem{corollary}[style=plain, name=Corollary, numbered=true, sibling=theorem,
+            tcolorbox-no-titlebar={theorem box, theorem blue}]
+        \newkeytheorem{corollary*}[style=plain, name=Corollary, numbered=false,
+            tcolorbox-no-titlebar={theorem box rounded, theorem blue}]
+
+        \newkeytheorem{lemma}[style=plain, name=Lemma, numbered=true, sibling=theorem,
+            tcolorbox-no-titlebar={theorem box, theorem blue}]
+        \newkeytheorem{lemma*}[style=plain, name=Lemma, numbered=false,
+            tcolorbox-no-titlebar={theorem box rounded, theorem blue}]
+
+        \newkeytheorem{claim}[style=plain, name=Claim, numbered=true, sibling=theorem,
+            tcolorbox-no-titlebar={theorem box, theorem blue}]
+        \newkeytheorem{claim*}[style=plain, name=Claim, numbered=false,
+            tcolorbox-no-titlebar={theorem box rounded, theorem blue}]
+
+        \newkeytheorem{definition}[style=definition, name=Definition, numbered=true, parent=section,
+            tcolorbox-no-titlebar={theorem box, theorem green}]
+        \newkeytheorem{definition*}[style=definition, name=Definition, numbered=false,
+            tcolorbox-no-titlebar={theorem box rounded, theorem green}]
+
+        \newkeytheorem{example}[style=definition, name=Example, numbered=true, parent=section,
+            tcolorbox-no-titlebar={theorem box, theorem brown}]
+        \newkeytheorem{example*}[style=definition, name=Example, numbered=false,
+            tcolorbox-no-titlebar={theorem box rounded, theorem brown}]
+
+        \newkeytheorem{problem}[style=definition, name=Problem, numbered=true, parent=section,
+            tcolorbox-no-titlebar={theorem box, theorem red}]
+        \newkeytheorem{problem*}[style=definition, name=Problem, numbered=false,
+            tcolorbox-no-titlebar={theorem box rounded, theorem red}]
+    \fi
+\fi
 
 \newkeytheorem{remark}[style=remark, name=Remark, numbered=true, parent=section]
 \newkeytheorem{remark*}[style=remark, name=Remark, numbered=false]
@@ -108,40 +278,9 @@
 \newkeytheorem{solution}[style=solutionstyle, name=Solution, numbered=true, parent=section]
 \newkeytheorem{solution*}[style=solutionstyle, name=Solution, numbered=false]
 
-\ifx\latexzeronote@style\latexzeronote@style@simple
+\ifx\latexzeronote@style\latexzeronote@style@plain
     \newenvironment{cbox}{\begin{quote}}{\end{quote}}
 \else
-    \RequirePackage[most]{tcolorbox}
-
-    \ifx\latexzeronote@style\latexzeronote@style@box
-        \newcommand{\latexzeronote@newtcbenvironment}[2]{
-            \tcolorboxenvironment{#1}{#2, enhanced, breakable, sharp corners, boxrule=1pt}
-            \tcolorboxenvironment{#1*}{#2, enhanced, breakable, rounded corners, boxrule=1pt}
-        }
-    \else\ifx\latexzeronote@style\latexzeronote@style@leftsidebox
-            \newcommand{\latexzeronote@newtcbenvironment}[2]{
-                \tcolorboxenvironment{#1}{#2, enhanced, breakable, sharp corners, leftrule=2pt, rightrule=0pt, toprule=0pt, bottomrule=0pt}
-                \tcolorboxenvironment{#1*}{#2, enhanced, breakable, rounded corners, leftrule=2pt, rightrule=0pt, toprule=0pt, bottomrule=0pt}
-            }
-        \else\ifx\latexzeronote@style\latexzeronote@style@borderless
-                \newcommand{\latexzeronote@newtcbenvironment}[2]{
-                    \tcolorboxenvironment{#1}{#2, enhanced, breakable, sharp corners, boxrule=0pt, colframe=white}
-                    \tcolorboxenvironment{#1*}{#2, enhanced, breakable, rounded corners, boxrule=0pt, colframe=white}
-                }
-            \fi\fi\fi
-
-    %% define styles
-
-    \latexzeronote@newtcbenvironment{theorem}{colframe=RoyalPurple, colback=RoyalPurple!8}
-    \latexzeronote@newtcbenvironment{proposition}{colframe=RoyalPurple, colback=RoyalPurple!8}
-    \latexzeronote@newtcbenvironment{corollary}{colframe=NavyBlue, colback=SkyBlue!8}
-    \latexzeronote@newtcbenvironment{lemma}{colframe=NavyBlue, colback=SkyBlue!8}
-    \latexzeronote@newtcbenvironment{claim}{colframe=NavyBlue, colback=SkyBlue!8}
-
-    \latexzeronote@newtcbenvironment{definition}{colframe=ForestGreen, colback=ForestGreen!5}
-    \latexzeronote@newtcbenvironment{example}{colframe=RawSienna, colback=RawSienna!5}
-    \latexzeronote@newtcbenvironment{problem}{colframe=WildStrawberry!30, colback=WildStrawberry!5}
-
     %% cbox
     \newtcolorbox{cbox}[1][]{%
         enhanced,

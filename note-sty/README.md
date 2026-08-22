@@ -5,7 +5,7 @@ a style with the `style` option:
 
 ```latex
 \documentclass{article}
-\usepackage[style=leftsidebox]{latexzero-note}
+\usepackage[style=attached]{latexzero-note}
 
 \begin{document}
 
@@ -14,5 +14,11 @@ a style with the `style` option:
 \end{document}
 ```
 
-Available styles are `simple`, `box`, `leftsidebox`, and `borderless`. The
-default is `box`.
+Available styles:
+
+- `default`: colored borders and lightly tinted backgrounds; used when the
+  `style` option is omitted.
+- `attached`: derived from `default`, with attached title labels.
+- `leftbar`: colored left bars and lightly tinted backgrounds.
+- `shaded`: borderless boxes with lightly tinted backgrounds.
+- `plain`: the standard theorem layout without a dependency on tcolorbox.

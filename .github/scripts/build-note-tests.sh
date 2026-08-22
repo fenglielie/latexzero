@@ -27,7 +27,7 @@ generated_dir="${build_root}/generated"
 aux_root="${build_root}/aux"
 artifact_dir="${repo_root}/artifacts/note"
 note_package="${repo_root}/note-sty/latexzero-note.sty"
-note_styles=(simple box leftsidebox borderless)
+note_styles=(default attached leftbar shaded plain)
 
 rm -rf -- "${build_root}" "${artifact_dir}"
 mkdir -p "${generated_dir}" "${aux_root}" "${artifact_dir}"
