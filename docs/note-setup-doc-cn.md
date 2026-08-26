@@ -80,6 +80,7 @@
 ```latex
 \usepackage[most]{tcolorbox}
 \usepackage{keytheorems}
+\usepackage{pifont}
 ```
 
 这里使用的 `\newkeytheorem` 命令参数包括：
@@ -161,20 +162,23 @@
 \newkeytheorem{problem*}[style=definition, name=Problem, numbered=false,
     tcolorbox-no-titlebar={theorem box rounded, colframe=WildStrawberry!30, colback=WildStrawberry!5}]
 ```
-- 采用 `remark` 样式，定义 `remark` / `remark*` 环境
+- 采用标准 `remark` 字体规范（标题斜体、正文正体），不使用盒子
 ```latex
 \newkeytheorem{remark}[style=remark, name=Remark, numbered=true, parent=section]
 \newkeytheorem{remark*}[style=remark, name=Remark, numbered=false]
 ```
-- 使用 `\newkeytheoremstyle` 命令定义新的 `notestyle` 样式，类似 `remark` 环境，但引导词改为 `Note`，并带有颜色
+- 定义一个位于左侧页边的零宽度手写标记，再使用 `\newkeytheoremstyle` 设置橙色粗体标题、正体正文和同色结束标记
 ```latex
-\newkeytheoremstyle{notestyle}{headfont=\color{orange!80}\bfseries, bodyfont=\normalfont, spaceabove=3pt, spacebelow=3pt}
+\newcommand{\notehandmark}{\llap{\raisebox{0.05ex}{\large\ding{45}}\hspace{0.6em}}}
+\newkeytheoremstyle{notestyle}{headfont=\color{orange!80!black}\bfseries, bodyfont=\normalfont, spaceabove=3pt, spacebelow=3pt, qed=\ensuremath{\color{orange!80!black}\diamond}}
 ```
-- 采用新定义的 `notestyle` 样式，定义 `note` / `note*` 环境
+- 采用 `notestyle` 定义 `note` / `note*`；左侧标记不占水平空间，因此正文宽度和缩进保持不变
 ```latex
-\newkeytheorem{note}[style=notestyle, name=Note, numbered=true, parent=section]
-\newkeytheorem{note*}[style=notestyle, name=Note, numbered=false]
+\newkeytheorem{note}[style=notestyle, name={\notehandmark Note}, numbered=true, parent=section]
+\newkeytheorem{note*}[style=notestyle, name={\notehandmark Note}, numbered=false]
 ```
+- `plain` setup 与宏包的 `style=plain` 选项保留相同的执笔手和结束符，
+  但不为其添加颜色，以维持极简风格。
 - 使用 `\newkeytheoremstyle` 命令定义新的 `solutionstyle` 样式，类似 `proof` 环境，但引导词改为 `Solution`
 ```latex
 \newkeytheoremstyle{solutionstyle}{headfont=\bfseries, bodyfont=\normalfont, spaceabove=3pt, spacebelow=3pt, qed=\ensuremath{\square}}
@@ -210,21 +214,6 @@
 
 - 这里采用 `xcolor` 宏包提供的标准颜色，`xxx!n` 表示将颜色 `xxx` 按 `n%` 的比例与白色混合得到的浅色。
 - 为了避免颜色过多，对语义类似的环境合并采用相同的盒子颜色。
-
-此外，还添加了一个没有标题的简单盒子 `cbox`：
-```latex
-%% cbox
-\newtcolorbox{cbox}[1][]{%
-    enhanced,
-    breakable,
-    sharp corners,
-    leftrule=2pt, rightrule=0pt, toprule=0pt, bottomrule=0pt,
-    colframe=SkyBlue,
-    colback=SkyBlue!8,
-    #1
-}
-```
-
 
 ## 自定义封面页
 
@@ -275,3 +264,21 @@
 
 原始封面图采用 `1280 × 1024` 的宽高比。其他尺寸也可以编译，但图片的
 宽高比会改变其占用的垂直空间，可能需要相应调整版面。
+
+## 旧版 `cbox` 兼容
+
+模板不再默认定义自定义 `cbox` 环境。仍在使用该环境的文档，可以把以下片段直接添加到主文件导言区：放在载入 setup 或 `latexzero-note` 之后、`\begin{document}` 之前即可。
+
+```latex
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{cbox}[1][]{%
+    enhanced,
+    breakable,
+    sharp corners,
+    leftrule=2pt, rightrule=0pt, toprule=0pt, bottomrule=0pt,
+    colframe=SkyBlue,
+    colback=SkyBlue!8,
+    #1
+}
+```

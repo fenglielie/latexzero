@@ -81,6 +81,7 @@ they are defined.
 ```latex
 \usepackage[most]{tcolorbox}
 \usepackage{keytheorems}
+\usepackage{pifont}
 ```
 
 The `\newkeytheorem` options used here include:
@@ -163,20 +164,23 @@ Specifically:
 \newkeytheorem{problem*}[style=definition, name=Problem, numbered=false,
     tcolorbox-no-titlebar={theorem box rounded, colframe=WildStrawberry!30, colback=WildStrawberry!5}]
 ```
-- Use the `remark` style to define `remark` / `remark*`
+- Use the standard `remark` typography: an italic heading and upright body, without a box
 ```latex
 \newkeytheorem{remark}[style=remark, name=Remark, numbered=true, parent=section]
 \newkeytheorem{remark*}[style=remark, name=Remark, numbered=false]
 ```
-- Use `\newkeytheoremstyle` to define a new `notestyle`, similar to `remark`, but with the heading changed to `Note` and colored
+- Define a zero-width handwritten marker in the left margin, then use `\newkeytheoremstyle` for a bold orange heading, upright body, and matching end marker
 ```latex
-\newkeytheoremstyle{notestyle}{headfont=\color{orange!80}\bfseries, bodyfont=\normalfont, spaceabove=3pt, spacebelow=3pt}
+\newcommand{\notehandmark}{\llap{\raisebox{0.05ex}{\large\ding{45}}\hspace{0.6em}}}
+\newkeytheoremstyle{notestyle}{headfont=\color{orange!80!black}\bfseries, bodyfont=\normalfont, spaceabove=3pt, spacebelow=3pt, qed=\ensuremath{\color{orange!80!black}\diamond}}
 ```
-- Use the custom `notestyle` to define `note` / `note*`
+- Use the custom `notestyle` to define `note` / `note*`; the marker uses no horizontal space, so the body keeps the normal text width and indentation
 ```latex
-\newkeytheorem{note}[style=notestyle, name=Note, numbered=true, parent=section]
-\newkeytheorem{note*}[style=notestyle, name=Note, numbered=false]
+\newkeytheorem{note}[style=notestyle, name={\notehandmark Note}, numbered=true, parent=section]
+\newkeytheorem{note*}[style=notestyle, name={\notehandmark Note}, numbered=false]
 ```
+- The `plain` setup and `style=plain` package option keep the same marker and
+  end symbol but omit their color to preserve the minimal style.
 - Use `\newkeytheoremstyle` to define a new `solutionstyle`, similar to `proof`, but with the heading changed to `Solution`
 ```latex
 \newkeytheoremstyle{solutionstyle}{headfont=\bfseries, bodyfont=\normalfont, spaceabove=3pt, spacebelow=3pt, qed=\ensuremath{\square}}
@@ -213,21 +217,6 @@ Notes:
 
 - The standard colors provided by `xcolor` are used here. `xxx!n` means mixing color `xxx` with white at a ratio of `n%`.
 - To avoid too many colors, environments with similar semantics share the same box colors.
-
-In addition, a simple untitled box `cbox` is defined:
-```latex
-%% cbox
-\newtcolorbox{cbox}[1][]{%
-    enhanced,
-    breakable,
-    sharp corners,
-    leftrule=2pt, rightrule=0pt, toprule=0pt, bottomrule=0pt,
-    colframe=SkyBlue,
-    colback=SkyBlue!8,
-    #1
-}
-```
-
 
 ## Custom Cover Page
 
@@ -279,3 +268,24 @@ Instead of overriding `\maketitle`, this defines a new `\makecover` command that
 The original cover image uses a `1280 × 1024` aspect ratio. Other image sizes
 also compile, but their aspect ratio changes the vertical space occupied by the
 image and may require layout adjustments.
+
+## Legacy `cbox` Compatibility
+
+The templates no longer define the custom `cbox` environment. Documents that
+still use it can add the following snippet directly to the main document
+preamble, after loading a setup file or the `latexzero-note` package and before
+`\begin{document}`.
+
+```latex
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{cbox}[1][]{%
+    enhanced,
+    breakable,
+    sharp corners,
+    leftrule=2pt, rightrule=0pt, toprule=0pt, bottomrule=0pt,
+    colframe=SkyBlue,
+    colback=SkyBlue!8,
+    #1
+}
+```

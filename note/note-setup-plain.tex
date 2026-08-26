@@ -16,6 +16,7 @@
 \usepackage{appendix}
 
 \usepackage[dvipsnames]{xcolor}
+\usepackage{pifont}
 \usepackage{graphicx}
 \graphicspath{
     {./figure/}{./figures/}{./image/}{./images/}{./graphic/}{./graphics/}{./picture/}{./pictures/}
@@ -78,17 +79,16 @@
 \newkeytheorem{remark}[style=remark, name=Remark, numbered=true, parent=section]
 \newkeytheorem{remark*}[style=remark, name=Remark, numbered=false]
 
-\newkeytheoremstyle{notestyle}{headfont=\color{orange!80}\bfseries, bodyfont=\normalfont, spaceabove=3pt, spacebelow=3pt}
+\newcommand{\notehandmark}{\llap{\raisebox{0.05ex}{\large\ding{45}}\hspace{0.6em}}}
+\newkeytheoremstyle{notestyle}{headfont=\bfseries, bodyfont=\normalfont, spaceabove=3pt, spacebelow=3pt, qed=\ensuremath{\diamond}}
 
-\newkeytheorem{note}[style=notestyle, name=Note, numbered=true, parent=section]
-\newkeytheorem{note*}[style=notestyle, name=Note, numbered=false]
+\newkeytheorem{note}[style=notestyle, name={\notehandmark Note}, numbered=true, parent=section]
+\newkeytheorem{note*}[style=notestyle, name={\notehandmark Note}, numbered=false]
 
 \newkeytheoremstyle{solutionstyle}{headfont=\bfseries, bodyfont=\normalfont, spaceabove=3pt, spacebelow=3pt, qed=\ensuremath{\square}}
 
 \newkeytheorem{solution}[style=solutionstyle, name=Solution, numbered=true, parent=section]
 \newkeytheorem{solution*}[style=solutionstyle, name=Solution, numbered=false]
-
-\newenvironment{cbox}{\begin{quote}}{\end{quote}}
 
 %% cover
 \usepackage{titling}
