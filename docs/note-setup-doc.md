@@ -228,6 +228,8 @@ Define a custom cover page, inspired by [ElegantBook](https://github.com/Elegant
 \renewcommand{\extrainfo}[1]{\renewcommand{\extrainfocontent}{#1}}
 \newcommand{\extrainfocontent}{}
 \newcommand{\makecover}[1]{%
+    \begingroup
+    \hypersetup{pageanchor=false}%
     \begin{titlepage}
         \newgeometry{margin=0in}
         \parindent=0pt
@@ -256,7 +258,7 @@ Define a custom cover page, inspired by [ElegantBook](https://github.com/Elegant
         \vfill
     \end{titlepage}
     \restoregeometry
-    \thispagestyle{empty}
+    \endgroup
 }
 % USAGE
 % \extrainfo{xxx}
