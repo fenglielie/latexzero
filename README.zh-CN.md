@@ -1,15 +1,13 @@
 # 数学笔记 LaTeX 模板
 
-[English](./README.md) | 简体中文
+[English](./README.md) | 中文
 
 适用于数学笔记与 Beamer 的简洁 LaTeX 模板。
 
 > ⚠️ **Note 模板兼容性更新：** Note 模板已由 `thmtools` 迁移至 `keytheorems`，
 > 以规避 [thmtools issue #75](https://github.com/muzimuzhi/thmtools/issues/75)
-> 所述的 TeX Live 2026 共享计数器兼容性问题。基于 `thmtools` 的旧版 Note
-> 模板（包括 `mdframed` 样式）保留在
-> [`legacy/thmtools` 分支](https://github.com/fenglielie/latexzero/tree/legacy/thmtools)，
-> 可用于 TeX Live 2025 及更早版本。
+> 所述的 TeX Live 2026 共享计数器兼容性问题，但是 `keytheorems` 要求的 TeX Live 版本较高。
+> 基于 `thmtools` 的旧版 Note 模板（包括 `mdframed` 样式）保留在 [`legacy/thmtools` 分支](https://github.com/fenglielie/latexzero/tree/legacy/thmtools)。
 
 ## ✨ 概览
 
@@ -31,6 +29,7 @@
   - [📊 Beamer](#-beamer)
     - [🎨 可用样式](#-可用样式-1)
     - [🔧 用法](#-用法-1)
+  - [✅ TeX Live 支持](#-tex-live-支持)
 
 ## 🚀 如何使用？
 
@@ -163,3 +162,11 @@
 
 ...
 ```
+
+## ✅ TeX Live 支持
+
+| 模板 | 2022 | 2023 | 2024 | 2025 | 2026 |
+| --- | :---: | :---: | :---: | :---: | :---: |
+| Note（`main` 分支，基于 `keytheorems`） | ❌ | ❌ | ✅ | ✅ | ✅ |
+| Note（`legacy/thmtools` 分支，基于 `thmtools`） | ✅ | ✅ | ✅ | ✅ | ❌ |
+| Beamer | ✅ | ✅ | ✅ | ✅ | ✅ |

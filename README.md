@@ -1,17 +1,16 @@
 # LaTeX Templates for Mathematical Notes
 
-English | [简体中文](./README.zh-CN.md)
+English | [中文](./README.zh-CN.md)
 
 Simple LaTeX templates for mathematical notes and Beamer slides.
 
-> ⚠️ **Note template compatibility:** The Note templates now use `keytheorems`
-> instead of `thmtools` to avoid the shared-counter incompatibility in TeX Live
-> 2026 described in
-> [thmtools issue #75](https://github.com/muzimuzhi/thmtools/issues/75). The
-> previous `thmtools`-based Note templates, including the `mdframed` style, are
-> retained on the
-> [`legacy/thmtools` branch](https://github.com/fenglielie/latexzero/tree/legacy/thmtools)
-> for TeX Live 2025 and earlier.
+> ⚠️ **Note template compatibility update:** The Note templates now use
+> `keytheorems` instead of `thmtools` to avoid the shared-counter incompatibility
+> in TeX Live 2026 described in
+> [thmtools issue #75](https://github.com/muzimuzhi/thmtools/issues/75). However,
+> `keytheorems` requires a newer TeX Live release. The previous `thmtools`-based
+> Note templates, including the `mdframed` style, are retained on the
+> [`legacy/thmtools` branch](https://github.com/fenglielie/latexzero/tree/legacy/thmtools).
 
 ## ✨ Overview
 
@@ -33,6 +32,7 @@ Simple LaTeX templates for mathematical notes and Beamer slides.
   - [📊 Beamer](#-beamer)
     - [🎨 Available styles](#-available-styles-1)
     - [🔧 Usage](#-usage-1)
+  - [✅ TeX Live support](#-tex-live-support)
 
 ## 🚀 How to use it?
 
@@ -166,3 +166,11 @@ All Beamer styles share the same commands and structure, so you can switch betwe
 
 ...
 ```
+
+## ✅ TeX Live support
+
+| Template | 2022 | 2023 | 2024 | 2025 | 2026 |
+| --- | :---: | :---: | :---: | :---: | :---: |
+| Note (`main` branch, based on `keytheorems`) | ❌ | ❌ | ✅ | ✅ | ✅ |
+| Note (`legacy/thmtools` branch, based on `thmtools`) | ✅ | ✅ | ✅ | ✅ | ❌ |
+| Beamer | ✅ | ✅ | ✅ | ✅ | ✅ |
